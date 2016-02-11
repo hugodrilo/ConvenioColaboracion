@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvenioColaboracion.WebAPI", "ConvenioColaboracion.WebAPI\ConvenioColaboracion.WebAPI.csproj", "{F466BD4E-1795-4D80-993E-52BB05E161CD}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ConvenioColaboracion.Client", "ConvenioColaboracion.Client\", "{184D79AF-DDF2-4602-B27A-AA6341BE71E2}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_11966"
+		Debug.AspNetCompiler.PhysicalPath = "ConvenioColaboracion.Client\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_11966\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_11966"
+		Release.AspNetCompiler.PhysicalPath = "ConvenioColaboracion.Client\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_11966\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "11966"
+		SlnRelativePath = "ConvenioColaboracion.Client\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F466BD4E-1795-4D80-993E-52BB05E161CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F466BD4E-1795-4D80-993E-52BB05E161CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F466BD4E-1795-4D80-993E-52BB05E161CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F466BD4E-1795-4D80-993E-52BB05E161CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{184D79AF-DDF2-4602-B27A-AA6341BE71E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{184D79AF-DDF2-4602-B27A-AA6341BE71E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{184D79AF-DDF2-4602-B27A-AA6341BE71E2}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{184D79AF-DDF2-4602-B27A-AA6341BE71E2}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

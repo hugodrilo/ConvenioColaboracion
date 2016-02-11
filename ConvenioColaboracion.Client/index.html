@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Convenios de colaboración</title>
+    <meta charset="utf-8" />
+
+    <!--Library scripts-->
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-ui-router.min.js"></script>
+
+    <!--Application script-->
+    <script src="app/app.js"></script>
+
+    <!--Services-->
+    <script src="common/services/common.services.js"></script>
+
+    <!--Controllers-->
+    <script src="app/convenios/controllers/convenioCtrl.js"></script>
+
+    <!--GOB.MX-->
+    <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
+
+    <!--Local style sheets-->
+    <link href="css/app.css" rel="stylesheet" />
+</head>
+<body ng-app="convenioColaboracion">
+    <div class="page-header page-header-sm">
+        <ol class="breadcrumb"
+            font-size="10">
+            <li>
+                <a href="/">Convenio</a>
+            </li>
+            <li class="active">
+                Something
+            </li>
+        </ol>
+    </div>
+
+    {{ 3 + 2}}
+
+    <div class="container">
+        <!--<div ng-include="'/app/convenios/views/convenio.html'"></div>-->
+        <div ui-view></div>
+    </div>
+
+
+    <!--GOB.MX-->
+    <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+</body>
+</html>
+

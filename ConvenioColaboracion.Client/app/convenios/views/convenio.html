@@ -1,0 +1,173 @@
+﻿<div class="col-md-10 col-md-offset-1">
+    <form>
+        <div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Convenios de colaboración
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label"
+                                       for="NumeroConvenio">
+                                    Número de convenio
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="text"
+                                       name="NumeroConvenio"
+                                       id="NumeroConvenio"
+                                       class="form-control"
+                                       placeholder="Númer de convenio" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label class="control-label"
+                                       for="Convenio">
+                                    Convenio
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <textarea name="Convenio"
+                                          id="Convenio"
+                                          class="form-control"
+                                          placeholder="Convenio"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label"
+                                       for="Fecha">
+                                    Fecha de suscripción:
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input type="date"
+                                       name="Fecha"
+                                       id="Fecha"
+                                       class="form-control" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            datepicker here
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label class="control-label"
+                                       for="ResumenConvenio">
+                                    Resumen (Objetivo del convenio):
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <textarea name="ResumenConvenio"
+                                          id="ResumenConvenio"
+                                          class="form-control"
+                                          placeholder="Resumen del convenio"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label class="control-label"
+                                       for="MateriaContenido">
+                                    Materia del convenio
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select name="MateriaContenido"
+                                        id="MateriaContenido"
+                                        class="form-control"
+                                        ng-model="data.materia">
+                                    <option value="materia-1">Materia 1</option>
+                                    <option value="materia-2">Materia 2</option>
+                                </select><br>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label class="control-label"
+                                       for="Submaterias">
+                                    Submaterias
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select name="Submaterias"
+                                        id="Submaterias"
+                                        class="form-control"
+                                        ng-model="data.submateria">
+                                    <option value="submateria-1">SubMateria 1</option>
+                                    <option value="submateria-2">SubMateria 2</option>
+                                </select><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label class="control-label"
+                                       for="AreaVinculante">
+                                    Area vinculante
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <select name="AreaVinculante"
+                                        id="AreaVinculante"
+                                        class="form-control"
+                                        ng-model="data.areaVinculante">
+                                    <option value="areaVinculante-1">AreaVinculante 1</option>
+                                    <option value="areaVinculante-2">AreaVinculante 2</option>
+                                </select><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    TODO: Checar como agregar esta seccion
+                </div>
+                <div>
+                    TODO: Checar como agregar esta seccion
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-3"><span class="text-danger">CamposObligatorios</span></div>
+                        <div class="col-md-offset-5 col-md-2">
+                            <span tabindex="0"
+                                  class="btn btn-primary pull-right"
+                                  data-toggle="tooltip"
+                                  data-placement="top">
+                                Guardar
+                            </span>
+                        </div>
+                        <div class="col-md-2">
+                            <span tabindex="0"
+                                  class="btn btn-default pull-right">
+                                Cancelar
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!--<div class="panel-heading">
+    Convenios de ..
+</div>the silent man
+<div class="panel-body">
+    <table>
+        <thead>
+        <tr>
+            <td>Id</td>
+            <td>Nombre</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="conv in vm.convenios">
+            <td>{{conv.convenioId}}</td>
+            <td>{{conv.convenio}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>-->
