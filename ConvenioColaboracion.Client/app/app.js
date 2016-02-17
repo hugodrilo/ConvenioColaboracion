@@ -8,7 +8,6 @@
  *  - Wrap the controlle in an IIFE --> (function () {"use strict";})();
  */
 
-
 (function () {
     "use strict";
 
@@ -28,13 +27,61 @@
                             url: "/",
                             templateUrl: "app/welcomeView.html"
                         })
-
+                        // Menú de convenio view
+                        .state("menuConvenio", {
+                            url: "/menuConvenio",
+                            templateUrl: "app/convenios/views/menuConvenioView.html",
+                            controller: "MenuConvenioCtrl as vm"
+                        })
                         // Convenio view
                         .state("convenio", {
                             url: "/convenios",
                             templateUrl: "app/convenios/views/convenio.html",
                             controller: "ConvenioCtrl as vm"
                         })
+                        // Seguimiento view
+                        .state("seguimiento", {
+                            url: "/seguimiento",
+                            templateUrl: "app/convenios/views/seguimientoView.html",
+                            controller: "SeguimientoCtrl as vm"
+                        })
+                        // Alertas view
+                        .state("alertas", {
+                            url: "/alertas",
+                            templateUrl: "app/convenios/views/alertasView.html",
+                            controller: "AlertasCtrl as vm"
+                        })
+                        // Consulta view
+                        .state("consulta", {
+                            url: "/consulta",
+                            templateUrl: "app/consultas/views/consultaView.html",
+                            controller: "ConsultaCtrl as vm"
+                        })
+                        // Menú catalogo view
+                        .state("menuCatalogo", {
+                            url: "/menuCatalogo",
+                            templateUrl: "app/catalogos/views/menuCatalogoView.html",
+                            controller: "MenuCatalogoCtrl as vm"
+                        })
+                        // Catalogo areas view
+                        .state("catalogoAreas", {
+                            url: "/catalogoAreas",
+                            templateUrl: "app/catalogos/views/areasView.html",
+                            controller: "AreasCtrl as vm"
+                        })
+                        // Catalogo partes view
+                        .state("catalogoPartes", {
+                            url: "/catalogoPartes",
+                            templateUrl: "app/catalogos/views/partesView.html",
+                            controller: "PartesCtrl as vm"
+                        })
+                        // Estadistica view
+                        .state("estadistica", {
+                            url: "/estadistica",
+                            templateUrl: "app/estadisticas/views/estadisticaView.html",
+                            controller: "EstadisticaCtrl as vm"
+                        })
+
                     ////// TODO: Pendiente pensar la edicion de un convenio
                     ////// Convenio Edit view
                     ////.state("convenio", {
@@ -44,5 +91,23 @@
                     ////})
                     ;
                 }]);
-}
-)();
+
+    //app.directive('datepicker', function () {
+    //    return {
+    //        restrict: 'A',
+    //        require: 'ngModel',
+    //        link: function (scope, element, attrs, ngModelCtrl) {
+    //            $(function () {
+    //                element.datepicker({
+    //                    dateFormat: 'dd/mm/yy',
+    //                    onSelect: function (date) {
+    //                        scope.$apply(function () {
+    //                            ngModelCtrl.$setViewValue(date);
+    //                        });
+    //                    }
+    //                });
+    //            });
+    //        }
+    //    }
+    //});
+})();

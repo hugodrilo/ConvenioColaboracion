@@ -1,13 +1,27 @@
-﻿<div class="col-md-10 col-md-offset-1">
-    <form>
+﻿<!--convenio.html-->
+<div>
+    <ol class="breadcrumb">
+        <li>
+            <a ui-sref="home"><i class="icon icon-home"></i></a>
+        </li>
+        <li>
+            <a ui-sref="menuConvenio" class="active">Menú convenio</a>
+        </li>
+        <li class="active">Nuevo convenio</li>
+    </ol>
+</div>
+
+<div class="col-md-10 col-md-offset-1">
+    <form id="formularioConvenio"
+          role="form">
         <div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Convenios de colaboración
+                    Nuevo convenio
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <div class="form-group">
                                 <label class="control-label"
                                        for="NumeroConvenio">
@@ -18,12 +32,12 @@
                                        name="NumeroConvenio"
                                        id="NumeroConvenio"
                                        class="form-control"
-                                       placeholder="Númer de convenio" />
+                                       placeholder="Número de convenio" />
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-10">
                             <div class="form-group">
                                 <label class="control-label"
                                        for="Convenio">
@@ -38,25 +52,42 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
+                        <div>
+                            <label class="control-label">
+                                &nbsp;&nbsp; Vigencia del Convenio:
+                            </label>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group datepicker-group">
                                 <label class="control-label"
-                                       for="Fecha">
-                                    Fecha de suscripción:
-                                    <span class="text-danger">*</span>
+                                       for="fechaSuscripcion">
+                                    Fecha de suscripción
                                 </label>
-                                <input type="date"
-                                       name="Fecha"
-                                       id="Fecha"
-                                       class="form-control" />
+                                <input class="form-control calendarioGobMx"
+                                       id="fechaSuscripcion"
+                                       type="text">
+                                <span class="glyphicon glyphicon-calendar"
+                                      aria-hidden="true">
+                                </span>
                             </div>
                         </div>
-                        <div class="form-group">
-                            datepicker here
+                        <div class="col-md-5">
+                            <div class="form-group datepicker-group">
+                                <label class="control-label"
+                                       for="fechaConclusion">
+                                    Fecha de conclusión:
+                                </label>
+                                <input class="form-control calendarioGobMx"
+                                       id="fechaConclusion"
+                                       type="text">
+                                <span class="glyphicon glyphicon-calendar"
+                                      aria-hidden="true">
+                                </span>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-10">
                             <div class="form-group">
                                 <label class="control-label"
                                        for="ResumenConvenio">
@@ -82,8 +113,10 @@
                                         id="MateriaContenido"
                                         class="form-control"
                                         ng-model="data.materia">
-                                    <option value="materia-1">Materia 1</option>
-                                    <option value="materia-2">Materia 2</option>
+                                    <option value="materia-1">Internacional</option>
+                                    <option value="materia-2">Gubernamental</option>
+                                    <option value="materia-3">Sociedad civil</option>
+                                    <option value="materia-4">Académico</option>
                                 </select><br>
                             </div>
                         </div>
@@ -98,14 +131,15 @@
                                         id="Submaterias"
                                         class="form-control"
                                         ng-model="data.submateria">
-                                    <option value="submateria-1">SubMateria 1</option>
-                                    <option value="submateria-2">SubMateria 2</option>
+                                    <option value="submateria-1">Transparencia y combate a la corrupción</option>
+                                    <option value="submateria-2">Medidas contra la discriminación</option>
+                                    <option value="submateria-3">Contrataciones Púbicas</option>
                                 </select><br>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-10">
                             <div class="form-group">
                                 <label class="control-label"
                                        for="AreaVinculante">
@@ -116,22 +150,48 @@
                                         id="AreaVinculante"
                                         class="form-control"
                                         ng-model="data.areaVinculante">
-                                    <option value="areaVinculante-1">AreaVinculante 1</option>
-                                    <option value="areaVinculante-2">AreaVinculante 2</option>
+                                    <option value="areaVinculante-1">Área vinculante 1 </option>
+                                    <option value="areaVinculante-2">Área vinculante 2</option>
                                 </select><br>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div>
-                    TODO: Checar como agregar esta seccion
+                    Partes firmantes:
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                            <tr>
+                                <td>Entidad o dependencia</td>
+                                <td>Representante legal </td>
+                                <td>Cargo</td>
+                                <td>Teléfono </td>
+                                <td>Correo electrónico</td>
+                                <td>Domicilio</td>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
                 </div>
                 <div>
-                    TODO: Checar como agregar esta seccion
+                    Compromisos:
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                            <tr>
+                                <td># de compromiso</td>
+                                <td>Institución responsable </td>
+                                <td>Compromiso</td>
+                                <td>Fecha estimada </td>
+                                <td>Área vinculante</td>
+
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
                 </div>
                 <div class="panel-footer">
                     <div class="row">
-                        <div class="col-md-3"><span class="text-danger">CamposObligatorios</span></div>
+                        <div class="col-md-3"><span class="text-danger">Campos obligatorios</span></div>
                         <div class="col-md-offset-5 col-md-2">
                             <span tabindex="0"
                                   class="btn btn-primary pull-right"
@@ -152,22 +212,3 @@
         </div>
     </form>
 </div>
-<!--<div class="panel-heading">
-    Convenios de ..
-</div>the silent man
-<div class="panel-body">
-    <table>
-        <thead>
-        <tr>
-            <td>Id</td>
-            <td>Nombre</td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="conv in vm.convenios">
-            <td>{{conv.convenioId}}</td>
-            <td>{{conv.convenio}}</td>
-        </tr>
-        </tbody>
-    </table>
-</div>-->

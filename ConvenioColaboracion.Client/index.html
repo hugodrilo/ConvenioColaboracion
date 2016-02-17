@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
 
     <!--Library scripts-->
+    <script src="Scripts/jquery-2.2.0.min.js"></script>
     <script src="Scripts/angular.min.js"></script>
     <script src="Scripts/angular-ui-router.min.js"></script>
 
@@ -15,7 +16,16 @@
     <script src="common/services/common.services.js"></script>
 
     <!--Controllers-->
+    <script src="app/convenios/controllers/menuConvenioCtrl.js"></script>
     <script src="app/convenios/controllers/convenioCtrl.js"></script>
+    <script src="app/convenios/controllers/convenioDetailsCtrl.js"></script>
+    <script src="app/convenios/controllers/seguimientoCtrl.js"></script>
+    <script src="app/convenios/controllers/alertasCtrl.js"></script>
+    <script src="app/catalogos/controllers/menuCatalogoCtrl.js"></script>
+    <script src="app/catalogos/controllers/areaCtrl.js"></script>
+    <script src="app/catalogos/controllers/partesCtrl.js"></script>
+    <script src="app/consultas/controllers/consultaCtrl.js"></script>
+    <script src="app/estadisticas/controllers/estadisticaCtrl.js"></script>
 
     <!--GOB.MX-->
     <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
@@ -24,28 +34,18 @@
     <link href="css/app.css" rel="stylesheet" />
 </head>
 <body ng-app="convenioColaboracion">
-    <div class="page-header page-header-sm">
-        <ol class="breadcrumb"
-            font-size="10">
-            <li>
-                <a href="/">Convenio</a>
-            </li>
-            <li class="active">
-                Something
-            </li>
-        </ol>
-    </div>
-
-    {{ 3 + 2}}
-
-    <div class="container">
-        <!--<div ng-include="'/app/convenios/views/convenio.html'"></div>-->
-        <div ui-view></div>
-    </div>
-
+    <main class="page">
+        <div class="container body-content top-buffer">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div ui-view></div>
+                </div>
+            </div>
+        </div>
+    </main>
 
     <!--GOB.MX-->
     <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>
+    <script src="https://framework-gb.cdn.gob.mx/assets/scripts/jquery-ui-datepicker.js"></script>
 </body>
 </html>
-

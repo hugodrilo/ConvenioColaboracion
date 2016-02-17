@@ -1,19 +1,18 @@
-﻿/** convenioCtrl.js 
- * Created by victor
- **/
+﻿/**
+ * consultaCtrl.js 
+ * Created by victor */
 
 (function () {
     "use strict";
 
     angular
         .module("convenioColaboracion")
-        .controller("ConvenioCtrl",
-        ConvenioCtrl);
+        .controller("ConsultaCtrl",
+        ConsultaCtrl);
 
-    function ConvenioCtrl() {
+    function ConsultaCtrl() {
         var vm = this;
 
         $(".calendarioGobMx").datepicker();
     };
-
 })();

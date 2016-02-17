@@ -1,4 +1,4 @@
-﻿/** convenioCtrl.js 
+﻿/** areasCtrl.js 
  * Created by victor
  **/
 
@@ -7,13 +7,12 @@
 
     angular
         .module("convenioColaboracion")
-        .controller("ConvenioCtrl",
-        ConvenioCtrl);
+        .controller("AreasCtrl",
+        AreasCtrl);
 
-    function ConvenioCtrl() {
+    function AreasCtrl() {
         var vm = this;
 
         $(".calendarioGobMx").datepicker();
     };
-
 })();

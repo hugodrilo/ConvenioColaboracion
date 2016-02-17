@@ -1,4 +1,4 @@
-﻿/** convenioCtrl.js 
+﻿/** menuConvenioCtrl.js 
  * Created by victor
  **/
 
@@ -7,10 +7,10 @@
 
     angular
         .module("convenioColaboracion")
-        .controller("ConvenioCtrl",
-        ConvenioCtrl);
+        .controller("MenuConvenioCtrl",
+        MenuConvenioCtrl);
 
-    function ConvenioCtrl() {
+    function MenuConvenioCtrl() {
         var vm = this;
 
         $(".calendarioGobMx").datepicker();
