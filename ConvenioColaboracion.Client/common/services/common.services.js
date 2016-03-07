@@ -1,8 +1,12 @@
-﻿(function () {
+﻿/* common.services.js 
+ * Created by arquitectonet2
+ */
+
+(function () {
     "use strict";
 
     angular
-        .module("common.services", 
+        .module("common.services",
             ["ngResource"])
         .constant("appSettings",
         {

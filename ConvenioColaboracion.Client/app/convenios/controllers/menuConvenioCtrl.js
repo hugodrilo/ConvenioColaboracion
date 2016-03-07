@@ -1,6 +1,6 @@
-﻿/** menuConvenioCtrl.js 
- * Created by victor
- **/
+﻿/* menuConvenioCtrl.js 
+ * Created by arquitectonet2
+ */
 
 (function () {
     "use strict";

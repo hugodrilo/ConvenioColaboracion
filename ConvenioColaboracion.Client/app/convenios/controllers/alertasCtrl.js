@@ -1,6 +1,6 @@
-﻿/** alertasCtrl.js 
- * Created by victor
- **/
+﻿/* alertasCtrl.js 
+ * Created by arquitectonet2
+ */
 
 (function () {
     "use strict";

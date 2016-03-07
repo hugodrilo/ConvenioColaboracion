@@ -1,6 +1,6 @@
-﻿/** seguimientoCtrl.js 
+﻿/* seguimientoCtrl.js 
  * Created by victor
- **/
+ */
 
 (function () {
     "use strict";
