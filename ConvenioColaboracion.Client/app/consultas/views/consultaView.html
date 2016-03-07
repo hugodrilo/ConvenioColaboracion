@@ -14,4 +14,24 @@
         Consulta
     </h2>
     <hr class="red" />
+
+    <div class="panel-body">
+        <table class="table">
+
+            <thead>
+                <tr>
+                    <td>Nùmero convenio</td>
+                    <td>Convenio</td>
+                    <td>Resumen</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="convenio in vm.convenios">
+                    <td>{{ convenio.numeroConvenio }}</td>
+                    <td>{{ convenio.convenio }}</td>
+                    <td>{{ convenio.resumen }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

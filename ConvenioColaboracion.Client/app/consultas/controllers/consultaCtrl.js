@@ -10,8 +10,11 @@
         .controller("ConsultaCtrl",
         ConsultaCtrl);
 
-    function ConsultaCtrl() {
+    function ConsultaCtrl(convenioResource) {
         var vm = this;
+        vm.convenios = [];
+
+        vm.convenios = convenioResource.query();        
 
         $(".calendarioGobMx").datepicker();
     };

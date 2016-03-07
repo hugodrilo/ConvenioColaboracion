@@ -11,7 +11,7 @@
     </ol>
 </div>
 
-<div class="col-md-10 col-md-offset-1">
+<div class="col-md-10 col-md-offset-1" ng-controller="ConvenioCtrl as vm">
     <form id="formularioConvenio"
           role="form">
         <div>
@@ -32,7 +32,8 @@
                                        name="NumeroConvenio"
                                        id="NumeroConvenio"
                                        class="form-control"
-                                       placeholder="Número de convenio" />
+                                       placeholder="Número de convenio"
+                                       ng-model="vm.convenio.numeroConvenio" />
                             </div>
                         </div>
                     </div>
@@ -47,7 +48,8 @@
                                 <textarea name="Convenio"
                                           id="Convenio"
                                           class="form-control"
-                                          placeholder="Convenio"></textarea>
+                                          placeholder="Convenio"
+                                          ng-model="vm.convenio.convenio"></textarea>
                             </div>
                         </div>
                     </div>
@@ -65,7 +67,8 @@
                                 </label>
                                 <input class="form-control calendarioGobMx"
                                        id="fechaSuscripcion"
-                                       type="text">
+                                       type="text"
+                                       ng-model="vm.convenio.fechaSuscripcion">
                                 <span class="glyphicon glyphicon-calendar"
                                       aria-hidden="true">
                                 </span>
@@ -79,7 +82,8 @@
                                 </label>
                                 <input class="form-control calendarioGobMx"
                                        id="fechaConclusion"
-                                       type="text">
+                                       type="text"
+                                       ng-model="vm.convenio.fechaTermino">
                                 <span class="glyphicon glyphicon-calendar"
                                       aria-hidden="true">
                                 </span>
@@ -97,7 +101,8 @@
                                 <textarea name="ResumenConvenio"
                                           id="ResumenConvenio"
                                           class="form-control"
-                                          placeholder="Resumen del convenio"></textarea>
+                                          placeholder="Resumen del convenio"
+                                          ng-model="vm.convenio.resumen"></textarea>
                             </div>
                         </div>
                     </div>
@@ -112,7 +117,7 @@
                                 <select name="MateriaContenido"
                                         id="MateriaContenido"
                                         class="form-control"
-                                        ng-model="data.materia">
+                                        ng-model="vm.convenio.materiaId">
                                     <option value="materia-1">Internacional</option>
                                     <option value="materia-2">Gubernamental</option>
                                     <option value="materia-3">Sociedad civil</option>
@@ -130,7 +135,7 @@
                                 <select name="Submaterias"
                                         id="Submaterias"
                                         class="form-control"
-                                        ng-model="data.submateria">
+                                        ng-model="vm.convenio.submateriaId">
                                     <option value="submateria-1">Transparencia y combate a la corrupción</option>
                                     <option value="submateria-2">Medidas contra la discriminación</option>
                                     <option value="submateria-3">Contrataciones Púbicas</option>
@@ -149,7 +154,7 @@
                                 <select name="AreaVinculante"
                                         id="AreaVinculante"
                                         class="form-control"
-                                        ng-model="data.areaVinculante">
+                                        ng-model="vm.convenio.areaVinculanteId">
                                     <option value="areaVinculante-1">Área vinculante 1 </option>
                                     <option value="areaVinculante-2">Área vinculante 2</option>
                                 </select><br>
@@ -183,7 +188,6 @@
                                 <td>Compromiso</td>
                                 <td>Fecha estimada </td>
                                 <td>Área vinculante</td>
-
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -196,7 +200,8 @@
                             <span tabindex="0"
                                   class="btn btn-primary pull-right"
                                   data-toggle="tooltip"
-                                  data-placement="top">
+                                  data-placement="top"
+                                  ng-click="vm.submit()">
                                 Guardar
                             </span>
                         </div>
