@@ -1,4 +1,8 @@
-﻿(function () {
+﻿/* convenioResource.js
+ * Created by arquitectonet3
+ */
+
+(function () {
     "use strict";
 
     angular
@@ -6,7 +10,7 @@
         .factory("convenioResource",
             ["$resource", "appSettings", convenioResource]);
 
-    function convenioResource($resource, appSettings) {        
+    function convenioResource($resource, appSettings) {
         return $resource(appSettings.serverPath + "/api/convenio/");
     }
 }());

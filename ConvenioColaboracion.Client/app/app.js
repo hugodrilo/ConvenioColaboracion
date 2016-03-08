@@ -12,7 +12,8 @@
     "use strict";
 
     var app = angular.module("convenioColaboracion", ["common.services",
-                                                        "ui.router"]);
+                                                        "ui.router",
+                                                        "ui.bootstrap"]);
     app.config(["$stateProvider",
                 "$urlRouterProvider",
 
@@ -92,22 +93,23 @@
                     ;
                 }]);
 
-    //app.directive('datepicker', function () {
-    //    return {
-    //        restrict: 'A',
-    //        require: 'ngModel',
-    //        link: function (scope, element, attrs, ngModelCtrl) {
-    //            $(function () {
-    //                element.datepicker({
-    //                    dateFormat: 'dd/mm/yy',
-    //                    onSelect: function (date) {
-    //                        scope.$apply(function () {
-    //                            ngModelCtrl.$setViewValue(date);
-    //                        });
-    //                    }
-    //                });
-    //            });
-    //        }
-    //    }
-    //});
+    // Directiva para input file.
+    app.directive("fileread", [function () {
+        return {
+            scope: {
+                fileread: "="
+            },
+            link: function (scope, element, attributes) {
+                element.bind("change", function (changeEvent) {
+                    var reader = new FileReader();
+                    reader.onload = function (loadEvent) {
+                        scope.$apply(function () {
+                            scope.fileread = loadEvent.target.result;
+                        });
+                    }
+                    reader.readAsDataURL(changeEvent.target.files[0]);
+                });
+            }
+        }
+    }]);
 })();

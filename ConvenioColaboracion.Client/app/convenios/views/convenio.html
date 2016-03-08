@@ -176,7 +176,18 @@
                             </tr>
                         </thead>
                         <tbody></tbody>
+                        <tfoot>
+
+                        </tfoot>
                     </table>
+                    <div class="col-md-offset-1">
+                        <button id="AddParte"
+                                name="AddParte"
+                                class="btn btn-success pull-right"
+                                ng-click="vm.toggleModalParte()">
+                            Agregar
+                        </button>
+                    </div>
                 </div>
                 <div>
                     Compromisos:
@@ -191,7 +202,34 @@
                             </tr>
                         </thead>
                         <tbody></tbody>
+                        <tfoot>
+                        </tfoot>
                     </table>
+                    <div class="col-md-offset-1">
+                        <button id="AddCompromiso"
+                                name="AddCompromiso"
+                                class="btn btn-success pull-right"
+                                ng-click="vm.toggleModalCompromiso()">
+                            Agregar
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label"
+                                   for="RutaDocumento">
+                                Documento
+                                <span class="text-danger">*</span>
+                            </label>
+
+                            <input name="RutaDocumento"
+                                   id="RutaDocumento"
+                                   placeholder="Ruta del documento"
+                                   type="file"
+                                   fileread="vm.convenio.rutaDocumento" />
+                        </div>
+                    </div>
                 </div>
                 <div class="panel-footer">
                     <div class="row">
