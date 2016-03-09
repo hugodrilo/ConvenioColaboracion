@@ -10,7 +10,6 @@
         <li class="active">Nuevo convenio</li>
     </ol>
 </div>
-
 <div class="col-md-10 col-md-offset-1" ng-controller="ConvenioCtrl as vm">
     <form id="formularioConvenio"
           role="form">
@@ -161,73 +160,73 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div>
-                    Partes firmantes:
-                    <table class="table table-bordered table-responsive">
-                        <thead>
-                            <tr>
-                                <td>Entidad o dependencia</td>
-                                <td>Representante legal </td>
-                                <td>Cargo</td>
-                                <td>Teléfono </td>
-                                <td>Correo electrónico</td>
-                                <td>Domicilio</td>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                        <tfoot>
+                    <div class="row">
+                        Partes firmantes:
+                        <table class="table table-bordered table-responsive">
+                            <thead>
+                                <tr>
+                                    <td>Entidad o dependencia</td>
+                                    <td>Representante legal </td>
+                                    <td>Cargo</td>
+                                    <td>Teléfono </td>
+                                    <td>Correo electrónico</td>
+                                    <td>Domicilio</td>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                            <tfoot>
 
-                        </tfoot>
-                    </table>
-                    <div class="col-md-offset-1">
-                        <button id="AddParte"
-                                name="AddParte"
-                                class="btn btn-success pull-right"
-                                ng-click="vm.toggleModalParte()">
-                            Agregar
-                        </button>
+                            </tfoot>
+                        </table>
+                        <div class="col-md-offset-1">
+                            <button id="AddParte"
+                                    name="AddParte"
+                                    class="btn btn-success pull-right"
+                                    ng-click="vm.toggleModalParte()">
+                                Agregar
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    Compromisos:
-                    <table class="table table-bordered table-responsive">
-                        <thead>
-                            <tr>
-                                <td># de compromiso</td>
-                                <td>Institución responsable </td>
-                                <td>Compromiso</td>
-                                <td>Fecha estimada </td>
-                                <td>Área vinculante</td>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                        <tfoot>
-                        </tfoot>
-                    </table>
-                    <div class="col-md-offset-1">
-                        <button id="AddCompromiso"
-                                name="AddCompromiso"
-                                class="btn btn-success pull-right"
-                                ng-click="vm.toggleModalCompromiso()">
-                            Agregar
-                        </button>
+                    <div class="row">
+                        Compromisos:
+                        <table class="table table-bordered table-responsive">
+                            <thead>
+                                <tr>
+                                    <td># de compromiso</td>
+                                    <td>Institución responsable </td>
+                                    <td>Compromiso</td>
+                                    <td>Fecha estimada </td>
+                                    <td>Área vinculante</td>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                            <tfoot>
+                            </tfoot>
+                        </table>
+                        <div class="col-md-offset-1">
+                            <button id="AddCompromiso"
+                                    name="AddCompromiso"
+                                    class="btn btn-success pull-right"
+                                    ng-click="vm.toggleModalCompromiso()">
+                                Agregar
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label class="control-label"
-                                   for="RutaDocumento">
-                                Documento
-                                <span class="text-danger">*</span>
-                            </label>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label"
+                                       for="RutaDocumento">
+                                    Documento
+                                    <span class="text-danger">*</span>
+                                </label>
 
-                            <input name="RutaDocumento"
-                                   id="RutaDocumento"
-                                   placeholder="Ruta del documento"
-                                   type="file"
-                                   fileread="vm.convenio.rutaDocumento" />
+                                <input name="RutaDocumento"
+                                       id="RutaDocumento"
+                                       placeholder="Ruta del documento"
+                                       type="file"
+                                       fileread="vm.convenio.rutaDocumento" />
+                            </div>
                         </div>
                     </div>
                 </div>
