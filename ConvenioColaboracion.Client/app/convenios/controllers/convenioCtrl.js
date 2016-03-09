@@ -66,6 +66,9 @@
        .module("convenioColaboracion")
        .controller("ModalInstanceCtrl", function ($scope, $uibModalInstance) {
 
+           //Agregado calendario con estilo de gobmx
+           $(".calendarioGobMx").datepicker();
+
            console.log("Depende");
 
            $scope.ok = function () {

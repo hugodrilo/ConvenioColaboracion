@@ -1,8 +1,109 @@
 ﻿<div class="modal-header">
     <h3 class="modal-title">Agregar partes</h3>
 </div>
-<div class="modal-body">
-    TEXTO CUERPO
+<div class="modal-body" ng-controller="ConvenioCtrl as vm">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                <label class="control-label"
+                       for="EntidadDependencia">
+                    Entidad o dependencia
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="text"
+                       name="EntidadDependencia"
+                       id="EntidadDependencia"
+                       class="form-control"
+                       placeholder="Entidad o dependencia"
+                       ng-model="vm.convenio.parte.entidadDependencia" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                <label class="control-label"
+                       for="RepresentanteLegal">
+                    Representante legal
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="text"
+                       name="RepresentanteLegal"
+                       id="RepresentanteLegal"
+                       class="form-control"
+                       placeholder="Representante legal"
+                       ng-model="vm.convenio.parte.representanteLegal" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                <label class="control-label"
+                       for="Cargo">
+                    Cargo
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="text"
+                       name="Cargo"
+                       id="Cargo"
+                       class="form-control"
+                       placeholder="Cargo"
+                       ng-model="vm.convenio.parte.cargo" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                <label class="control-label"
+                       for="Telefono">
+                    Teléfono
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="text"
+                       name="Telefono"
+                       id="Telefono"
+                       class="form-control"
+                       placeholder="Teléfono"
+                       ng-model="vm.convenio.parte.telefono" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                <label class="control-label"
+                       for="EMail">
+                    Correo electrónico
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="text"
+                       name="EMail"
+                       id="EMail"
+                       class="form-control"
+                       placeholder="Correo electrónico"
+                       ng-model="vm.convenio.parte.telefono" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                <label class="control-label"
+                       for="Domicilio">
+                    Domicilio
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="text"
+                       name="Domicilio"
+                       id="Domicilio"
+                       class="form-control"
+                       placeholder="Domicilio"
+                       ng-model="vm.convenio.parte.telefono" />
+            </div>
+        </div>
+    </div>
 </div>
 <div class="modal-footer">
     <button class="btn btn-primary" type="button" ng-click="ok()">Agregar</button>
