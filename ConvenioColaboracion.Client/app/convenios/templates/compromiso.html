@@ -6,14 +6,14 @@
         <div class="col-md-5">
             <div class="form-group">
                 <label class="control-label"
-                       for="Institucion">
+                       for="institucion">
                     Institución
                     <span class="text-danger">*</span>
                 </label>
-                <select name="Institucion"
-                        id="Institucion"
+                <select name="institucion"
+                        id="institucion"
                         class="form-control"
-                        ng-model="vm.convenio.compromiso.institucion">
+                        ng-model="entidad.institucion">
                     <option value="materia-1">SFP</option>
                     <option value="materia-2">FAO</option>
                     <option value="materia-3">OEA</option>
@@ -25,15 +25,15 @@
         <div class="col-md-10">
             <div class="form-group">
                 <label class="control-label"
-                       for="Compromiso">
+                       for="compromiso">
                     Convenio
                     <span class="text-danger">*</span>
                 </label>
-                <textarea name="Compromiso"
-                          id="Compromiso"
+                <textarea name="compromiso"
+                          id="compromiso"
                           class="form-control"
-                          placeholder="Convenio"
-                          ng-model="vm.convenio.compromiso.compromiso"></textarea>
+                          placeholder="Compromiso"
+                          ng-model="entidad.compromiso"></textarea>
             </div>
         </div>
     </div>
@@ -41,13 +41,13 @@
         <div class="col-md-5">
             <div class="form-group datepicker-group">
                 <label class="control-label"
-                       for="FechaEstimada">
+                       for="fechaEstimada">
                     Fecha estimada
                 </label>
                 <input class="form-control calendarioGobMx"
-                       id="FechaEstimada"
+                       id="fechaEstimada"
                        type="text"
-                       ng-model="vm.convenio.compromiso.FechaEstimada">
+                       ng-model="entidad.fechaEstimada">
                 <span class="glyphicon glyphicon-calendar"
                       aria-hidden="true">
                 </span>
@@ -58,14 +58,14 @@
         <div class="col-md-10">
             <div class="form-group">
                 <label class="control-label"
-                       for="AreaVinculante">
+                       for="areaVinculante">
                     Area vinculante
                     <span class="text-danger">*</span>
                 </label>
-                <select name="AreaVinculante"
-                        id="AreaVinculante"
+                <select name="areaVinculante"
+                        id="areaVinculante"
                         class="form-control"
-                        ng-model="vm.convenio.areaVinculanteId">
+                        ng-model="entidad.areaVinculanteId">
                     <option value="areaVinculante-1">Área vinculante 1 </option>
                     <option value="areaVinculante-2">Área vinculante 2</option>
                 </select><br>

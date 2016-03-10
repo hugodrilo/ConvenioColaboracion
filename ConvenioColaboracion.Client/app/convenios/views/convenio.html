@@ -173,7 +173,16 @@
                                     <td>Domicilio</td>
                                 </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody>
+                                <tr ng-repeat="parte in vm.convenio.partes">
+                                    <td> {{parte.entidadDependencia}}</td>
+                                    <td>{{parte.representanteLegal}}</td>
+                                    <td>{{parte.cargo}}</td>
+                                    <td>{{parte.telefono}}</td>
+                                    <td>{{parte.eMail}}</td>
+                                    <td>{{parte.domicilio}}</td>
+                                </tr>
+                            </tbody>
                             <tfoot>
 
                             </tfoot>
@@ -192,14 +201,21 @@
                         <table class="table table-bordered table-responsive">
                             <thead>
                                 <tr>
-                                    <td># de compromiso</td>
                                     <td>Institución responsable </td>
                                     <td>Compromiso</td>
                                     <td>Fecha estimada </td>
                                     <td>Área vinculante</td>
                                 </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody>
+                                <tr ng-repeat="compromiso in vm.convenio.compromisos">
+                                    <td> {{compromiso.institucion}}</td>
+                                    <td>{{compromiso.compromiso}}</td>
+                                    <td>{{compromiso.fechaEstimada}}</td>
+                                    <td>{{compromiso.areaVinculanteId}}</td>
+                                </tr>
+
+                            </tbody>
                             <tfoot>
                             </tfoot>
                         </table>
