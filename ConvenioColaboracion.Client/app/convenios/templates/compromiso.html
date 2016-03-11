@@ -1,7 +1,7 @@
 ﻿<div class="modal-header">
     <h3 class="modal-title">Agregar compromiso</h3>
 </div>
-<div class="modal-body" ng-controller="ConvenioCtrl as vm">
+<div class="modal-body">
     <div class="row">
         <div class="col-md-5">
             <div class="form-group">
@@ -13,10 +13,10 @@
                 <select name="institucion"
                         id="institucion"
                         class="form-control"
-                        ng-model="entidad.institucion">
-                    <option value="materia-1">SFP</option>
-                    <option value="materia-2">FAO</option>
-                    <option value="materia-3">OEA</option>
+                        ng-model="entidad.institucionId">
+                    <option value="institucion-1">SFP</option>
+                    <option value="institucion-2">FAO</option>
+                    <option value="institucion-3">OEA</option>
                 </select><br>
             </div>
         </div>
@@ -47,7 +47,7 @@
                 <input class="form-control calendarioGobMx"
                        id="fechaEstimada"
                        type="text"
-                       ng-model="entidad.fechaEstimada">
+                       ng-model="entidad.fechaCompromiso">
                 <span class="glyphicon glyphicon-calendar"
                       aria-hidden="true">
                 </span>

@@ -8,7 +8,7 @@
     // Definicion de modulo y controlador
     angular
         .module("convenioColaboracion")
-        .controller("ConvenioCtrl", ["$scope", "$uibModal", ConvenioCtrl]);
+        .controller("ConvenioCtrl", ["$scope", "$uibModal", "convenioResource", ConvenioCtrl]);
 
     // Controlador de convenio
     function ConvenioCtrl($scope, $uibModal, convenioResource) {
@@ -22,12 +22,11 @@
         $(".calendarioGobMx").datepicker();
 
         vm.submit = function () {
-            console.log("Submit working...");
+            ////console.log("Submit working...");
 
             new convenioResource(vm.convenio).$save().then(
                 function (nuevoConvenio) {
-                    console.log("Save is working..");
-                    console.log(nuevoConvenio);
+                    ////console.log("Save is working..");
                 });
         }
 
@@ -50,10 +49,9 @@
             });
 
             modalInstance.result.then(function (data) {
-                console.log(data);
                 vm.convenio.partes.push(data);
             }, function () {
-                console.log("Modal dismissed at: " + new Date());
+                ////console.log("Modal dismissed at: " + new Date());
             });
         };
 
@@ -74,12 +72,9 @@
             });
 
             modalInstance.result.then(function (data) {
-                console.log(data);
                 vm.convenio.compromisos.push(data);
             }, function () {
-                console.log("Modal dismissed at: " + new Date());
-                console.log();
-
+                ////console.log("Modal dismissed at: " + new Date());
             });
         };
     };

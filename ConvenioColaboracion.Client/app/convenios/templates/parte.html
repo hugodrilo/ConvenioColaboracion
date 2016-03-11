@@ -1,7 +1,7 @@
 ﻿<div class="modal-header">
     <h3 class="modal-title">Agregar partes</h3>
 </div>
-<div class="modal-body" ng-controller="ConvenioCtrl as vm">
+<div class="modal-body">
     <div class="row">
         <div class="col-md-10">
             <div class="form-group">
@@ -15,7 +15,7 @@
                        id="EntidadDependencia"
                        class="form-control"
                        placeholder="Entidad o dependencia"
-                       ng-model="entidad.entidadDependencia" />
+                       ng-model="entidad.entidadId" />
             </div>
         </div>
     </div>
@@ -32,7 +32,7 @@
                        id="RepresentanteLegal"
                        class="form-control"
                        placeholder="Representante legal"
-                       ng-model="entidad.representanteLegal" />
+                       ng-model="entidad.representante" />
             </div>
         </div>
     </div>
@@ -83,7 +83,7 @@
                        id="EMail"
                        class="form-control"
                        placeholder="Correo electrónico"
-                       ng-model="entidad.eMail" />
+                       ng-model="entidad.correoElectronico" />
             </div>
         </div>
     </div>

@@ -10,7 +10,7 @@
         <li class="active">Nuevo convenio</li>
     </ol>
 </div>
-<div class="col-md-10 col-md-offset-1" ng-controller="ConvenioCtrl as vm">
+<div class="col-md-10 col-md-offset-1">
     <form id="formularioConvenio"
           role="form">
         <div>
@@ -175,8 +175,8 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="parte in vm.convenio.partes">
-                                    <td> {{parte.entidadDependencia}}</td>
-                                    <td>{{parte.representanteLegal}}</td>
+                                    <td> {{parte.entidad}}</td>
+                                    <td>{{parte.representante}}</td>
                                     <td>{{parte.cargo}}</td>
                                     <td>{{parte.telefono}}</td>
                                     <td>{{parte.eMail}}</td>
