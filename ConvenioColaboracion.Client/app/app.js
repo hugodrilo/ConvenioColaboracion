@@ -40,6 +40,19 @@
                             templateUrl: "app/convenios/views/convenio.html",
                             controller: "ConvenioCtrl as vm"
                         })
+                        //// TODO: Checar como agregar correctamente el calendario desde aca 
+                        ////// Parte convenio view
+                        ////.state("parteConvenio", {
+                        ////    url: "/convenios/parteConvenio",
+                        ////    templateUrl: "app/convenios/templates/parte.html",
+                        ////    controller: "ConvenioCtrl as vm"
+                        ////})
+                        ////// Compromiso convenio view
+                        ////.state("compromisoConvenio", {
+                        ////    url: "/convenios/compromisoConvenio",
+                        ////    templateUrl: "app/convenios/templates/compromiso.html",
+                        ////    controller: "ConvenioCtrl as vm"
+                        ////})
                         // Seguimiento view
                         .state("seguimiento", {
                             url: "/seguimiento",

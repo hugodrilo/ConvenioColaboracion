@@ -23,13 +23,13 @@
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label class="control-label"
-                                       for="NumeroConvenio">
+                                       for="numeroConvenio">
                                     Número de convenio
                                     <span class="text-danger">*</span>
                                 </label>
                                 <input type="text"
-                                       name="NumeroConvenio"
-                                       id="NumeroConvenio"
+                                       name="numeroConvenio"
+                                       id="numeroConvenio"
                                        class="form-control"
                                        placeholder="Número de convenio"
                                        ng-model="vm.convenio.numeroConvenio" />
@@ -40,12 +40,12 @@
                         <div class="col-md-10">
                             <div class="form-group">
                                 <label class="control-label"
-                                       for="Convenio">
+                                       for="convenio">
                                     Convenio
                                     <span class="text-danger">*</span>
                                 </label>
-                                <textarea name="Convenio"
-                                          id="Convenio"
+                                <textarea name="convenio"
+                                          id="convenio"
                                           class="form-control"
                                           placeholder="Convenio"
                                           ng-model="vm.convenio.convenio"></textarea>
@@ -65,6 +65,7 @@
                                     Fecha de suscripción
                                 </label>
                                 <input class="form-control calendarioGobMx"
+                                       name="fechaSuscripcion"
                                        id="fechaSuscripcion"
                                        type="text"
                                        ng-model="vm.convenio.fechaSuscripcion">
@@ -80,6 +81,7 @@
                                     Fecha de conclusión:
                                 </label>
                                 <input class="form-control calendarioGobMx"
+                                       name="fechaConclusion"
                                        id="fechaConclusion"
                                        type="text"
                                        ng-model="vm.convenio.fechaTermino">
@@ -93,12 +95,12 @@
                         <div class="col-md-10">
                             <div class="form-group">
                                 <label class="control-label"
-                                       for="ResumenConvenio">
+                                       for="resumenConvenio">
                                     Resumen (Objetivo del convenio):
                                     <span class="text-danger">*</span>
                                 </label>
-                                <textarea name="ResumenConvenio"
-                                          id="ResumenConvenio"
+                                <textarea name="resumenConvenio"
+                                          id="resumenConvenio"
                                           class="form-control"
                                           placeholder="Resumen del convenio"
                                           ng-model="vm.convenio.resumen"></textarea>
@@ -109,30 +111,38 @@
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label class="control-label"
-                                       for="MateriaContenido">
+                                       for="materia">
                                     Materia del convenio
                                     <span class="text-danger">*</span>
                                 </label>
-                                <select name="MateriaContenido"
-                                        id="MateriaContenido"
+                                <select name="materia"
+                                        id="materia"
                                         class="form-control"
-                                        ng-model="vm.convenio.materiaId">
-                                    <option value="materia-1">Internacional</option>
-                                    <option value="materia-2">Gubernamental</option>
-                                    <option value="materia-3">Sociedad civil</option>
-                                    <option value="materia-4">Académico</option>
-                                </select><br>
+                                        ng-model="vm.convenio.materia">
+                                    <option ng-repeat="materia in vm.convenio.materias" value="{{materia.materiaId}}">{{materia.materia}}</option>
+                                    <!--<option value="materia-1">Internacional</option>-->
+                                    <!-- <option value="materia-2">Gubernamental</option>-->
+                                    <!-- <option value="materia-3">Sociedad civil</option>-->
+                                    <!-- <option value="materia-4">Académico</option>-->
+                                </select>
+                                <br>
+                                <!--
+                                        <label for="repeatSelect"> Repeat select: </label>
+                                        <select name="repeatSelect" id="repeatSelect" ng-model="data.repeatSelect">
+                                          <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
+                                        </select>
+                                -->
                             </div>
                         </div>
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label class="control-label"
-                                       for="Submaterias">
+                                       for="submateria">
                                     Submaterias
                                     <span class="text-danger">*</span>
                                 </label>
-                                <select name="Submaterias"
-                                        id="Submaterias"
+                                <select name="submateria"
+                                        id="submateria"
                                         class="form-control"
                                         ng-model="vm.convenio.submateriaId">
                                     <option value="submateria-1">Transparencia y combate a la corrupción</option>
@@ -146,12 +156,12 @@
                         <div class="col-md-10">
                             <div class="form-group">
                                 <label class="control-label"
-                                       for="AreaVinculante">
+                                       for="areaVinculante">
                                     Area vinculante
                                     <span class="text-danger">*</span>
                                 </label>
-                                <select name="AreaVinculante"
-                                        id="AreaVinculante"
+                                <select name="areaVinculante"
+                                        id="areaVinculante"
                                         class="form-control"
                                         ng-model="vm.convenio.areaVinculanteId">
                                     <option value="areaVinculante-1">Área vinculante 1 </option>
@@ -188,8 +198,8 @@
                             </tfoot>
                         </table>
                         <div class="col-md-offset-1">
-                            <button id="AddParte"
-                                    name="AddParte"
+                            <button id="addParte"
+                                    name="addParte"
                                     class="btn btn-success pull-right"
                                     ng-click="vm.toggleModalParte()">
                                 Agregar
@@ -220,8 +230,8 @@
                             </tfoot>
                         </table>
                         <div class="col-md-offset-1">
-                            <button id="AddCompromiso"
-                                    name="AddCompromiso"
+                            <button id="addCompromiso"
+                                    name="addCompromiso"
                                     class="btn btn-success pull-right"
                                     ng-click="vm.toggleModalCompromiso()">
                                 Agregar
@@ -232,13 +242,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label"
-                                       for="RutaDocumento">
+                                       for="rutaDocumento">
                                     Documento
                                     <span class="text-danger">*</span>
                                 </label>
 
-                                <input name="RutaDocumento"
-                                       id="RutaDocumento"
+                                <input name="rutaDocumento"
+                                       id="rutaDocumento"
                                        placeholder="Ruta del documento"
                                        type="file"
                                        fileread="vm.convenio.rutaDocumento" />

@@ -1,7 +1,8 @@
 ﻿<div class="modal-header">
     <h3 class="modal-title">Agregar compromiso</h3>
 </div>
-<div class="modal-body">
+<!-- TODO: Checar como agregar correctamente el calendario desde aca -->
+<div class="modal-body" ng-controller="ConvenioCtrl as vm">
     <div class="row">
         <div class="col-md-5">
             <div class="form-group">
@@ -45,6 +46,7 @@
                     Fecha estimada
                 </label>
                 <input class="form-control calendarioGobMx"
+                       name="fechaEstimada"
                        id="fechaEstimada"
                        type="text"
                        ng-model="entidad.fechaCompromiso">
