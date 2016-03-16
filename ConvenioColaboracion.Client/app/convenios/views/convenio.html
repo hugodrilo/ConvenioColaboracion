@@ -63,6 +63,7 @@
                                 <label class="control-label"
                                        for="fechaSuscripcion">
                                     Fecha de suscripción
+                                    <span class="text-danger">*</span>
                                 </label>
                                 <input class="form-control calendarioGobMx"
                                        name="fechaSuscripcion"
@@ -97,7 +98,6 @@
                                 <label class="control-label"
                                        for="resumenConvenio">
                                     Resumen (Objetivo del convenio):
-                                    <span class="text-danger">*</span>
                                 </label>
                                 <textarea name="resumenConvenio"
                                           id="resumenConvenio"
@@ -246,12 +246,12 @@
                                     Documento
                                     <span class="text-danger">*</span>
                                 </label>
-
                                 <input name="rutaDocumento"
                                        id="rutaDocumento"
                                        placeholder="Ruta del documento"
                                        type="file"
-                                       fileread="vm.convenio.rutaDocumento" />
+                                       fileread="vm.convenio.documento"
+                                       filename="vm.convenio.nombreDocumento" />
                             </div>
                         </div>
                     </div>

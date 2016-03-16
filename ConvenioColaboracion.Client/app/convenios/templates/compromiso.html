@@ -4,7 +4,7 @@
 <!-- TODO: Checar como agregar correctamente el calendario desde aca -->
 <div class="modal-body" ng-controller="ConvenioCtrl as vm">
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-10">
             <div class="form-group">
                 <label class="control-label"
                        for="institucion">
@@ -39,11 +39,11 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-8">
             <div class="form-group datepicker-group">
                 <label class="control-label"
                        for="fechaEstimada">
-                    Fecha estimada
+                    Fecha estimada de cumplimiento
                 </label>
                 <input class="form-control calendarioGobMx"
                        name="fechaEstimada"
@@ -61,7 +61,7 @@
             <div class="form-group">
                 <label class="control-label"
                        for="areaVinculante">
-                    Area vinculante
+                    Area responsable <!--TODO: Multiple selection on this control-->
                     <span class="text-danger">*</span>
                 </label>
                 <select name="areaVinculante"
@@ -71,6 +71,22 @@
                     <option value="areaVinculante-1">Área vinculante 1 </option>
                     <option value="areaVinculante-2">Área vinculante 2</option>
                 </select><br>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                <label class="control-label"
+                       for="ponderacion">
+                    Ponderación
+                </label>
+                <input type="text"
+                       name="ponderacion"
+                       id="ponderacion"
+                       class="form-control"
+                       placeholder="Ponderación"
+                       ng-model="entidad.ponderacion" />
             </div>
         </div>
     </div>

@@ -106,11 +106,12 @@
                     ;
                 }]);
 
-    // Directiva para input file.
+    // Input file directive to upload a single file using FileReader.
     app.directive("fileread", [function () {
         return {
             scope: {
-                fileread: "="
+                fileread: "=",
+                filename: "="
             },
             link: function (scope, element, attributes) {
                 element.bind("change", function (changeEvent) {
@@ -118,8 +119,10 @@
                     reader.onload = function (loadEvent) {
                         scope.$apply(function () {
                             scope.fileread = loadEvent.target.result;
+                            scope.filename = changeEvent.target.files[0].name;
                         });
                     }
+                    scope.filename = changeEvent.target.files[0].name;
                     reader.readAsDataURL(changeEvent.target.files[0]);
                 });
             }

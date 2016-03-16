@@ -10,12 +10,14 @@
                     Entidad o dependencia
                     <span class="text-danger">*</span>
                 </label>
-                <input type="text"
-                       name="entidadDependencia"
-                       id="entidadDependencia"
-                       class="form-control"
-                       placeholder="Entidad o dependencia"
-                       ng-model="entidad.entidadId" />
+                <select name="entidadDependencia"
+                        id="entidadDependencia"
+                        class="form-control"
+                        ng-model="entidad.institucionId">
+                    <option value="institucion-1">SFP</option>
+                    <option value="institucion-2">FAO</option>
+                    <option value="institucion-3">OEA</option>
+                </select><br>
             </div>
         </div>
     </div>
@@ -59,7 +61,6 @@
                 <label class="control-label"
                        for="telefono">
                     Teléfono
-                    <span class="text-danger">*</span>
                 </label>
                 <input type="text"
                        name="telefono"
@@ -76,7 +77,6 @@
                 <label class="control-label"
                        for="correoElectronico">
                     Correo electrónico
-                    <span class="text-danger">*</span>
                 </label>
                 <input type="text"
                        name="correoElectronico"
@@ -93,7 +93,6 @@
                 <label class="control-label"
                        for="domicilio">
                     Domicilio
-                    <span class="text-danger">*</span>
                 </label>
                 <input type="text"
                        name="domicilio"
