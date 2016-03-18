@@ -1,7 +1,7 @@
 ﻿<div class="modal-header">
     <h3 class="modal-title">Agregar partes</h3>
 </div>
-<div class="modal-body">
+<div class="modal-body" ng-controller="ConvenioCtrl as vm">
     <div class="row">
         <div class="col-md-10">
             <div class="form-group">
@@ -13,11 +13,9 @@
                 <select name="entidadDependencia"
                         id="entidadDependencia"
                         class="form-control"
-                        ng-model="entidad.institucionId">
-                    <option value="institucion-1">SFP</option>
-                    <option value="institucion-2">FAO</option>
-                    <option value="institucion-3">OEA</option>
-                </select><br>
+                        ng-model="entidad.parte">
+                    <option ng-repeat="parte in vm.partes" value="{{parte.parte}}">{{parte.parte}}</option>
+                </select>
             </div>
         </div>
     </div>
@@ -105,6 +103,6 @@
     </div>
 </div>
 <div class="modal-footer">
-    <button class="btn btn-primary" type="button" ng-click="ok()">Agregar</button>
     <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
+    <button class="btn btn-primary" type="button" ng-click="ok()">Agregar</button>
 </div>

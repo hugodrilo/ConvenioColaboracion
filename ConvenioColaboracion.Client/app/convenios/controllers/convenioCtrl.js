@@ -5,34 +5,54 @@
 (function () {
     "use strict";
 
-    // Definicion de modulo y controlador
+    // Module and convenio controller definition.
     angular
         .module("convenioColaboracion")
-        .controller("ConvenioCtrl", ["$scope", "$uibModal", "convenioResource", ConvenioCtrl]);
+        .controller("ConvenioCtrl",
+                    ["$scope", "$uibModal",
+                     "convenioResource", "materiaResource", "areaResource", "parteResource",
+                     ConvenioCtrl]);
 
-    // Controlador de convenio
-    function ConvenioCtrl($scope, $uibModal, convenioResource) {
+    // Convenio controller function.
+    function ConvenioCtrl($scope,
+                          $uibModal,
+                          convenioResource,
+                          materiaResource,
+                          areaResource,
+                          parteResource) {
         var vm = this;
+
+        console.log("Convenio controller ");
+
+        // Carga de datos del formulario
+        vm.materias = [];
+        vm.materias = materiaResource.query();
+
+        vm.areas = [];
+        vm.areas = areaResource.query();
+
+        vm.partes = [];
+        vm.partes = parteResource.query();
+
+        // Inicializacion de datos de convenio
         vm.convenio = {};
         vm.convenio.partes = [];
         vm.convenio.compromisos = [];
         vm.message = "";
 
-        //Agregado calendario con estilo de gobmx
+        // The GobMx calendar style.
         $(".calendarioGobMx").datepicker();
 
         vm.submit = function () {
-            ////console.log("Submit working...");
-
             new convenioResource(vm.convenio).$save().then(
                 function (nuevoConvenio) {
-                    ////console.log("Save is working..");
                 });
         }
 
+        // Inicializacion de la ventana modal
         $scope.animationsEnabled = true;
 
-        // Ventana modal para agregar partes
+        // Display the toggle modal window for PARTE.
         vm.toggleModalParte = function () {
 
             $scope.entidad = {};
@@ -51,11 +71,10 @@
             modalInstance.result.then(function (data) {
                 vm.convenio.partes.push(data);
             }, function () {
-                ////console.log("Modal dismissed at: " + new Date());
             });
         };
 
-        // Ventana modal para agregar compromisos
+        // Display de toggle modal window for COMPROMISO.
         vm.toggleModalCompromiso = function () {
 
             $scope.entidad = {};

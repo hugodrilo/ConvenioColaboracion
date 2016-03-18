@@ -108,7 +108,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-10">
                             <div class="form-group">
                                 <label class="control-label"
                                        for="materia">
@@ -118,23 +118,14 @@
                                 <select name="materia"
                                         id="materia"
                                         class="form-control"
-                                        ng-model="vm.convenio.materia">
-                                    <option ng-repeat="materia in vm.convenio.materias" value="{{materia.materiaId}}">{{materia.materia}}</option>
-                                    <!--<option value="materia-1">Internacional</option>-->
-                                    <!-- <option value="materia-2">Gubernamental</option>-->
-                                    <!-- <option value="materia-3">Sociedad civil</option>-->
-                                    <!-- <option value="materia-4">Académico</option>-->
+                                        ng-model="vm.convenio.materiaId">
+                                    <option ng-repeat="materia in vm.materias" value="{{materia.materiaId}}">{{materia.materia}}</option>
                                 </select>
-                                <br>
-                                <!--
-                                        <label for="repeatSelect"> Repeat select: </label>
-                                        <select name="repeatSelect" id="repeatSelect" ng-model="data.repeatSelect">
-                                          <option ng-repeat="option in data.availableOptions" value="{{option.id}}">{{option.name}}</option>
-                                        </select>
-                                -->
                             </div>
                         </div>
-                        <div class="col-md-5">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
                             <div class="form-group">
                                 <label class="control-label"
                                        for="submateria">
@@ -148,7 +139,7 @@
                                     <option value="submateria-1">Transparencia y combate a la corrupción</option>
                                     <option value="submateria-2">Medidas contra la discriminación</option>
                                     <option value="submateria-3">Contrataciones Púbicas</option>
-                                </select><br>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -163,10 +154,9 @@
                                 <select name="areaVinculante"
                                         id="areaVinculante"
                                         class="form-control"
-                                        ng-model="vm.convenio.areaVinculanteId">
-                                    <option value="areaVinculante-1">Área vinculante 1 </option>
-                                    <option value="areaVinculante-2">Área vinculante 2</option>
-                                </select><br>
+                                        ng-model="vm.convenio.areaId">
+                                    <option ng-repeat="area in vm.areas" value="{{area.areaId}}">{{area.area}}</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -185,11 +175,11 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="parte in vm.convenio.partes">
-                                    <td> {{parte.entidad}}</td>
+                                    <td> {{parte.parte}}</td>
                                     <td>{{parte.representante}}</td>
                                     <td>{{parte.cargo}}</td>
                                     <td>{{parte.telefono}}</td>
-                                    <td>{{parte.eMail}}</td>
+                                    <td>{{parte.correoElectronico}}</td>
                                     <td>{{parte.domicilio}}</td>
                                 </tr>
                             </tbody>
@@ -215,16 +205,17 @@
                                     <td>Compromiso</td>
                                     <td>Fecha estimada </td>
                                     <td>Área vinculante</td>
+                                    <td>Ponderación</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="compromiso in vm.convenio.compromisos">
                                     <td> {{compromiso.institucion}}</td>
                                     <td>{{compromiso.compromiso}}</td>
-                                    <td>{{compromiso.fechaEstimada}}</td>
+                                    <td>{{compromiso.fechaCompromiso}}</td>
                                     <td>{{compromiso.areaVinculanteId}}</td>
+                                    <td>{{compromiso.ponderacion}}</td>
                                 </tr>
-
                             </tbody>
                             <tfoot>
                             </tfoot>
@@ -261,17 +252,17 @@
                         <div class="col-md-3"><span class="text-danger">Campos obligatorios</span></div>
                         <div class="col-md-offset-5 col-md-2">
                             <span tabindex="0"
+                                  class="btn btn-default pull-right">
+                                Cancelar
+                            </span>
+                        </div>
+                        <div class="col-md-2">
+                            <span tabindex="0"
                                   class="btn btn-primary pull-right"
                                   data-toggle="tooltip"
                                   data-placement="top"
                                   ng-click="vm.submit()">
                                 Guardar
-                            </span>
-                        </div>
-                        <div class="col-md-2">
-                            <span tabindex="0"
-                                  class="btn btn-default pull-right">
-                                Cancelar
                             </span>
                         </div>
                     </div>

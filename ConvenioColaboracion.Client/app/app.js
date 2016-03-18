@@ -43,11 +43,11 @@
                         //// TODO: Checar como agregar correctamente el calendario desde aca 
                         ////// Parte convenio view
                         ////.state("parteConvenio", {
-                        ////    url: "/convenios/parteConvenio",
+                        ////    url: "/convenios",
                         ////    templateUrl: "app/convenios/templates/parte.html",
                         ////    controller: "ConvenioCtrl as vm"
                         ////})
-                        ////// Compromiso convenio view
+                        // Compromiso convenio view
                         ////.state("compromisoConvenio", {
                         ////    url: "/convenios/compromisoConvenio",
                         ////    templateUrl: "app/convenios/templates/compromiso.html",
@@ -122,7 +122,6 @@
                             scope.filename = changeEvent.target.files[0].name;
                         });
                     }
-                    scope.filename = changeEvent.target.files[0].name;
                     reader.readAsDataURL(changeEvent.target.files[0]);
                 });
             }
