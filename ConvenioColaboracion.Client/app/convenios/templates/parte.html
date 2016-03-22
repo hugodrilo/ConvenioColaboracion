@@ -13,8 +13,8 @@
                 <select name="entidadDependencia"
                         id="entidadDependencia"
                         class="form-control"
-                        ng-model="entidad.parte">
-                    <option ng-repeat="parte in vm.partes" value="{{parte.parte}}">{{parte.parte}}</option>
+                        ng-model="entidad.parte"
+                        ng-options="parte.parte for parte in vm.partes track by parte.parteId">
                 </select>
             </div>
         </div>

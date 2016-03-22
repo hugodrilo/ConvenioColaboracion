@@ -69,6 +69,10 @@
             });
 
             modalInstance.result.then(function (data) {
+                if (data.parte !== undefined) {
+                    data.parteId = data.parte.parteId;
+                }
+
                 vm.convenio.partes.push(data);
             }, function () {
             });

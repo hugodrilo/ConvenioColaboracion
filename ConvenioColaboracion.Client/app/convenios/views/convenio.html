@@ -174,17 +174,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="parte in vm.convenio.partes">
-                                    <td> {{parte.parte}}</td>
-                                    <td>{{parte.representante}}</td>
-                                    <td>{{parte.cargo}}</td>
-                                    <td>{{parte.telefono}}</td>
-                                    <td>{{parte.correoElectronico}}</td>
-                                    <td>{{parte.domicilio}}</td>
+                                <tr ng-repeat="parteModal in vm.convenio.partes">
+                                    <td>{{parteModal.parte.parte}}</td>
+                                    <td>{{parteModal.representante}}</td>
+                                    <td>{{parteModal.cargo}}</td>
+                                    <td>{{parteModal.telefono}}</td>
+                                    <td>{{parteModal.correoElectronico}}</td>
+                                    <td>{{parteModal.domicilio}}</td>
                                 </tr>
                             </tbody>
                             <tfoot>
-
                             </tfoot>
                         </table>
                         <div class="col-md-offset-1">
