@@ -208,12 +208,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="compromiso in vm.convenio.compromisos">
-                                    <td> {{compromiso.institucion}}</td>
-                                    <td>{{compromiso.compromiso}}</td>
-                                    <td>{{compromiso.fechaCompromiso}}</td>
-                                    <td>{{compromiso.areaVinculanteId}}</td>
-                                    <td>{{compromiso.ponderacion}}</td>
+                                <tr ng-repeat="compromisoModal in vm.convenio.compromisos">
+                                    <td>{{compromisoModal.parte.parte}}</td>
+                                    <td>{{compromisoModal.compromiso}}</td>
+                                    <td>{{compromisoModal.fechaCompromiso}}</td>
+                                    <td>{{compromisoModal.area.area}}</td>
+                                    <td>{{compromisoModal.ponderacion}}</td>
                                 </tr>
                             </tbody>
                             <tfoot>

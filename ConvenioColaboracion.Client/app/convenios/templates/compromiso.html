@@ -11,14 +11,12 @@
                     Institución
                     <span class="text-danger">*</span>
                 </label>
+
                 <select name="institucion"
                         id="institucion"
                         class="form-control"
-                        ng-model="entidad.institucionId">
-                    <option value="institucion-1">SFP</option>
-                    <option value="institucion-2">FAO</option>
-                    <option value="institucion-3">OEA</option>
-                </select>
+                        ng-model="entidad.parte"
+                        ng-options="parte.parte for parte in vm.partes track by parte.parteId"></select>
             </div>
         </div>
     </div>
@@ -27,7 +25,7 @@
             <div class="form-group">
                 <label class="control-label"
                        for="compromiso">
-                    Convenio
+                    Compromiso
                     <span class="text-danger">*</span>
                 </label>
                 <textarea name="compromiso"
@@ -67,10 +65,8 @@
                 <select name="areaVinculante"
                         id="areaVinculante"
                         class="form-control"
-                        ng-model="entidad.areaVinculanteId">
-                    <option value="areaVinculante-1">Área vinculante 1 </option>
-                    <option value="areaVinculante-2">Área vinculante 2</option>
-                </select><br>
+                        ng-model="entidad.area"
+                        ng-options="area.area for area in vm.areas track by area.areaId"></select>
             </div>
         </div>
     </div>

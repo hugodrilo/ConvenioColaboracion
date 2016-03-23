@@ -95,6 +95,14 @@
             });
 
             modalInstance.result.then(function (data) {
+                if (data.parte !== undefined) {
+                    data.partes = data.parte.parte;
+                }
+
+                if (data.area !== undefined) {
+                    data.areaVinculante = data.area.area;
+                }
+
                 vm.convenio.compromisos.push(data);
             }, function () {
                 ////console.log("Modal dismissed at: " + new Date());
