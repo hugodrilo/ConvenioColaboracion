@@ -11,8 +11,10 @@
     </ol>
 </div>
 <div class="col-md-10 col-md-offset-1">
-    <form id="formularioConvenio"
-          role="form">
+    <form id="convenioForm"
+          name="convenioForm"
+          role="form"
+          novalidate>
         <div>
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -21,7 +23,9 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-5">
-                            <div class="form-group">
+                            <div class="form-group"
+                                 ng-class="{'has-error': convenioForm.numeroConvenio.$invalid &&
+                                                         convenioForm.numeroConvenio.$dirty}">
                                 <label class="control-label"
                                        for="numeroConvenio">
                                     Número de convenio
@@ -32,13 +36,16 @@
                                        id="numeroConvenio"
                                        class="form-control"
                                        placeholder="Número de convenio"
-                                       ng-model="vm.convenio.numeroConvenio" />
+                                       ng-model="vm.convenio.numeroConvenio"
+                                       required />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-10">
-                            <div class="form-group">
+                            <div class="form-group"
+                                 ng-class="{'has-error': convenioForm.convenio.$invalid &&
+                                                         convenioForm.convenio.$dirty}">
                                 <label class="control-label"
                                        for="convenio">
                                     Convenio
@@ -48,7 +55,8 @@
                                           id="convenio"
                                           class="form-control"
                                           placeholder="Convenio"
-                                          ng-model="vm.convenio.convenio"></textarea>
+                                          ng-model="vm.convenio.convenio"
+                                          required></textarea>
                             </div>
                         </div>
                     </div>
@@ -59,7 +67,9 @@
                             </label>
                         </div>
                         <div class="col-md-5">
-                            <div class="form-group datepicker-group">
+                            <div class="form-group datepicker-group"
+                                 ng-class="{'has-error': convenioForm.fechaSuscripcion.$invalid &&
+                                                         convenioForm.fechaSuscripcion.$dirty}">
                                 <label class="control-label"
                                        for="fechaSuscripcion">
                                     Fecha de suscripción
@@ -69,7 +79,8 @@
                                        name="fechaSuscripcion"
                                        id="fechaSuscripcion"
                                        type="text"
-                                       ng-model="vm.convenio.fechaSuscripcion">
+                                       ng-model="vm.convenio.fechaSuscripcion"
+                                       required>
                                 <span class="glyphicon glyphicon-calendar"
                                       aria-hidden="true">
                                 </span>
@@ -109,7 +120,9 @@
                     </div>
                     <div class="row">
                         <div class="col-md-10">
-                            <div class="form-group">
+                            <div class="form-group"
+                                 ng-class="{'has-error': convenioForm.materia.$invalid &&
+                                                         convenioForm.materia.$dirty}">
                                 <label class="control-label"
                                        for="materia">
                                     Materia del convenio
@@ -130,7 +143,6 @@
                                 <label class="control-label"
                                        for="submateria">
                                     Submaterias
-                                    <span class="text-danger">*</span>
                                 </label>
                                 <select name="submateria"
                                         id="submateria"
@@ -145,7 +157,10 @@
                     </div>
                     <div class="row">
                         <div class="col-md-10">
-                            <div class="form-group">
+                            <div class="form-group"
+                                 ng-class="{'has-error': convenioForm.areaVinculante.$invalid &&
+                                                         convenioForm.areaVinculante.$dirty}">
+
                                 <label class="control-label"
                                        for="areaVinculante">
                                     Area vinculante

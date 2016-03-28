@@ -1,93 +1,104 @@
-﻿<div class="modal-header">
-    <h3 class="modal-title">Agregar compromiso</h3>
-</div>
-<!-- TODO: Checar como agregar correctamente el calendario desde aca -->
-<div class="modal-body" ng-controller="ConvenioCtrl as vm">
-    <div class="row">
-        <div class="col-md-10">
-            <div class="form-group">
-                <label class="control-label"
-                       for="institucion">
-                    Institución
-                    <span class="text-danger">*</span>
-                </label>
-
-                <select name="institucion"
-                        id="institucion"
-                        class="form-control"
-                        ng-model="entidad.parte"
-                        ng-options="parte.parte for parte in vm.partes track by parte.parteId"></select>
+﻿<form id="compromisoForm"
+      name="compromisoForm"
+      role="form"
+      novalidate>
+    <div class="modal-header">
+        <h3 class="modal-title">Agregar compromiso</h3>
+    </div>
+    <!-- TODO: Checar como agregar correctamente el calendario desde aca -->
+    <div class="modal-body" ng-controller="ConvenioCtrl as vm">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="form-group"
+                     ng-class="{'has-error': compromisoForm.institucion.$invalid &&
+                                             compromisoForm.institucion.$dirty}">
+                    <label class="control-label"
+                           for="institucion">
+                        Institución
+                        <span class="text-danger">*</span>
+                    </label>
+                    <select name="institucion"
+                            id="institucion"
+                            class="form-control"
+                            ng-model="entidad.parte"
+                            ng-options="parte.parte for parte in vm.partes track by parte.parteId"
+                            required></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="form-group"
+                     ng-class="{'has-error': compromisoForm.compromiso.$invalid &&
+                                             compromisoForm.compromiso.$dirty}">
+                    <label class="control-label"
+                           for="compromiso">
+                        Compromiso
+                        <span class="text-danger">*</span>
+                    </label>
+                    <textarea name="compromiso"
+                              id="compromiso"
+                              class="form-control"
+                              placeholder="Compromiso"
+                              ng-model="entidad.compromiso"
+                              required></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group datepicker-group">
+                    <label class="control-label"
+                           for="fechaEstimada">
+                        Fecha estimada de cumplimiento
+                    </label>
+                    <input class="form-control calendarioGobMx"
+                           name="fechaEstimada"
+                           id="fechaEstimada"
+                           type="text"
+                           ng-model="entidad.fechaCompromiso">
+                    <span class="glyphicon glyphicon-calendar"
+                          aria-hidden="true">
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label class="control-label"
+                           for="areaVinculante">
+                        Area responsable <!--TODO: Multiple selection on this control-->
+                        <span class="text-danger">*</span>
+                    </label>
+                    <select name="areaVinculante"
+                            id="areaVinculante"
+                            class="form-control"
+                            ng-model="entidad.area"
+                            ng-options="area.area for area in vm.areas track by area.areaId"
+                            required></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label class="control-label"
+                           for="ponderacion">
+                        Ponderación
+                    </label>
+                    <input type="text"
+                           name="ponderacion"
+                           id="ponderacion"
+                           class="form-control"
+                           placeholder="Ponderación"
+                           ng-model="entidad.ponderacion" />
+                </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-10">
-            <div class="form-group">
-                <label class="control-label"
-                       for="compromiso">
-                    Compromiso
-                    <span class="text-danger">*</span>
-                </label>
-                <textarea name="compromiso"
-                          id="compromiso"
-                          class="form-control"
-                          placeholder="Compromiso"
-                          ng-model="entidad.compromiso"></textarea>
-            </div>
-        </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
+        <button class="btn btn-primary" type="button" ng-click="ok()">Agregar</button>
     </div>
-    <div class="row">
-        <div class="col-md-8">
-            <div class="form-group datepicker-group">
-                <label class="control-label"
-                       for="fechaEstimada">
-                    Fecha estimada de cumplimiento
-                </label>
-                <input class="form-control calendarioGobMx"
-                       name="fechaEstimada"
-                       id="fechaEstimada"
-                       type="text"
-                       ng-model="entidad.fechaCompromiso">
-                <span class="glyphicon glyphicon-calendar"
-                      aria-hidden="true">
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-10">
-            <div class="form-group">
-                <label class="control-label"
-                       for="areaVinculante">
-                    Area responsable <!--TODO: Multiple selection on this control-->
-                    <span class="text-danger">*</span>
-                </label>
-                <select name="areaVinculante"
-                        id="areaVinculante"
-                        class="form-control"
-                        ng-model="entidad.area"
-                        ng-options="area.area for area in vm.areas track by area.areaId"></select>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-10">
-            <div class="form-group">
-                <label class="control-label"
-                       for="ponderacion">
-                    Ponderación
-                </label>
-                <input type="text"
-                       name="ponderacion"
-                       id="ponderacion"
-                       class="form-control"
-                       placeholder="Ponderación"
-                       ng-model="entidad.ponderacion" />
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal-footer">
-    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
-    <button class="btn btn-primary" type="button" ng-click="ok()">Agregar</button>
-</div>  
+</form>
