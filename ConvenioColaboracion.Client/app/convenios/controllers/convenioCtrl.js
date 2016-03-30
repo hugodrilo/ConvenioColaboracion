@@ -9,13 +9,19 @@
     angular
         .module("convenioColaboracion")
         .controller("ConvenioCtrl",
-                    ["$scope", "$uibModal",
-                     "convenioResource", "materiaResource", "areaResource", "parteResource",
+                    ["$scope",
+                     "$uibModal",
+                     "$window",
+                     "convenioResource",
+                     "materiaResource",
+                     "areaResource",
+                     "parteResource",
                      ConvenioCtrl]);
 
-    // Convenio controller function.
+    // The Convenio controller function.
     function ConvenioCtrl($scope,
                           $uibModal,
+                          $window,
                           convenioResource,
                           materiaResource,
                           areaResource,
@@ -43,7 +49,7 @@
         // The GobMx calendar style.
         $(".calendarioGobMx").datepicker();
 
-        // Inicializacion de la ventana modal
+        // Setting the animations flag for the modal window.
         $scope.animationsEnabled = true;
 
         // Display the toggle modal window for PARTE.
@@ -103,6 +109,7 @@
             });
         };
 
+        // Submit data to the server
         vm.submit = function (isValid) {
 
             if (isValid) {
@@ -112,16 +119,14 @@
                     });
 
             } else {
-                /// alert("Favor de ingresar los valores requeridos.");
                 toastr.error("Favor de ingresar los valores requeridos.", "Error");
             }
         }
 
+        // Cancel the operation and returns to the previous menu.
         vm.cancel = function () {
             toastr.warning("Redireccionando...", "Info");
-            $window.location.href = "/index.html";
-            //window.location = "../views/menuConvenioView.html";
-            //ui - sref = "menuConvenio";
+            $window.location.href = "#menuConvenio";
         }
     };
 
@@ -141,11 +146,11 @@
                    $uibModalInstance.close($scope.entidad);
                }
                else {
-                   alert("Favor de ingresar los valores requeridos.");
+                   toastr.error("Favor de ingresar los campos obligatorios", "Error");
                }
            };
 
-           // Boton para cancelar para la ventana modal.
+           // Cancel function to dismiss the modal window.
            $scope.cancel = function () {
                $uibModalInstance.dismiss("cancelar");
            };
