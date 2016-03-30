@@ -43,12 +43,6 @@
         // The GobMx calendar style.
         $(".calendarioGobMx").datepicker();
 
-        vm.submit = function () {
-            new convenioResource(vm.convenio).$save().then(
-                function (nuevoConvenio) {
-                });
-        }
-
         // Inicializacion de la ventana modal
         $scope.animationsEnabled = true;
 
@@ -108,6 +102,27 @@
                 ////console.log("Modal dismissed at: " + new Date());
             });
         };
+
+        vm.submit = function (isValid) {
+
+            if (isValid) {
+                new convenioResource(vm.convenio).$save().then(
+                    function (nuevoConvenio) {
+                        toastr.success("Convenio guardado correctamente.", "Exito.");
+                    });
+
+            } else {
+                /// alert("Favor de ingresar los valores requeridos.");
+                toastr.error("Favor de ingresar los valores requeridos.", "Error");
+            }
+        }
+
+        vm.cancel = function () {
+            toastr.warning("Redireccionando...", "Info");
+            $window.location.href = "/index.html";
+            //window.location = "../views/menuConvenioView.html";
+            //ui - sref = "menuConvenio";
+        }
     };
 
     // The Modal Instance controller
@@ -120,8 +135,14 @@
            $(".calendarioGobMx").datepicker();
 
            // Boton de aceptar para la ventana modal.
-           $scope.ok = function () {
-               $uibModalInstance.close($scope.entidad);
+           $scope.ok = function (isValid) {
+
+               if (isValid) {
+                   $uibModalInstance.close($scope.entidad);
+               }
+               else {
+                   alert("Favor de ingresar los valores requeridos.");
+               }
            };
 
            // Boton para cancelar para la ventana modal.

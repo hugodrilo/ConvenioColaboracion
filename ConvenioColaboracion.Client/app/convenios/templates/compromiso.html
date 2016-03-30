@@ -76,6 +76,7 @@
                             class="form-control"
                             ng-model="entidad.area"
                             ng-options="area.area for area in vm.areas track by area.areaId"
+                            multiple
                             required></select>
                 </div>
             </div>
@@ -99,6 +100,6 @@
     </div>
     <div class="modal-footer">
         <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
-        <button class="btn btn-primary" type="button" ng-click="ok()">Agregar</button>
+        <button class="btn btn-primary" type="button" ng-click="ok(compromisoForm.$valid)">Agregar</button>
     </div>
 </form>

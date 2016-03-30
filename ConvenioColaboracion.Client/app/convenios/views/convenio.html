@@ -133,6 +133,8 @@
                                         class="form-control"
                                         ng-model="vm.convenio.materiaId">
                                     <option ng-repeat="materia in vm.materias" value="{{materia.materiaId}}">{{materia.materia}}</option>
+
+
                                 </select>
                             </div>
                         </div>
@@ -263,10 +265,10 @@
                 </div>
                 <div class="panel-footer">
                     <div class="row">
-                        <div class="col-md-3"><span class="text-danger">Campos obligatorios</span></div>
                         <div class="col-md-offset-5 col-md-2">
                             <span tabindex="0"
-                                  class="btn btn-default pull-right">
+                                  class="btn btn-default pull-right"
+                                  ng-click="vm.cancel">
                                 Cancelar
                             </span>
                         </div>
@@ -275,7 +277,7 @@
                                   class="btn btn-primary pull-right"
                                   data-toggle="tooltip"
                                   data-placement="top"
-                                  ng-click="vm.submit()">
+                                  ng-click="vm.submit(convenioForm.$Valid)">
                                 Guardar
                             </span>
                         </div>
