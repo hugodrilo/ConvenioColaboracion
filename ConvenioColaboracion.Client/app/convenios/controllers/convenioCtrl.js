@@ -14,6 +14,7 @@
                      "$window",
                      "convenioResource",
                      "materiaResource",
+                     "subMateriaResource",
                      "areaResource",
                      "parteResource",
                      ConvenioCtrl]);
@@ -24,15 +25,16 @@
                           $window,
                           convenioResource,
                           materiaResource,
+                          subMateriaResource,
                           areaResource,
                           parteResource) {
         var vm = this;
 
-        console.log("Convenio controller ");
-
         // Carga de datos del formulario
         vm.materias = [];
         vm.materias = materiaResource.query();
+
+        vm.subMaterias = [];
 
         vm.areas = [];
         vm.areas = areaResource.query();
@@ -109,6 +111,13 @@
             });
         };
 
+        // Change value in the materia dropdown list
+        vm.changedValueMateria = function (materia) {
+            if (materia !== undefined && materia !== null) {
+                vm.subMaterias = subMateriaResource.query({ id: materia.materiaId });
+            }
+        };
+
         // Submit data to the server
         vm.submit = function (isValid) {
 
@@ -117,17 +126,16 @@
                     function (nuevoConvenio) {
                         toastr.success("Convenio guardado correctamente.", "Exito.");
                     });
-
             } else {
                 toastr.error("Favor de ingresar los valores requeridos.", "Error");
             }
-        }
+        };
 
         // Cancel the operation and returns to the previous menu.
         vm.cancel = function () {
             toastr.warning("Redireccionando...", "Info");
             $window.location.href = "#menuConvenio";
-        }
+        };
     };
 
     // The Modal Instance controller

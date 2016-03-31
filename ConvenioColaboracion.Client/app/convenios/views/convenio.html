@@ -131,11 +131,10 @@
                                 <select name="materia"
                                         id="materia"
                                         class="form-control"
-                                        ng-model="vm.convenio.materiaId">
-                                    <option ng-repeat="materia in vm.materias" value="{{materia.materiaId}}">{{materia.materia}}</option>
-
-
-                                </select>
+                                        ng-model="vm.convenio.materia"
+                                        ng-options="materia.materia for materia in vm.materias track by materia.materiaId"
+                                        required
+                                        ng-change="vm.changedValueMateria(vm.convenio.materia)"></select>
                             </div>
                         </div>
                     </div>
@@ -146,14 +145,18 @@
                                        for="submateria">
                                     Submaterias
                                 </label>
+                                <!--<select name="submateria"
+                                        id="submateria"
+                                        class="form-control"
+                                        ng-model="vm.convenio.materiaId">
+                                    <option ng-repeat="materia in vm.subMaterias" value="{{materia.materiaId}}">{{materia.materia}}</option>
+                                </select>-->
                                 <select name="submateria"
                                         id="submateria"
                                         class="form-control"
-                                        ng-model="vm.convenio.submateriaId">
-                                    <option value="submateria-1">Transparencia y combate a la corrupción</option>
-                                    <option value="submateria-2">Medidas contra la discriminación</option>
-                                    <option value="submateria-3">Contrataciones Púbicas</option>
-                                </select>
+                                        ng-model="vm.convenio.subMateria"
+                                        ng-options="materia.materia for materia in vm.subMaterias track by materia.materiaId"
+                                        required></select>
                             </div>
                         </div>
                     </div>
