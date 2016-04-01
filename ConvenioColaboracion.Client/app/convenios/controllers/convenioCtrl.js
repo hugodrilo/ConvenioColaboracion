@@ -5,7 +5,7 @@
 (function () {
     "use strict";
 
-    // Module and convenio controller definition.
+    // Module and controller definition.
     angular
         .module("convenioColaboracion")
         .controller("ConvenioCtrl",
@@ -16,6 +16,7 @@
                      "materiaResource",
                      "subMateriaResource",
                      "areaResource",
+                     "tipoAreaResource",
                      "parteResource",
                      ConvenioCtrl]);
 
@@ -27,10 +28,11 @@
                           materiaResource,
                           subMateriaResource,
                           areaResource,
+                          tipoAreaResource,
                           parteResource) {
         var vm = this;
 
-        // Carga de datos del formulario
+        // Load the form catalogs.
         vm.materias = [];
         vm.materias = materiaResource.query();
 
@@ -39,11 +41,15 @@
         vm.areas = [];
         vm.areas = areaResource.query();
 
+        vm.tipoAreas = [];
+        vm.tipoAreas = tipoAreaResource.query();
+
         vm.partes = [];
         vm.partes = parteResource.query();
 
-        // Inicializacion de datos de convenio
+        // Initialize the object model for CONVENIO.
         vm.convenio = {};
+        vm.convenio.areas = [];
         vm.convenio.partes = [];
         vm.convenio.compromisos = [];
         vm.message = "";
@@ -53,6 +59,33 @@
 
         // Setting the animations flag for the modal window.
         $scope.animationsEnabled = true;
+
+        // Display the toggle modal window for AREA.
+        vm.toggleModalArea = function () {
+
+            $scope.entidad = {};
+
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: "app/convenios/templates/convenioArea.html",
+                controller: "ModalInstanceCtrl",
+                resolve: {
+                    entidad: function () {
+                        return $scope.entidad;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (data) {
+                if (data.area !== undefined) {
+                    data.areaId = data.area.areaId;
+                    data.tipoAreaId = data.tipoArea.tipoAreaId;
+                }
+
+                vm.convenio.areas.push(data);
+            }, function () {
+            });
+        };
 
         // Display the toggle modal window for PARTE.
         vm.toggleModalParte = function () {

@@ -160,11 +160,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <!--<div class="row">
                         <div class="col-md-10">
                             <div class="form-group"
                                  ng-class="{'has-error': convenioForm.areaVinculante.$invalid &&
-                                                         convenioForm.areaVinculante.$dirty}">
+                                                             convenioForm.areaVinculante.$dirty}">
 
                                 <label class="control-label"
                                        for="areaVinculante">
@@ -179,11 +179,42 @@
                                 </select>
                             </div>
                         </div>
+                    </div>-->
+                    <div class="row">
+                        <label class="control-label">
+                            Área(s) vinculante(s):
+                        </label>
+                        <table class="table table-bordered table-responsive">
+                            <thead class="thead-default">
+                                <tr>
+                                    <td>Área</td>
+                                    <td>Tipo de área</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="areaModal in vm.convenio.areas">
+                                    <td>{{areaModal.area.area}}</td>
+                                    <td>{{areaModal.tipoArea.tipoArea}}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                            </tfoot>
+                        </table>
+                        <div class="col-md-offset-1">
+                            <button id="addArea"
+                                    name="addArea"
+                                    class="btn btn-success pull-right"
+                                    ng-click="vm.toggleModalArea()">
+                                Agregar
+                            </button>
+                        </div>
                     </div>
                     <div class="row">
-                        Partes firmantes:
+                        <label class="control-label">
+                            Partes firmantes:
+                        </label>
                         <table class="table table-bordered table-responsive">
-                            <thead>
+                            <thead class="thead-default">
                                 <tr>
                                     <td>Entidad o dependencia</td>
                                     <td>Representante legal </td>
@@ -216,9 +247,11 @@
                         </div>
                     </div>
                     <div class="row">
-                        Compromisos:
+                        <label class="control-label">
+                            Compromisos:
+                        </label>
                         <table class="table table-bordered table-responsive">
-                            <thead>
+                            <thead class="thead-default">
                                 <tr>
                                     <td>Institución responsable </td>
                                     <td>Compromiso</td>
@@ -262,6 +295,21 @@
                                        type="file"
                                        fileread="vm.convenio.documento"
                                        filename="vm.convenio.nombreDocumento" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <label class="control-label"
+                                       for="comentarios">
+                                    Comentarios:
+                                </label>
+                                <textarea name="comentarios"
+                                          id="comentarios"
+                                          class="form-control"
+                                          placeholder="Comentarios"
+                                          ng-model="vm.convenio.comentarios"></textarea>
                             </div>
                         </div>
                     </div>

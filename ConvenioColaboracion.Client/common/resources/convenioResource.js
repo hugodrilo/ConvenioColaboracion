@@ -11,6 +11,7 @@
         .factory("materiaResource", ["$resource", "appSettings", materiaResource])
         .factory("subMateriaResource", ["$resource", "appSettings", subMateriaResource])
         .factory("areaResource", ["$resource", "appSettings", areaResource])
+        .factory("tipoAreaResource", ["$resource", "appSettings", tipoAreaResource])
         .factory("parteResource", ["$resource", "appSettings", parteResource]);
 
     // convenio resource
@@ -31,6 +32,11 @@
     // area resource
     function areaResource($resource, appSettings) {
         return $resource(appSettings.serverPath + "/api/area/");
+    };
+
+    // tipoArea resource
+    function tipoAreaResource($resource, appSettings) {
+        return $resource(appSettings.serverPath + "/api/tipoarea/");
     };
 
     // parte resource

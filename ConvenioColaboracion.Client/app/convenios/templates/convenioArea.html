@@ -1,0 +1,48 @@
+﻿<form id="convenioAreaForm"
+      name="convenioAreaForm"
+      role="form"
+      novalidate>
+    <div class="modal-header">
+        <h3 class="modal-title">Agregar areas vinculantes</h3>
+    </div>
+    <div class="modal-body" ng-controller="ConvenioCtrl as vm">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label class="control-label"
+                           for="area">
+                        Área
+                        <span class="text-danger">*</span>
+                    </label>
+                    <select name="area"
+                            id="area"
+                            class="form-control"
+                            ng-model="entidad.area"
+                            ng-options="area.area for area in vm.areas track by area.areaId"
+                            required></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <div class="form-group">
+                    <label class="control-label"
+                           for="tipoArea">
+                        Tipo de área
+                        <span class="text-danger">*</span>
+                    </label>
+                    <select name="tipoArea"
+                            id="tipoArea"
+                            class="form-control"
+                            ng-model="entidad.tipoArea"
+                            ng-options="tipoArea.tipoArea for tipoArea in vm.tipoAreas track by tipoArea.tipoAreaId"
+                            required></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
+        <button class="btn btn-primary" type="button" ng-click="ok(convenioAreaForm.$valid)">Agregar</button>
+    </div>
+</form>
