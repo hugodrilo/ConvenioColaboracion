@@ -145,41 +145,14 @@
                                        for="submateria">
                                     Submaterias
                                 </label>
-                                <!--<select name="submateria"
-                                        id="submateria"
-                                        class="form-control"
-                                        ng-model="vm.convenio.materiaId">
-                                    <option ng-repeat="materia in vm.subMaterias" value="{{materia.materiaId}}">{{materia.materia}}</option>
-                                </select>-->
                                 <select name="submateria"
                                         id="submateria"
                                         class="form-control"
                                         ng-model="vm.convenio.subMateria"
-                                        ng-options="materia.materia for materia in vm.subMaterias track by materia.materiaId"
-                                        required></select>
+                                        ng-options="materia.materia for materia in vm.subMaterias track by materia.materiaId"></select>
                             </div>
                         </div>
                     </div>
-                    <!--<div class="row">
-                        <div class="col-md-10">
-                            <div class="form-group"
-                                 ng-class="{'has-error': convenioForm.areaVinculante.$invalid &&
-                                                             convenioForm.areaVinculante.$dirty}">
-
-                                <label class="control-label"
-                                       for="areaVinculante">
-                                    Area vinculante
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <select name="areaVinculante"
-                                        id="areaVinculante"
-                                        class="form-control"
-                                        ng-model="vm.convenio.areaId">
-                                    <option ng-repeat="area in vm.areas" value="{{area.areaId}}">{{area.area}}</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>-->
                     <div class="row">
                         <label class="control-label">
                             Área(s) vinculante(s):
@@ -294,7 +267,8 @@
                                        placeholder="Ruta del documento"
                                        type="file"
                                        fileread="vm.convenio.documento"
-                                       filename="vm.convenio.nombreDocumento" />
+                                       filename="vm.convenio.nombreDocumento"
+                                       required />
                             </div>
                         </div>
                     </div>
@@ -328,7 +302,7 @@
                                   class="btn btn-primary pull-right"
                                   data-toggle="tooltip"
                                   data-placement="top"
-                                  ng-click="vm.submit(convenioForm.$Valid)">
+                                  ng-click="vm.submit(convenioForm.$valid)">
                                 Guardar
                             </span>
                         </div>
