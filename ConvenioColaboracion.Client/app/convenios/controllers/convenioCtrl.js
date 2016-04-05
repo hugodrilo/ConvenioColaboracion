@@ -80,9 +80,8 @@
                 if (data.area !== undefined) {
                     data.areaId = data.area.areaId;
                     data.tipoAreaId = data.tipoArea.tipoAreaId;
+                    vm.convenio.areas.push(data);
                 }
-
-                vm.convenio.areas.push(data);
             }, function () {
             });
         };
@@ -106,9 +105,8 @@
             modalInstance.result.then(function (data) {
                 if (data.parte !== undefined) {
                     data.parteId = data.parte.parteId;
+                    vm.convenio.partes.push(data);
                 }
-
-                vm.convenio.partes.push(data);
             }, function () {
             });
         };
@@ -130,21 +128,15 @@
             });
 
             modalInstance.result.then(function (data) {
-                if (data.parte !== undefined) {
-                    data.partes = data.parte.parte;
+                if (data !== undefined) {
+                    vm.convenio.compromisos.push(data);
                 }
-
-                if (data.area !== undefined) {
-                    data.areaVinculante = data.area.area;
-                }
-
-                vm.convenio.compromisos.push(data);
             }, function () {
                 ////console.log("Modal dismissed at: " + new Date());
             });
         };
 
-        // Change value in the materia dropdown list
+        // Changed value in the materia dropdown list
         vm.changedValueMateria = function (materia) {
             if (materia !== undefined && materia !== null) {
                 vm.subMaterias = subMateriaResource.query({ id: materia.materiaId });
@@ -155,9 +147,12 @@
         vm.submit = function (isValid) {
 
             if (isValid) {
+                // send the information to the API
                 new convenioResource(vm.convenio).$save().then(
                     function (nuevoConvenio) {
                         toastr.success("Convenio guardado correctamente.", "Exito.");
+                        //// TODO: Preguntar para donde redireccionar.
+                        ////$window.location.href = "#menuConvenio";
                     });
             } else {
                 toastr.error("Favor de ingresar los valores requeridos.", "Error");
