@@ -164,6 +164,8 @@
             toastr.warning("Redireccionando...", "Info");
             $window.location.href = "#menuConvenio";
         };
+
+
     };
 
     // The Modal Instance controller
@@ -189,5 +191,23 @@
            $scope.cancel = function () {
                $uibModalInstance.dismiss("cancelar");
            };
+
+           $scope.localLang = {
+               selectAll: "Seleccionar todos",
+               selectNone: "Ninguno",
+               reset: "Deshacer",
+               search: "Buscar...",
+               nothingSelected: "Ninguno seleccionado"         //default-label is deprecated and replaced with this.
+           }
+
+           /* http://stackoverflow.com/questions/27323500/open-modal-inside-a-modal
+            // Open second modal inside the modal
+           $scope.openSecond = function () {
+               var modalInstanceSecond = $modal.open({
+                   templateUrl: "mySecondModalContent.html",
+                   controller: "ModalInstanceCtrl
+               });
+           };
+           */
        });
 })();

@@ -13,7 +13,8 @@
 
     var app = angular.module("convenioColaboracion", ["common.services",
                                                         "ui.router",
-                                                        "ui.bootstrap"]);
+                                                        "ui.bootstrap",
+                                                        "isteven-multi-select"]);
     app.config(["$stateProvider",
                 "$urlRouterProvider",
 
