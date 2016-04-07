@@ -177,7 +177,6 @@
 
            // Boton de aceptar para la ventana modal.
            $scope.ok = function (isValid) {
-
                if (isValid) {
                    $uibModalInstance.close($scope.entidad);
                }

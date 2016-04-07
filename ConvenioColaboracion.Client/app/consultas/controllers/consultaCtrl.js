@@ -8,14 +8,34 @@
     angular
         .module("convenioColaboracion")
         .controller("ConsultaCtrl",
-        ConsultaCtrl);
+        ["$scope",
+         "$location",
+         "convenioResource",
+         "convenioEditResource",
+         ConsultaCtrl]);
 
-    function ConsultaCtrl(convenioResource) {
+    // The consulta controller function
+    function ConsultaCtrl($scope,
+                          $location,
+                          convenioResource,
+                          convenioEditResource) {
         var vm = this;
         vm.convenios = [];
 
-        vm.convenios = convenioResource.query();        
+        // Get all the convenios.
+        vm.convenios = convenioResource.query();
 
+        // Get specific convenio by id
+        vm.getConvenioById = function (id) {
+
+            if (id !== undefined) {
+                $scope.convenioId = id;
+                $location.path("/convenios/" + id);
+                convenioEditResource.query({ id: id });
+            }
+        }
+
+        // The gob.mx calendar
         $(".calendarioGobMx").datepicker();
     };
 })();

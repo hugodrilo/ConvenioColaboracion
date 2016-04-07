@@ -255,6 +255,22 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <label class="control-label"
+                                       for="comentarios">
+                                    Comentarios:
+                                </label>
+                                <textarea name="comentarios"
+                                          id="comentarios"
+                                          class="form-control"
+                                          placeholder="Comentarios"
+                                          ng-model="vm.convenio.comentarios"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label"
@@ -269,21 +285,6 @@
                                        fileread="vm.convenio.documento"
                                        filename="vm.convenio.nombreDocumento"
                                        required />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-10">
-                            <div class="form-group">
-                                <label class="control-label"
-                                       for="comentarios">
-                                    Comentarios:
-                                </label>
-                                <textarea name="comentarios"
-                                          id="comentarios"
-                                          class="form-control"
-                                          placeholder="Comentarios"
-                                          ng-model="vm.convenio.comentarios"></textarea>
                             </div>
                         </div>
                     </div>

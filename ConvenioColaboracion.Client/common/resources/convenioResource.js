@@ -8,6 +8,7 @@
     angular
         .module("common.services")
         .factory("convenioResource", ["$resource", "appSettings", convenioResource])
+        .factory("convenioEditResource", ["$resource", "appSettings", convenioEditResource])
         .factory("materiaResource", ["$resource", "appSettings", materiaResource])
         .factory("subMateriaResource", ["$resource", "appSettings", subMateriaResource])
         .factory("areaResource", ["$resource", "appSettings", areaResource])
@@ -17,6 +18,11 @@
     // convenio resource
     function convenioResource($resource, appSettings) {
         return $resource(appSettings.serverPath + "/api/convenio/");
+    };
+
+    // convenio Edit resource
+    function convenioEditResource($resource, appSettings) {
+        return $resource(appSettings.serverPath + "/api/convenio/:id", { id: "@id" });
     };
 
     // materia resource

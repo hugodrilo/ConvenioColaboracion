@@ -40,6 +40,12 @@
                             templateUrl: "app/convenios/views/convenio.html",
                             controller: "ConvenioCtrl as vm"
                         })
+                        // Convenio Edit view
+                        .state("convenioEdit", {
+                            url: "/convenios/:id",
+                            templateUrl: "app/convenios/views/convenio.html",
+                            controller: "ConvenioCtrl as vm"
+                        })
                         // Seguimiento view
                         .state("seguimiento", {
                             url: "/seguimiento",
@@ -81,15 +87,7 @@
                             url: "/estadistica",
                             templateUrl: "app/estadisticas/views/estadisticaView.html",
                             controller: "EstadisticaCtrl as vm"
-                        })
-                    ////// TODO: Pendiente pensar la edicion de un convenio
-                    ////// Convenio Edit view
-                    ////.state("convenio", {
-                    ////    url: "/convenios/edit/:convenioId",
-                    ////    templateUrl: "app/convenios/views/convenioEditView.html",
-                    ////    controller: "ConvenioCtrl as vm"
-                    ////})
-                    ;
+                        });
                 }]);
 
     // Input file directive to upload a single file using FileReader.
