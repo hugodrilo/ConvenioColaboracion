@@ -162,12 +162,18 @@
                                 <tr>
                                     <td>Área</td>
                                     <td>Tipo de área</td>
+                                    <td></td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="areaModal in vm.convenio.areas">
                                     <td>{{areaModal.area.area}}</td>
                                     <td>{{areaModal.tipoArea.tipoArea}}</td>
+                                    <td>
+                                        <a href="" ng-click="vm.deleteItemFromArray(vm.convenio.areas, areaModal)">
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
                             <tfoot>
@@ -205,6 +211,11 @@
                                     <td>{{parteModal.telefono}}</td>
                                     <td>{{parteModal.correoElectronico}}</td>
                                     <td>{{parteModal.domicilio}}</td>
+                                    <td>
+                                        <a href="" ng-click="vm.deleteItemFromArray(vm.convenio.partes, parteModal)">
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
                             <tfoot>
@@ -240,6 +251,11 @@
                                     <td>{{compromisoModal.fechaCompromiso}}</td>
                                     <td>{{compromisoModal.area.area}}</td>
                                     <td>{{compromisoModal.ponderacion}}</td>
+                                    <td>
+                                        <a href="" ng-click="vm.deleteItemFromArray(vm.convenio.compromisos, compromisoModal)">
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                        </a>
+                                    </td>
                                 </tr>
                             </tbody>
                             <tfoot>
@@ -291,7 +307,7 @@
                 </div>
                 <div class="panel-footer">
                     <div class="row">
-                        <div class="col-md-offset-5 col-md-2">
+                        <div class="col-md-offset-6 col-md-2">
                             <span tabindex="0"
                                   class="btn btn-default pull-right"
                                   ng-click="vm.cancel()">
@@ -299,7 +315,7 @@
                             </span>
                         </div>
                         <div class="col-md-2">
-                            <span tabindex="0"
+                            <span tabindex="1"
                                   class="btn btn-primary pull-right"
                                   data-toggle="tooltip"
                                   data-placement="top"

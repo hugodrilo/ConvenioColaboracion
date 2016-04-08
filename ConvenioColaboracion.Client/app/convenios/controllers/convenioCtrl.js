@@ -60,6 +60,20 @@
         // Setting the animations flag for the modal window.
         $scope.animationsEnabled = true;
 
+        // Changed value in the materia dropdown list
+        vm.changedValueMateria = function (materia) {
+            if (materia !== undefined && materia !== null) {
+                vm.subMaterias = subMateriaResource.query({ id: materia.materiaId });
+            }
+        };
+
+        // Deletes an item from the specified array
+        vm.deleteItemFromArray = function (array, item) {
+            if (array !== undefined && array !== null) {
+                array.splice(array.indexOf(item), 1);
+            }
+        };
+
         // Display the toggle modal window for AREA.
         vm.toggleModalArea = function () {
 
@@ -136,13 +150,6 @@
             });
         };
 
-        // Changed value in the materia dropdown list
-        vm.changedValueMateria = function (materia) {
-            if (materia !== undefined && materia !== null) {
-                vm.subMaterias = subMateriaResource.query({ id: materia.materiaId });
-            }
-        };
-
         // Submit data to the server
         vm.submit = function (isValid) {
 
@@ -164,8 +171,6 @@
             toastr.warning("Redireccionando...", "Info");
             $window.location.href = "#menuConvenio";
         };
-
-
     };
 
     // The Modal Instance controller
