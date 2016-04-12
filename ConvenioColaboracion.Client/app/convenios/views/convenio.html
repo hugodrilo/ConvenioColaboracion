@@ -212,6 +212,11 @@
                                     <td>{{parteModal.correoElectronico}}</td>
                                     <td>{{parteModal.domicilio}}</td>
                                     <td>
+                                        <a href="" ng-click="vm.toggleModalParte(parteModal)">
+                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                        </a>
+                                    </td>
+                                    <td>
                                         <a href="" ng-click="vm.deleteItemFromArray(vm.convenio.partes, parteModal)">
                                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                                         </a>
@@ -225,7 +230,7 @@
                             <button id="addParte"
                                     name="addParte"
                                     class="btn btn-success pull-right"
-                                    ng-click="vm.toggleModalParte()">
+                                    ng-click="vm.toggleModalParte(undefined)">
                                 Agregar
                             </button>
                         </div>
@@ -249,8 +254,13 @@
                                     <td>{{compromisoModal.parte.parte}}</td>
                                     <td>{{compromisoModal.compromiso}}</td>
                                     <td>{{compromisoModal.fechaCompromiso}}</td>
-                                    <td>{{compromisoModal.area.area}}</td>
+                                    <td> <span ng-repeat="area in compromisoModal.area"> {{area.area}}</span></td>
                                     <td>{{compromisoModal.ponderacion}}</td>
+                                    <td>
+                                        <a href="" ng-click="vm.toggleModalCompromiso(compromisoModal)">
+                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                        </a>
+                                    </td>
                                     <td>
                                         <a href="" ng-click="vm.deleteItemFromArray(vm.convenio.compromisos, compromisoModal)">
                                             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -265,7 +275,7 @@
                             <button id="addCompromiso"
                                     name="addCompromiso"
                                     class="btn btn-success pull-right"
-                                    ng-click="vm.toggleModalCompromiso()">
+                                    ng-click="vm.toggleModalCompromiso(undefined)">
                                 Agregar
                             </button>
                         </div>

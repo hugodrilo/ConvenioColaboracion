@@ -5,7 +5,7 @@
     <div class="modal-header">
         <h3 class="modal-title">Agregar compromiso</h3>
     </div>
-    <!-- TODO: Checar como agregar correctamente el calendario desde aca -->
+
     <div class="modal-body" ng-controller="ConvenioCtrl as vm">
         <div class="row">
             <div class="col-md-12">
@@ -68,24 +68,17 @@
                 <div class="form-group">
                     <label class="control-label"
                            for="areaVinculante">
-                        Area responsable <!--TODO: Multiple selection on this control-->
+                        Area responsable
                         <span class="text-danger">*</span>
                     </label>
-                    <!--<select name="areaVinculante"
-                            id="areaVinculante"
-                            class="form-control"
-                            ng-model="entidad.area"
-                            ng-options="area.area for area in vm.areas track by area.areaId"
-                            multiple
-                            required></select>-->
                     <div name="areaVinculante"
                          id="areaVinculante"
                          isteven-multi-select
-                         input-model="vm.areas"
+                         input-model="areas"
                          output-model="entidad.area"
                          button-label="area"
                          item-label="area"
-                         tick-property="ticked"
+                         tick-property="selected"
                          translation="localLang"
                          required>
                     </div>
@@ -93,18 +86,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <div class="form-group">
                     <label class="control-label"
                            for="ponderacion">
-                        Ponderación
+                        Ponderación (0 - 100%)
                     </label>
-                    <!--<input type="text"
-                           name="ponderacion"
-                           id="ponderacion"
-                           class="form-control"
-                           placeholder="Ponderación"
-                           ng-model="entidad.ponderacion"/>-->
                     <input type="number"
                            name="ponderacion"
                            id="ponderacion"

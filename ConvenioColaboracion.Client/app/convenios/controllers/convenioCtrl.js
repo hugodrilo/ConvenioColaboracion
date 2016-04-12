@@ -86,7 +86,9 @@
                 resolve: {
                     entidad: function () {
                         return $scope.entidad;
-                    }
+                    },
+                    editEntity: undefined,
+                    vm: vm
                 }
             });
 
@@ -101,9 +103,10 @@
         };
 
         // Display the toggle modal window for PARTE.
-        vm.toggleModalParte = function () {
+        vm.toggleModalParte = function (entity) {
 
             $scope.entidad = {};
+            $scope.editEntity = entity;
 
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
@@ -112,7 +115,9 @@
                 resolve: {
                     entidad: function () {
                         return $scope.entidad;
-                    }
+                    },
+                    editEntity: entity,
+                    vm: vm
                 }
             });
 
@@ -126,9 +131,10 @@
         };
 
         // Display de toggle modal window for COMPROMISO.
-        vm.toggleModalCompromiso = function () {
+        vm.toggleModalCompromiso = function (entity) {
 
             $scope.entidad = {};
+            $scope.editEntity = entity;
 
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
@@ -137,7 +143,9 @@
                 resolve: {
                     entidad: function () {
                         return $scope.entidad;
-                    }
+                    },
+                    editEntity: entity,
+                    vm: vm
                 }
             });
 
@@ -176,8 +184,10 @@
     // The Modal Instance controller
     angular
        .module("convenioColaboracion")
-       .controller("ModalInstanceCtrl", function ($scope, $uibModalInstance, entidad) {
+       .controller("ModalInstanceCtrl", function ($scope, $uibModalInstance, entidad, editEntity, vm) {
            $scope.entidad = entidad;
+           $scope.editEntity = editEntity;
+           $scope.areas = vm.areas;
 
            //Agregado calendario con estilo de gobmx
            $(".calendarioGobMx").datepicker();
@@ -197,12 +207,19 @@
                $uibModalInstance.dismiss("cancelar");
            };
 
+           // Set the dropdown language options
            $scope.localLang = {
                selectAll: "Seleccionar todos",
                selectNone: "Ninguno",
                reset: "Deshacer",
                search: "Buscar...",
-               nothingSelected: "Ninguno seleccionado"         //default-label is deprecated and replaced with this.
+               nothingSelected: "Ninguno seleccionado"
+           }
+
+           // Edit model 
+           if ($scope.editEntity !== undefined) {
+               $scope.entidad = $scope.editEntity;
+               console.log($scope.areas);
            }
 
            /* http://stackoverflow.com/questions/27323500/open-modal-inside-a-modal
