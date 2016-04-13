@@ -47,6 +47,8 @@
         vm.partes = [];
         vm.partes = parteResource.query();
 
+        vm.partesCompromiso = [];
+
         // Initialize the object model for CONVENIO.
         vm.convenio = {};
         vm.convenio.areas = [];
@@ -125,6 +127,7 @@
                 if (data.parte !== undefined) {
                     data.parteId = data.parte.parteId;
                     vm.convenio.partes.push(data);
+                    vm.partesCompromiso.push(data.parte);
                 }
             }, function () {
             });
@@ -188,6 +191,9 @@
            $scope.entidad = entidad;
            $scope.editEntity = editEntity;
            $scope.areas = vm.areas;
+           $scope.partes = vm.partes;
+           $scope.tipoAreas = vm.tipoAreas;
+           $scope.partesCompromiso = vm.partesCompromiso;
 
            //Agregado calendario con estilo de gobmx
            $(".calendarioGobMx").datepicker();
@@ -216,10 +222,9 @@
                nothingSelected: "Ninguno seleccionado"
            }
 
-           // Edit model 
+           // Assign the Edit model entity
            if ($scope.editEntity !== undefined) {
                $scope.entidad = $scope.editEntity;
-               console.log($scope.areas);
            }
 
            /* http://stackoverflow.com/questions/27323500/open-modal-inside-a-modal

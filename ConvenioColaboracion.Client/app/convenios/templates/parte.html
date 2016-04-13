@@ -5,7 +5,7 @@
     <div class="modal-header">
         <h3 class="modal-title">Agregar partes</h3>
     </div>
-    <div class="modal-body" ng-controller="ConvenioCtrl as vm">
+    <div class="modal-body">
         <div class="row">
             <div class="col-md-12">
                 <div class="form-group"
@@ -20,7 +20,7 @@
                             id="entidadDependencia"
                             class="form-control"
                             ng-model="entidad.parte"
-                            ng-options="parte.parte for parte in vm.partes track by parte.parteId"
+                            ng-options="parte.parte for parte in partes track by parte.parteId"
                             required></select>
                 </div>
             </div>
