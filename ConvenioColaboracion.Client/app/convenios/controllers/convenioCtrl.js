@@ -78,9 +78,9 @@
 
         // Display the toggle modal window for AREA.
         vm.toggleModalArea = function () {
-
             $scope.entidad = {};
 
+            // Open the modal window.
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: "app/convenios/templates/convenioArea.html",
@@ -94,6 +94,7 @@
                 }
             });
 
+            // Get modal window results.
             modalInstance.result.then(function (data) {
                 if (data.area !== undefined) {
                     data.areaId = data.area.areaId;
@@ -106,10 +107,10 @@
 
         // Display the toggle modal window for PARTE.
         vm.toggleModalParte = function (entity) {
-
             $scope.entidad = {};
             $scope.editEntity = entity;
 
+            // Open the modal window.
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: "app/convenios/templates/parte.html",
@@ -123,6 +124,7 @@
                 }
             });
 
+            // Get modal window results.
             modalInstance.result.then(function (data) {
                 if (data.parte !== undefined) {
                     data.parteId = data.parte.parteId;
@@ -135,10 +137,10 @@
 
         // Display de toggle modal window for COMPROMISO.
         vm.toggleModalCompromiso = function (entity) {
-
             $scope.entidad = {};
             $scope.editEntity = entity;
 
+            // Open the modal window.
             var modalInstance = $uibModal.open({
                 animation: $scope.animationsEnabled,
                 templateUrl: "app/convenios/templates/compromiso.html",
@@ -152,20 +154,25 @@
                 }
             });
 
+            // Get modal window results.
             modalInstance.result.then(function (data) {
                 if (data !== undefined) {
                     vm.convenio.compromisos.push(data);
                 }
-            }, function () {
-                ////console.log("Modal dismissed at: " + new Date());
+            },
+            // Dismiss the window and clean resources.
+            function () {
+                // Set the selected flag to false when we dismiss the modal window.
+                angular.forEach(vm.areas, function (area) {
+                    area.selected = false;
+                });
             });
         };
 
         // Submit data to the server
         vm.submit = function (isValid) {
-
             if (isValid) {
-                // send the information to the API
+                // Send the CONVENIO information to the API
                 new convenioResource(vm.convenio).$save().then(
                     function (nuevoConvenio) {
                         toastr.success("Convenio guardado correctamente.", "Exito.");
