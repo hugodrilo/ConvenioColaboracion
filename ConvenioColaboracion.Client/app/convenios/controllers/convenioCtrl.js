@@ -12,7 +12,9 @@
                     ["$scope",
                      "$uibModal",
                      "$window",
+                     "$stateParams",
                      "convenioResource",
+                     "convenioEditResource",
                      "materiaResource",
                      "subMateriaResource",
                      "areaResource",
@@ -24,7 +26,9 @@
     function ConvenioCtrl($scope,
                           $uibModal,
                           $window,
+                          $stateParams,
                           convenioResource,
+                          convenioEditResource,
                           materiaResource,
                           subMateriaResource,
                           areaResource,
@@ -189,6 +193,19 @@
             toastr.warning("Redireccionando...", "Info");
             $window.location.href = "#menuConvenio";
         };
+
+        /*Edit the convenio*/
+        if ($stateParams.id !== undefined && $stateParams.id > 0) {
+            var getConvenio = convenioEditResource.get({ id: $stateParams.id });
+
+            getConvenio.$promise.then(function (convenio) {
+                if (convenio !== undefined && convenio !== null) {
+
+                    // Asign the result values to the convenio
+                    vm.convenio = convenio;
+                }
+            });
+        }
     };
 
     // The Modal Instance controller
@@ -233,15 +250,5 @@
            if ($scope.editEntity !== undefined) {
                $scope.entidad = $scope.editEntity;
            }
-
-           /* http://stackoverflow.com/questions/27323500/open-modal-inside-a-modal
-            // Open second modal inside the modal
-           $scope.openSecond = function () {
-               var modalInstanceSecond = $modal.open({
-                   templateUrl: "mySecondModalContent.html",
-                   controller: "ModalInstanceCtrl
-               });
-           };
-           */
        });
 })();

@@ -11,14 +11,12 @@
         ["$scope",
          "$location",
          "convenioResource",
-         "convenioEditResource",
          ConsultaCtrl]);
 
     // The consulta controller function
     function ConsultaCtrl($scope,
                           $location,
-                          convenioResource,
-                          convenioEditResource) {
+                          convenioResource) {
         var vm = this;
         vm.convenios = [];
 
@@ -31,7 +29,6 @@
             if (id !== undefined) {
                 $scope.convenioId = id;
                 $location.path("/convenios/" + id);
-                convenioEditResource.query({ id: id });
             }
         }
 
