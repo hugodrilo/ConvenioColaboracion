@@ -9,6 +9,7 @@
         .module("common.services")
         .factory("convenioResource", ["$resource", "appSettings", convenioResource])
         .factory("convenioEditResource", ["$resource", "appSettings", convenioEditResource])
+        .factory("convenioUpdateResource", ["$resource", "appSettings", convenioUpdateResource])
         .factory("materiaResource", ["$resource", "appSettings", materiaResource])
         .factory("subMateriaResource", ["$resource", "appSettings", subMateriaResource])
         .factory("areaResource", ["$resource", "appSettings", areaResource])
@@ -23,6 +24,15 @@
     // convenio Edit resource
     function convenioEditResource($resource, appSettings) {
         return $resource(appSettings.serverPath + "/api/convenio/:id", { id: "@id" });
+    };
+
+    // convenio Update resource
+    function convenioUpdateResource($resource, appSettings) {
+        return $resource(appSettings.serverPath + "/api/convenio/:id",
+                        { id: "@id" },
+                        {
+                            'update': { method: 'PUT' }
+                        });
     };
 
     // materia resource

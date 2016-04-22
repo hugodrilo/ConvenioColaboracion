@@ -15,6 +15,7 @@
                      "$stateParams",
                      "convenioResource",
                      "convenioEditResource",
+                     "convenioUpdateResource",
                      "materiaResource",
                      "subMateriaResource",
                      "areaResource",
@@ -29,6 +30,7 @@
                           $stateParams,
                           convenioResource,
                           convenioEditResource,
+                          convenioUpdateResource,
                           materiaResource,
                           subMateriaResource,
                           areaResource,
@@ -166,10 +168,12 @@
             },
             // Dismiss the window and clean resources.
             function () {
-                // Set the selected flag to false when we dismiss the modal window.
-                angular.forEach(vm.areas, function (area) {
-                    area.selected = false;
-                });
+                if (editEntity !== undefined) {
+                    // Set the selected flag to false when we dismiss the modal window.
+                    angular.forEach(vm.areas, function (area) {
+                        area.selected = false;
+                    });
+                }
             });
         };
 
@@ -188,13 +192,26 @@
             }
         };
 
+        // Update the CONVENIO.
+        vm.update = function (isValid) {
+            if (isValid) {
+                // Send the CONVENIO information to the API
+                new convenioUpdateResource.update({ id: $stateParams.id }, vm.convenio).then(
+                    function (edited) {
+                        toastr.success("Convenio actualizado correctamente.", "Exito.");
+                    });
+            } else {
+                toastr.error("Favor de ingresar los valores requeridos.", "Error");
+            }
+        };
+
         // Cancel the operation and returns to the previous menu.
         vm.cancel = function () {
             toastr.warning("Redireccionando...", "Info");
             $window.location.href = "#menuConvenio";
         };
 
-        /*Edit the convenio*/
+        /*Get all the information to edit the convenio*/
         if ($stateParams.id !== undefined && $stateParams.id > 0) {
             var getConvenio = convenioEditResource.get({ id: $stateParams.id });
 
@@ -249,6 +266,11 @@
            // Assign the Edit model entity
            if ($scope.editEntity !== undefined) {
                $scope.entidad = $scope.editEntity;
+           } else {
+               // Set the selected flag to false is not edit mode.
+               angular.forEach($scope.areas, function (area) {
+                   area.selected = false;
+               });
            }
        });
 })();

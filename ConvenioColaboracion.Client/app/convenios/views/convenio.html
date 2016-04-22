@@ -328,19 +328,22 @@
                                   class="btn btn-primary pull-right"
                                   data-toggle="tooltip"
                                   data-placement="top"
-                                  ng-click="vm.submit(convenioForm.$valid)">
+                                  ng-click="vm.submit(convenioForm.$valid)"
+                                  ng-show="false">
                                 Guardar
                             </span>
                         </div>
-                        <!--<div class="col-md-2">
+                        <!--TODO: Arreglar el comportamiento de estos dos botones con una variable del lado del controlador-->
+                        <div class="col-md-2">
                             <span tabindex="1"
                                   class="btn btn-primary pull-right"
                                   data-toggle="tooltip"
                                   data-placement="top"
-                                  ng-click="vm.edit(convenioForm.$valid)">
+                                  ng-click="vm.update(convenioForm.$valid)"
+                                  ng-show="true">
                                 Editar
                             </span>
-                        </div>-->
+                        </div>
                     </div>
                 </div>
             </div>
