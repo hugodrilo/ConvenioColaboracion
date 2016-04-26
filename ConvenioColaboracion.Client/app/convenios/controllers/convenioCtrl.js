@@ -71,7 +71,13 @@
         // Changed value in the materia dropdown list
         vm.changedValueMateria = function (materia) {
             if (materia !== undefined && materia !== null) {
-                vm.subMaterias = subMateriaResource.query({ id: materia.materiaId });
+                subMateriaResource.query({ id: materia.materiaId }).$promise.then(function (subMaterias) {
+                    if (subMaterias !== undefined && subMaterias !== null) {
+                        vm.subMaterias = subMaterias;
+                    }
+                });
+
+                //// vm.subMaterias = subMateriaResource.query({ id: materia.materiaId });
             }
         };
 
@@ -184,8 +190,7 @@
                 new convenioResource(vm.convenio).$save().then(
                     function (nuevoConvenio) {
                         toastr.success("Convenio guardado correctamente.", "Exito.");
-                        //// TODO: Preguntar para donde redireccionar.
-                        ////$window.location.href = "#menuConvenio";
+                        $window.location.href = "#consulta";
                     });
             } else {
                 toastr.error("Favor de ingresar los valores requeridos.", "Error");
@@ -199,6 +204,7 @@
                 new convenioUpdateResource.update({ id: $stateParams.id }, vm.convenio).then(
                     function (edited) {
                         toastr.success("Convenio actualizado correctamente.", "Exito.");
+                        $window.location.href = "#consulta";
                     });
             } else {
                 toastr.error("Favor de ingresar los valores requeridos.", "Error");
@@ -213,10 +219,13 @@
 
         /*Get all the information to edit the convenio*/
         if ($stateParams.id !== undefined && $stateParams.id > 0) {
+            vm.convenio.materiaId = 0;
             var getConvenio = convenioEditResource.get({ id: $stateParams.id });
 
             getConvenio.$promise.then(function (convenio) {
                 if (convenio !== undefined && convenio !== null) {
+                    // Execute the changedValueMateria event manually to load the subMaterias
+                    vm.changedValueMateria(convenio.materia);
 
                     // Asign the result values to the convenio
                     vm.convenio = convenio;

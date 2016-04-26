@@ -29,10 +29,10 @@
     // convenio Update resource
     function convenioUpdateResource($resource, appSettings) {
         return $resource(appSettings.serverPath + "/api/convenio/:id",
-                        { id: "@id" },
-                        {
-                            'update': { method: 'PUT' }
-                        });
+        { id: "@id" },
+        {
+            'update': { method: 'PUT' }
+        });
     };
 
     // materia resource

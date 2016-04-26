@@ -142,11 +142,11 @@
                         <div class="col-md-10">
                             <div class="form-group">
                                 <label class="control-label"
-                                       for="submateria">
-                                    Submaterias
+                                       for="subMateria">
+                                    SubMaterias
                                 </label>
-                                <select name="submateria"
-                                        id="submateria"
+                                <select name="subMateria"
+                                        id="subMateria"
                                         class="form-control"
                                         ng-model="vm.convenio.subMateria"
                                         ng-options="materia.materia for materia in vm.subMaterias track by materia.materiaId"></select>
@@ -341,7 +341,7 @@
                                   data-placement="top"
                                   ng-click="vm.update(convenioForm.$valid)"
                                   ng-show="true">
-                                Editar
+                                Actualizar
                             </span>
                         </div>
                     </div>
