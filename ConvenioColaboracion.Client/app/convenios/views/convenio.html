@@ -329,7 +329,7 @@
                                   data-toggle="tooltip"
                                   data-placement="top"
                                   ng-click="vm.submit(convenioForm.$valid)"
-                                  ng-show="false">
+                                  ng-show={{vm.showGuardar}}>
                                 Guardar
                             </span>
                         </div>
@@ -340,7 +340,7 @@
                                   data-toggle="tooltip"
                                   data-placement="top"
                                   ng-click="vm.update(convenioForm.$valid)"
-                                  ng-show="true">
+                                  ng-show={{!vm.showGuardar}}>
                                 Actualizar
                             </span>
                         </div>

@@ -90,7 +90,7 @@
                 <div class="form-group">
                     <label class="control-label"
                            for="ponderacion">
-                        Ponderación (0 - 100%)
+                        Ponderación (%)
                     </label>
                     <input type="number"
                            name="ponderacion"
@@ -104,6 +104,6 @@
     </div>
     <div class="modal-footer">
         <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
-        <button class="btn btn-primary" type="button" ng-click="ok(compromisoForm.$valid)">Agregar</button>
+        <button class="btn btn-primary" type="button" ng-click="ok(compromisoForm.$valid)">{{entidad.btnSave}}</button>
     </div>
 </form>

@@ -38,6 +38,8 @@
                           parteResource) {
         var vm = this;
 
+        vm.showGuardar = true;
+
         // Load the form catalogs.
         vm.materias = [];
         vm.materias = materiaResource.query();
@@ -76,8 +78,6 @@
                         vm.subMaterias = subMaterias;
                     }
                 });
-
-                //// vm.subMaterias = subMateriaResource.query({ id: materia.materiaId });
             }
         };
 
@@ -219,7 +219,7 @@
 
         /*Get all the information to edit the convenio*/
         if ($stateParams.id !== undefined && $stateParams.id > 0) {
-            vm.convenio.materiaId = 0;
+            vm.showGuardar = false;
             var getConvenio = convenioEditResource.get({ id: $stateParams.id });
 
             getConvenio.$promise.then(function (convenio) {
@@ -239,6 +239,7 @@
        .module("convenioColaboracion")
        .controller("ModalInstanceCtrl", function ($scope, $uibModalInstance, entidad, editEntity, vm) {
            $scope.entidad = entidad;
+           $scope.entidad.btnSave = "Agregar";
            $scope.editEntity = editEntity;
            $scope.areas = vm.areas;
            $scope.partes = vm.partes;
@@ -274,7 +275,24 @@
 
            // Assign the Edit model entity
            if ($scope.editEntity !== undefined) {
+               // Load the partes compromiso for the institucion dropdown
+               $scope.partesCompromiso = vm.convenio.partesCompromiso;
+
+               if ($scope.editEntity.areas !== undefined && $scope.editEntity.areas !== null) {
+
+                   angular.forEach($scope.areas, function (area) {
+                       angular.forEach($scope.editEntity.areas, function (areaSeleccionada) {
+                           if (area.areaId === areaSeleccionada.areaId) {
+                               area.selected = true;
+                           }
+                       });
+                   });
+               }
+
+               // Set the entity values to edit.
                $scope.entidad = $scope.editEntity;
+
+               $scope.entidad.btnSave = "Actualizar";
            } else {
                // Set the selected flag to false is not edit mode.
                angular.forEach($scope.areas, function (area) {
