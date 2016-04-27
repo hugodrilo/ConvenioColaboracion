@@ -38,6 +38,7 @@
                           parteResource) {
         var vm = this;
 
+        // Show the Guardar button.
         vm.showGuardar = true;
 
         // Load the form catalogs.
@@ -294,10 +295,12 @@
 
                $scope.entidad.btnSave = "Actualizar";
            } else {
-               // Set the selected flag to false is not edit mode.
-               angular.forEach($scope.areas, function (area) {
-                   area.selected = false;
-               });
+               if ($scope.areas !== undefined && $scope.areas !== null) {
+                   // Set the selected flag to false is not edit mode.
+                   angular.forEach($scope.areas, function (area) {
+                       area.selected = false;
+                   });
+               }
            }
        });
 })();
