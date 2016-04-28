@@ -242,6 +242,7 @@
            $scope.entidad = entidad;
            $scope.entidad.btnSave = "Agregar";
            $scope.editEntity = editEntity;
+           var backup = {};
            $scope.areas = vm.areas;
            $scope.partes = vm.partes;
            $scope.tipoAreas = vm.tipoAreas;
@@ -260,8 +261,9 @@
                }
            };
 
-           // Cancel function to dismiss the modal window.
+           // Cancel function to dismiss the modal window and undo the changes to the original model.
            $scope.cancel = function () {
+               angular.copy(backup, $scope.entidad);
                $uibModalInstance.dismiss("cancelar");
            };
 
@@ -275,7 +277,7 @@
            }
 
            // Assign the Edit model entity
-           if ($scope.editEntity !== undefined) {
+           if ($scope.editEntity !== undefined && $scope.editEntity !== null) {
                // Load the partes compromiso for the institucion dropdown
                $scope.partesCompromiso = vm.convenio.partesCompromiso;
 
@@ -289,6 +291,9 @@
                        });
                    });
                }
+
+               /// Backup the original object
+               backup = angular.copy($scope.editEntity);
 
                // Set the entity values to edit.
                $scope.entidad = $scope.editEntity;
