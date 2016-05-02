@@ -21,6 +21,7 @@
                      "areaResource",
                      "tipoAreaResource",
                      "parteResource",
+                     "appSettings",
                      ConvenioCtrl]);
 
     // The Convenio controller function.
@@ -35,7 +36,8 @@
                           subMateriaResource,
                           areaResource,
                           tipoAreaResource,
-                          parteResource) {
+                          parteResource,
+                          appSettings) {
         var vm = this;
 
         // Show the Guardar button.
@@ -218,6 +220,13 @@
             $window.location.href = "#menuConvenio";
         };
 
+        // Download the file
+        vm.downloadFile = function (convenioId) {
+            if (convenioId !== undefined && convenioId !== null) {
+                var downloadPath = appSettings.serverPath + "/api/file/" + convenioId;
+                window.open(downloadPath, "_self", "");
+            }
+        }
         /*Get all the information to edit the convenio*/
         if ($stateParams.id !== undefined && $stateParams.id > 0) {
             vm.showGuardar = false;

@@ -294,7 +294,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
@@ -313,6 +312,17 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <a href=""
+                                   target="_self"
+                                   ng-show={{!vm.showGuardar}}
+                                   ng-click="vm.downloadFile(vm.convenio.convenioId)">{{ vm.convenio.nombreDocumento}}</a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="panel-footer">
                     <div class="row">
@@ -333,7 +343,6 @@
                                 Guardar
                             </span>
                         </div>
-                        <!--TODO: Arreglar el comportamiento de estos dos botones con una variable del lado del controlador-->
                         <div class="col-md-2">
                             <span tabindex="1"
                                   class="btn btn-primary pull-right"
