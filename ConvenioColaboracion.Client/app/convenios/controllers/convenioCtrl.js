@@ -58,13 +58,12 @@
         vm.partes = [];
         vm.partes = parteResource.query();
 
-        vm.partesCompromiso = [];
-
         // Initialize the object model for CONVENIO.
         vm.convenio = {};
         vm.convenio.areas = [];
         vm.convenio.partes = [];
         vm.convenio.compromisos = [];
+        vm.convenio.partesCompromiso = [];
         vm.message = "";
 
         // The GobMx calendar style.
@@ -100,6 +99,7 @@
                 animation: $scope.animationsEnabled,
                 templateUrl: "app/convenios/templates/convenioArea.html",
                 controller: "ModalInstanceCtrl",
+                backdrop: "static",
                 resolve: {
                     entidad: function () {
                         return $scope.entidad;
@@ -112,9 +112,29 @@
             // Get modal window results.
             modalInstance.result.then(function (data) {
                 if (data.area !== undefined) {
-                    data.areaId = data.area.areaId;
-                    data.tipoAreaId = data.tipoArea.tipoAreaId;
-                    vm.convenio.areas.push(data);
+                    // if we have elements in the array do not duplicate area values
+                    if (vm.convenio.areas.length > 0) {
+                        var areaExists = false;
+
+                        // Check if the element already exist in the collection
+                        angular.forEach(vm.convenio.areas, function (area) {
+                            if (area.areaId === data.area.areaId && area.tipoAreaId === data.tipoArea.tipoAreaId) {
+                                areaExists = true;
+                                alert("El área y tipo de área ya existen.");
+                            }
+                        });
+
+                        // If the area does not exists in the array we add the element
+                        if (!areaExists) {
+                            data.areaId = data.area.areaId;
+                            data.tipoAreaId = data.tipoArea.tipoAreaId;
+                            vm.convenio.areas.push(data);
+                        }
+                    } else {
+                        data.areaId = data.area.areaId;
+                        data.tipoAreaId = data.tipoArea.tipoAreaId;
+                        vm.convenio.areas.push(data);
+                    }
                 }
             }, function () {
             });
@@ -130,6 +150,7 @@
                 animation: $scope.animationsEnabled,
                 templateUrl: "app/convenios/templates/parte.html",
                 controller: "ModalInstanceCtrl",
+                backdrop: "static",
                 resolve: {
                     entidad: function () {
                         return $scope.entidad;
@@ -141,11 +162,29 @@
 
             // Get modal window results.
             modalInstance.result.then(function (data) {
-                if (data.parte !== undefined) {
+                if (vm.convenio.partes.length > 0 && vm.convenio.partesCompromiso.length > 0) {
+                    var parteExists = false;
+
+                    // Check if the element already exist in the collection
+                    angular.forEach(vm.convenio.partes, function (parte) {
+                        if (parte.parteId === data.parte.parteId) {
+                            parteExists = true;
+                            alert("La parte indicada ya existe.");
+                        }
+                    });
+
+                    // If the element does not exists in the array we add the element
+                    if (!parteExists) {
+                        data.parteId = data.parte.parteId;
+                        vm.convenio.partes.push(data);
+                        vm.convenio.partesCompromiso.push(data.parte);
+                    }
+                } else {
                     data.parteId = data.parte.parteId;
                     vm.convenio.partes.push(data);
-                    vm.partesCompromiso.push(data.parte);
+                    vm.convenio.partesCompromiso.push(data.parte);
                 }
+
             }, function () {
             });
         };
@@ -160,6 +199,7 @@
                 animation: $scope.animationsEnabled,
                 templateUrl: "app/convenios/templates/compromiso.html",
                 controller: "ModalInstanceCtrl",
+                backdrop: "static",
                 resolve: {
                     entidad: function () {
                         return $scope.entidad;
@@ -176,8 +216,8 @@
                 }
             },
             // Dismiss the window and clean resources.
-            function () {
-                if (editEntity !== undefined) {
+            function (result) {
+                if (result.editEntity !== undefined) {
                     // Set the selected flag to false when we dismiss the modal window.
                     angular.forEach(vm.areas, function (area) {
                         area.selected = false;
@@ -227,6 +267,7 @@
                 window.open(downloadPath, "_self", "");
             }
         }
+
         /*Get all the information to edit the convenio*/
         if ($stateParams.id !== undefined && $stateParams.id > 0) {
             vm.showGuardar = false;
@@ -255,7 +296,7 @@
            $scope.areas = vm.areas;
            $scope.partes = vm.partes;
            $scope.tipoAreas = vm.tipoAreas;
-           $scope.partesCompromiso = vm.partesCompromiso;
+           $scope.partesCompromiso = vm.convenio.partesCompromiso;
 
            //Agregado calendario con estilo de gobmx
            $(".calendarioGobMx").datepicker();
@@ -276,22 +317,9 @@
                $uibModalInstance.dismiss("cancelar");
            };
 
-           // Set the dropdown language options
-           $scope.localLang = {
-               selectAll: "Seleccionar todos",
-               selectNone: "Ninguno",
-               reset: "Deshacer",
-               search: "Buscar...",
-               nothingSelected: "Ninguno seleccionado"
-           }
-
            // Assign the Edit model entity
            if ($scope.editEntity !== undefined && $scope.editEntity !== null) {
-               // Load the partes compromiso for the institucion dropdown
-               $scope.partesCompromiso = vm.convenio.partesCompromiso;
-
                if ($scope.editEntity.areas !== undefined && $scope.editEntity.areas !== null) {
-
                    angular.forEach($scope.areas, function (area) {
                        angular.forEach($scope.editEntity.areas, function (areaSeleccionada) {
                            if (area.areaId === areaSeleccionada.areaId) {
@@ -315,6 +343,15 @@
                        area.selected = false;
                    });
                }
+           }
+
+           // Set the dropdown language options
+           $scope.localLang = {
+               selectAll: "Seleccionar todos",
+               selectNone: "Ninguno",
+               reset: "Deshacer",
+               search: "Buscar...",
+               nothingSelected: "Ninguno seleccionado"
            }
        });
 })();
