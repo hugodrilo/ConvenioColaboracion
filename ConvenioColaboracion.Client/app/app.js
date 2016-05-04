@@ -15,6 +15,8 @@
                                                         "ui.router",
                                                         "ui.bootstrap",
                                                         "isteven-multi-select"]);
+
+    // The application configuration section
     app.config(["$stateProvider",
                 "$urlRouterProvider",
 
@@ -90,6 +92,19 @@
                             controller: "EstadisticaCtrl as vm"
                         });
                 }]);
+
+    // The application run seccion. Allows to dismiss all modal window.
+    app.run([
+       "$rootScope", "$uibModalStack",
+       function ($rootScope, $uibModalStack) {
+           $rootScope.$on("$stateChangeStart", function () {
+               var top = $uibModalStack.getTop();
+               if (top) {
+                   $uibModalStack.dismiss(top.key);
+               }
+           });
+       }
+    ]);
 
     // Input file directive to upload a single file using FileReader.
     app.directive("fileread", [function () {
