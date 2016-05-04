@@ -85,9 +85,36 @@
 
         // Deletes an item from the specified array
         vm.deleteItemFromArray = function (array, item) {
-            if (array !== undefined && array !== null) {
-                array.splice(array.indexOf(item), 1);
-            }
+            $scope.entidad = {};
+            // define an empty object with empty convenio.
+            var emptyVm = { convenio: {} };
+
+            // Open the modal window.
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: "app/convenios/templates/dialog.html",
+                controller: "ModalInstanceCtrl",
+                backdrop: "static",
+                resolve: {
+                    entidad: function () {
+                        return $scope.entidad;
+                    },
+                    editEntity: undefined,
+                    vm: emptyVm
+                }
+            });
+
+            // Get modal window results.
+            modalInstance.result.then(function (result) {
+                if (result) {
+                    if (array !== undefined && array !== null) {
+                        array.splice(array.indexOf(item), 1);
+                    }
+                }
+            },
+            // Dismiss the window and clean resources.
+            function () {
+            });
         };
 
         // Display the toggle modal window for AREA.
@@ -231,7 +258,7 @@
             if (isValid) {
                 // Send the CONVENIO information to the API
                 new convenioResource(vm.convenio).$save().then(
-                    function (nuevoConvenio) {
+                    function () {
                         toastr.success("Convenio guardado correctamente.", "Exito.");
                         $window.location.href = "#consulta";
                     });
@@ -245,7 +272,7 @@
             if (isValid) {
                 // Send the CONVENIO information to the API
                 new convenioUpdateResource.update({ id: $stateParams.id }, vm.convenio).then(
-                    function (edited) {
+                    function () {
                         toastr.success("Convenio actualizado correctamente.", "Exito.");
                         $window.location.href = "#consulta";
                     });
@@ -300,6 +327,12 @@
 
            //Agregado calendario con estilo de gobmx
            $(".calendarioGobMx").datepicker();
+
+           // Boton de aceptar para la ventana modal.
+           $scope.aceptar = function () {
+               $scope.entidad = true;
+               $uibModalInstance.close($scope.entidad);
+           };
 
            // Boton de aceptar para la ventana modal.
            $scope.ok = function (isValid) {
