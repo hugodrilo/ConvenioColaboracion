@@ -189,29 +189,33 @@
 
             // Get modal window results.
             modalInstance.result.then(function (data) {
-                if (vm.convenio.partes.length > 0 && vm.convenio.partesCompromiso.length > 0) {
-                    var parteExists = false;
+                if (data.parte !== undefined) {
+                    // Assign the first item from de array.
+                    data.parte = data.parte[0];
 
-                    // Check if the element already exist in the collection
-                    angular.forEach(vm.convenio.partes, function (parte) {
-                        if (parte.parteId === data.parte.parteId) {
-                            parteExists = true;
-                            alert("La parte indicada ya existe.");
+                    if (vm.convenio.partes.length > 0 && vm.convenio.partesCompromiso.length > 0) {
+                        var parteExists = false;
+
+                        // Check if the element already exist in the collection
+                        angular.forEach(vm.convenio.partes, function (parte) {
+                            if (parte.parteId === data.parte.parteId) {
+                                parteExists = true;
+                                alert("La parte indicada ya existe.");
+                            }
+                        });
+
+                        // If the element does not exists in the array we add the element
+                        if (!parteExists) {
+                            data.parteId = data.parte.parteId;
+                            vm.convenio.partes.push(data);
+                            vm.convenio.partesCompromiso.push(data.parte);
                         }
-                    });
-
-                    // If the element does not exists in the array we add the element
-                    if (!parteExists) {
+                    } else {
                         data.parteId = data.parte.parteId;
                         vm.convenio.partes.push(data);
                         vm.convenio.partesCompromiso.push(data.parte);
                     }
-                } else {
-                    data.parteId = data.parte.parteId;
-                    vm.convenio.partes.push(data);
-                    vm.convenio.partesCompromiso.push(data.parte);
                 }
-
             }, function () {
             });
         };
@@ -359,6 +363,17 @@
                                area.selected = true;
                            }
                        });
+                   });
+               }
+
+               if ($scope.editEntity.parte !== undefined && $scope.editEntity.parte !== null) {
+                   $scope.editEntity.parte[0] = $scope.editEntity.parte;
+
+                   angular.forEach($scope.partes, function (parte) {
+
+                       if (parte.parteId === $scope.editEntity.parte[0].parteId) {
+                           parte.selected = true;
+                       }
                    });
                }
 

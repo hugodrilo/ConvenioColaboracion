@@ -16,12 +16,18 @@
                         Entidad o dependencia
                         <span class="text-danger">*</span>
                     </label>
-                    <select name="entidadDependencia"
-                            id="entidadDependencia"
-                            class="form-control"
-                            ng-model="entidad.parte"
-                            ng-options="parte.parte for parte in partes track by parte.parteId"
-                            required></select>
+                    <div name="entidadDependencia"
+                         id="entidadDependencia"
+                         isteven-multi-select
+                         input-model="partes"
+                         output-model="entidad.parte"
+                         button-label="parte"
+                         item-label="parte"
+                         tick-property="selected"
+                         translation="localLang"
+                         selection-mode="single"
+                         required>
+                    </div>
                 </div>
             </div>
         </div>

@@ -7,10 +7,10 @@
 
     angular
         .module("common.services",
-            ["ngResource"])
+        ["ngResource"])
         .constant("appSettings",
         {
             ////serverPath: "http://172.16.249.109:84" //// Dev server
-            serverPath: "http://localhost:60197"  /// Victor Localhost
+            serverPath: "http://localhost:60197"  //// Victor Localhost
         });
 }());

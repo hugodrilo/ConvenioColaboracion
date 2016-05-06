@@ -300,7 +300,7 @@
                                 <label class="control-label"
                                        for="rutaDocumento">
                                     Adjuntar Convenio Digitalizado
-                                    <span class="text-danger">*</span>
+                                    <span class="text-danger" ng-show="vm.showGuardar">*</span>
                                 </label>
                                 <input name="rutaDocumento"
                                        id="rutaDocumento"
@@ -308,7 +308,7 @@
                                        type="file"
                                        fileread="vm.convenio.documento"
                                        filename="vm.convenio.nombreDocumento"
-                                       required />
+                                       ng-required="vm.showGuardar" />
                             </div>
                         </div>
                     </div>
