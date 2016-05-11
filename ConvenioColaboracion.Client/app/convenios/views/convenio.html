@@ -241,6 +241,7 @@
                         <table class="table table-bordered table-responsive">
                             <thead class="thead-default">
                                 <tr>
+                                    <td>Número</td>
                                     <td>Institución responsable </td>
                                     <td>Compromiso</td>
                                     <td>Fecha estimada </td>
@@ -250,6 +251,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="compromisoModal in vm.convenio.compromisos">
+                                    <td>{{$index + 1}}</td>
                                     <td>{{compromisoModal.parte.parte}}</td>
                                     <td>{{compromisoModal.compromiso}}</td>
                                     <td>{{compromisoModal.fechaCompromiso}}</td>

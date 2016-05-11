@@ -275,7 +275,7 @@
         vm.update = function (isValid) {
             if (isValid) {
                 // Send the CONVENIO information to the API
-                new convenioUpdateResource.update({ id: $stateParams.id }, vm.convenio).then(
+                new convenioUpdateResource.update({ id: $stateParams.id }, vm.convenio).$promise.then(
                     function () {
                         toastr.success("Convenio actualizado correctamente.", "Exito.");
                         $window.location.href = "#consulta";
