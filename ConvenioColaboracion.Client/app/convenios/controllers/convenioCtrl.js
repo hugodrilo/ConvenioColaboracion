@@ -64,6 +64,7 @@
         vm.convenio.partes = [];
         vm.convenio.compromisos = [];
         vm.convenio.partesCompromiso = [];
+        vm.ponderacionTotal = 0;
         vm.message = "";
 
         // The GobMx calendar style.
@@ -257,6 +258,19 @@
             });
         };
 
+        // Cancel the operation and returns to the previous menu.
+        vm.calculaPorcentajeTotal = function () {
+            var sum = 0;
+
+            angular.forEach(vm.convenio.compromisos, function (compromiso) {
+                if (compromiso !== undefined && compromiso !== null) {
+                    sum += compromiso.ponderacion;
+                }
+            });
+
+            return sum;
+        };
+
         // Submit data to the server
         vm.submit = function (isValid) {
             if (isValid) {
@@ -311,6 +325,9 @@
 
                     // Asign the result values to the convenio
                     vm.convenio = convenio;
+
+                    // Get the total percentage 
+                    vm.ponderacionTotal = vm.calculaPorcentajeTotal();
                 }
             });
         }
@@ -328,6 +345,8 @@
            $scope.partes = vm.partes;
            $scope.tipoAreas = vm.tipoAreas;
            $scope.partesCompromiso = vm.convenio.partesCompromiso;
+
+           console.log("Convenio controlador");
 
            //Agregado calendario con estilo de gobmx
            $(".calendarioGobMx").datepicker();
