@@ -5,7 +5,7 @@
  *  - Define each controller as a separate .js file
  *  - Name the controller in Pascal case
  *  - Suffix the controller with "Controller" or "Ctrl"
- *  - Wrap the controlle in an IIFE --> (function () {"use strict";})();
+ *  - Wrap the controller in an IIFE --> (function () {"use strict";})();
  */
 
 (function () {
