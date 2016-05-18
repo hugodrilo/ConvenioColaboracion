@@ -1,6 +1,6 @@
-﻿/** convenioDetailsCtrl.js 
- * Created by hugodrilo
- **/
+﻿/* convenioDetailsCtrl.js 
+ * Created by arquitectonet2
+ */
 
 (function () {
     "use strict";

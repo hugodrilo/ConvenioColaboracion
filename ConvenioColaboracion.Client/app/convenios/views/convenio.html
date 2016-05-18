@@ -10,10 +10,11 @@
         <li class="active">Nuevo convenio</li>
     </ol>
 </div>
-
-<div class="col-md-10 col-md-offset-1" ng-controller="ConvenioCtrl as vm">
-    <form id="formularioConvenio"
-          role="form">
+<div class="col-md-10 col-md-offset-1">
+    <form id="convenioForm"
+          name="convenioForm"
+          role="form"
+          novalidate>
         <div>
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -22,34 +23,40 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-5">
-                            <div class="form-group">
+                            <div class="form-group"
+                                 ng-class="{'has-error': convenioForm.numeroConvenio.$invalid &&
+                                                         convenioForm.numeroConvenio.$dirty}">
                                 <label class="control-label"
-                                       for="NumeroConvenio">
+                                       for="numeroConvenio">
                                     Número de convenio
                                     <span class="text-danger">*</span>
                                 </label>
                                 <input type="text"
-                                       name="NumeroConvenio"
-                                       id="NumeroConvenio"
+                                       name="numeroConvenio"
+                                       id="numeroConvenio"
                                        class="form-control"
                                        placeholder="Número de convenio"
-                                       ng-model="vm.convenio.numeroConvenio" />
+                                       ng-model="vm.convenio.numeroConvenio"
+                                       required />
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-10">
-                            <div class="form-group">
+                            <div class="form-group"
+                                 ng-class="{'has-error': convenioForm.convenio.$invalid &&
+                                                         convenioForm.convenio.$dirty}">
                                 <label class="control-label"
-                                       for="Convenio">
-                                    Convenio
+                                       for="convenio">
+                                    Instrumento de colaboración
                                     <span class="text-danger">*</span>
                                 </label>
-                                <textarea name="Convenio"
-                                          id="Convenio"
+                                <textarea name="convenio"
+                                          id="convenio"
                                           class="form-control"
-                                          placeholder="Convenio"
-                                          ng-model="vm.convenio.convenio"></textarea>
+                                          placeholder="Nombre completo del Instrumento de Colaboración, pero debe tener palabras clave que ayuden a su fácil identificación"
+                                          ng-model="vm.convenio.convenio"
+                                          required></textarea>
                             </div>
                         </div>
                     </div>
@@ -60,15 +67,20 @@
                             </label>
                         </div>
                         <div class="col-md-5">
-                            <div class="form-group datepicker-group">
+                            <div class="form-group datepicker-group"
+                                 ng-class="{'has-error': convenioForm.fechaSuscripcion.$invalid &&
+                                                         convenioForm.fechaSuscripcion.$dirty}">
                                 <label class="control-label"
                                        for="fechaSuscripcion">
                                     Fecha de suscripción
+                                    <span class="text-danger">*</span>
                                 </label>
                                 <input class="form-control calendarioGobMx"
+                                       name="fechaSuscripcion"
                                        id="fechaSuscripcion"
                                        type="text"
-                                       ng-model="vm.convenio.fechaSuscripcion">
+                                       ng-model="vm.convenio.fechaSuscripcion"
+                                       required>
                                 <span class="glyphicon glyphicon-calendar"
                                       aria-hidden="true">
                                 </span>
@@ -81,6 +93,7 @@
                                     Fecha de conclusión:
                                 </label>
                                 <input class="form-control calendarioGobMx"
+                                       name="fechaConclusion"
                                        id="fechaConclusion"
                                        type="text"
                                        ng-model="vm.convenio.fechaTermino">
@@ -94,52 +107,34 @@
                         <div class="col-md-10">
                             <div class="form-group">
                                 <label class="control-label"
-                                       for="ResumenConvenio">
+                                       for="resumenConvenio">
                                     Resumen (Objetivo del convenio):
-                                    <span class="text-danger">*</span>
                                 </label>
-                                <textarea name="ResumenConvenio"
-                                          id="ResumenConvenio"
+                                <textarea name="resumenConvenio"
+                                          id="resumenConvenio"
                                           class="form-control"
-                                          placeholder="Resumen del convenio"
+                                          placeholder="Objeto del Documento Cláusula"
                                           ng-model="vm.convenio.resumen"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-5">
-                            <div class="form-group">
+                        <div class="col-md-10">
+                            <div class="form-group"
+                                 ng-class="{'has-error': convenioForm.materia.$invalid &&
+                                                         convenioForm.materia.$dirty}">
                                 <label class="control-label"
-                                       for="MateriaContenido">
+                                       for="materia">
                                     Materia del convenio
                                     <span class="text-danger">*</span>
                                 </label>
-                                <select name="MateriaContenido"
-                                        id="MateriaContenido"
+                                <select name="materia"
+                                        id="materia"
                                         class="form-control"
-                                        ng-model="vm.convenio.materiaId">
-                                    <option value="materia-1">Internacional</option>
-                                    <option value="materia-2">Gubernamental</option>
-                                    <option value="materia-3">Sociedad civil</option>
-                                    <option value="materia-4">Académico</option>
-                                </select><br>
-                            </div>
-                        </div>
-                        <div class="col-md-5">
-                            <div class="form-group">
-                                <label class="control-label"
-                                       for="Submaterias">
-                                    Submaterias
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <select name="Submaterias"
-                                        id="Submaterias"
-                                        class="form-control"
-                                        ng-model="vm.convenio.submateriaId">
-                                    <option value="submateria-1">Transparencia y combate a la corrupción</option>
-                                    <option value="submateria-2">Medidas contra la discriminación</option>
-                                    <option value="submateria-3">Contrataciones Púbicas</option>
-                                </select><br>
+                                        ng-model="vm.convenio.materia"
+                                        ng-options="materia.materia for materia in vm.materias track by materia.materiaId"
+                                        required
+                                        ng-change="vm.changedValueMateria(vm.convenio.materia)"></select>
                             </div>
                         </div>
                     </div>
@@ -147,68 +142,233 @@
                         <div class="col-md-10">
                             <div class="form-group">
                                 <label class="control-label"
-                                       for="AreaVinculante">
-                                    Area vinculante
-                                    <span class="text-danger">*</span>
+                                       for="subMateria">
+                                    SubMaterias
                                 </label>
-                                <select name="AreaVinculante"
-                                        id="AreaVinculante"
+                                <select name="subMateria"
+                                        id="subMateria"
                                         class="form-control"
-                                        ng-model="vm.convenio.areaVinculanteId">
-                                    <option value="areaVinculante-1">Área vinculante 1 </option>
-                                    <option value="areaVinculante-2">Área vinculante 2</option>
-                                </select><br>
+                                        ng-model="vm.convenio.subMateria"
+                                        ng-options="materia.materia for materia in vm.subMaterias track by materia.materiaId"></select>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div>
-                    Partes firmantes:
-                    <table class="table table-bordered table-responsive">
-                        <thead>
-                            <tr>
-                                <td>Entidad o dependencia</td>
-                                <td>Representante legal </td>
-                                <td>Cargo</td>
-                                <td>Teléfono </td>
-                                <td>Correo electrónico</td>
-                                <td>Domicilio</td>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
-                <div>
-                    Compromisos:
-                    <table class="table table-bordered table-responsive">
-                        <thead>
-                            <tr>
-                                <td># de compromiso</td>
-                                <td>Institución responsable </td>
-                                <td>Compromiso</td>
-                                <td>Fecha estimada </td>
-                                <td>Área vinculante</td>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+                    <div class="row">
+                        <label class="control-label">
+                            Área(s) vinculante(s):
+                        </label>
+                        <table class="table table-bordered table-responsive">
+                            <thead class="thead-default">
+                                <tr>
+                                    <td>Área</td>
+                                    <td>Tipo de área</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="areaModal in vm.convenio.areas">
+                                    <td>{{areaModal.area.area}}</td>
+                                    <td>{{areaModal.tipoArea.tipoArea}}</td>
+                                    <td>
+                                        <a href="" ng-click="vm.deleteItemFromArray(vm.convenio.areas, areaModal)">
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                            </tfoot>
+                        </table>
+                        <div class="col-md-offset-1">
+                            <button id="addArea"
+                                    name="addArea"
+                                    class="btn btn-success pull-right"
+                                    ng-click="vm.toggleModalArea()">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="control-label">
+                            Partes firmantes:
+                        </label>
+                        <table class="table table-bordered table-responsive">
+                            <thead class="thead-default">
+                                <tr>
+                                    <td>Entidad o dependencia</td>
+                                    <td>Representante legal </td>
+                                    <td>Cargo</td>
+                                    <td>Teléfono </td>
+                                    <td>Correo electrónico</td>
+                                    <td>Domicilio</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="parteModal in vm.convenio.partes">
+                                    <td>{{parteModal.parte.parte}}</td>
+                                    <td>{{parteModal.representante}}</td>
+                                    <td>{{parteModal.cargo}}</td>
+                                    <td>{{parteModal.telefono}}</td>
+                                    <td>{{parteModal.correoElectronico}}</td>
+                                    <td>{{parteModal.domicilio}}</td>
+                                    <td>
+                                        <a href="" ng-click="vm.toggleModalParte(parteModal)">
+                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="" ng-click="vm.deleteItemFromArray(vm.convenio.partes, parteModal)">
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                            </tfoot>
+                        </table>
+                        <div class="col-md-offset-1">
+                            <button id="addParte"
+                                    name="addParte"
+                                    class="btn btn-success pull-right"
+                                    ng-click="vm.toggleModalParte(undefined)">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="control-label">
+                            Compromisos:
+                        </label>
+                        <table class="table table-bordered table-responsive">
+                            <thead>
+                                <tr>
+                                    <td>Número</td>
+                                    <td>Institución responsable</td>
+                                    <td>Compromiso</td>
+                                    <td>Fecha estimada</td>
+                                    <td>Área vinculante</td>
+                                    <td>Ponderación</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="compromisoModal in vm.convenio.compromisos">
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{compromisoModal.parte.parte}}</td>
+                                    <td>{{compromisoModal.compromiso}}</td>
+                                    <td>{{compromisoModal.fechaCompromiso}}</td>
+                                    <td> <span ng-repeat="area in compromisoModal.areas"> {{area.area}}</span></td>
+                                    <td>{{compromisoModal.ponderacion}}</td>
+                                    <td>
+                                        <a href="" ng-click="vm.toggleModalCompromiso(compromisoModal)">
+                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="" ng-click="vm.deleteItemFromArray(vm.convenio.compromisos, compromisoModal)">
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>Total</td>
+                                    <td>{{vm.ponderacionTotal}} %</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+
+                            </tfoot>
+                        </table>
+                        <div class="col-md-offset-1">
+                            <button id="addCompromiso"
+                                    name="addCompromiso"
+                                    class="btn btn-success pull-right"
+                                    ng-click="vm.toggleModalCompromiso(undefined)">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <label class="control-label"
+                                       for="comentarios">
+                                    Comentarios:
+                                </label>
+                                <textarea name="comentarios"
+                                          id="comentarios"
+                                          class="form-control"
+                                          placeholder="Comentarios"
+                                          ng-model="vm.convenio.comentarios"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label"
+                                       for="rutaDocumento">
+                                    Adjuntar Convenio Digitalizado
+                                    <span class="text-danger" ng-show="vm.showGuardar">*</span>
+                                </label>
+                                <input name="rutaDocumento"
+                                       id="rutaDocumento"
+                                       placeholder="Ruta del documento"
+                                       type="file"
+                                       fileread="vm.convenio.documento"
+                                       filename="vm.convenio.nombreDocumento"
+                                       ng-required="vm.showGuardar" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <a href=""
+                                   target="_self"
+                                   ng-show={{!vm.showGuardar}}
+                                   ng-click="vm.downloadFile(vm.convenio.convenioId)">{{ vm.convenio.nombreDocumento}}</a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="panel-footer">
                     <div class="row">
-                        <div class="col-md-3"><span class="text-danger">Campos obligatorios</span></div>
-                        <div class="col-md-offset-5 col-md-2">
+                        <div class="col-md-offset-6 col-md-2">
                             <span tabindex="0"
+                                  class="btn btn-default pull-right"
+                                  ng-click="vm.cancel()">
+                                Cancelar
+                            </span>
+                        </div>
+                        <div class="col-md-2">
+                            <span tabindex="1"
                                   class="btn btn-primary pull-right"
                                   data-toggle="tooltip"
                                   data-placement="top"
-                                  ng-click="vm.submit()">
+                                  ng-click="vm.submit(convenioForm.$valid)"
+                                  ng-show={{vm.showGuardar}}>
                                 Guardar
                             </span>
                         </div>
                         <div class="col-md-2">
-                            <span tabindex="0"
-                                  class="btn btn-default pull-right">
-                                Cancelar
+                            <span tabindex="1"
+                                  class="btn btn-primary pull-right"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  ng-click="vm.update(convenioForm.$valid)"
+                                  ng-show={{!vm.showGuardar}}>
+                                Actualizar
                             </span>
                         </div>
                     </div>

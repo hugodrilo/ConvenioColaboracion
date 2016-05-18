@@ -8,30 +8,62 @@
     </ol>
 </div>
 
-
 <div id="consulta">
-    <h2>
-        Consulta
-    </h2>
-    <hr class="red" />
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Convenios
+        </div>
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Edición</td>
+                        <td>Número convenio</td>
+                        <td>Convenio</td>
+                        <td>Resumen</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+                        <td><a href="" ng-click="vm.getConvenioById(row.convenioId)">{{ row.numeroConvenio }}</a></td>
+                        <td>{{ row.numeroConvenio }}</td>
+                        <td>{{ row.convenio }}</td>
+                        <td>{{ row.resumen }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="paginationSection" name="paginationSection">
+                Ver <select name="mySelect"
+                            id="mySelect"
+                            ng-model="viewBy"
+                            ng-change="setItemsPerPage(viewBy)">
+                    <option selected="selected">5</option>
+                    <option>10</option>
+                    <option>20</option>
+                    <option>30</option>
+                    <option>40</option>
+                    <option>50</option>
+                </select> elementos por página.
 
-    <div class="panel-body">
-        <table class="table">
+                <uib-pagination boundary-links="true"
+                                ng-model="currentPage"
+                                ng-change="pageChanged()"
+                                class="pagination-md"
+                                total-items="totalItems"
+                                items-per-page="itemsPerPage"
+                                previous-text="&lsaquo;"
+                                next-text="&rsaquo;"
+                                first-text="&laquo;"
+                                last-text="&raquo;">
+                </uib-pagination>
+                <br />
+                <pre>Página seleccionada: {{currentPage}}</pre>
+            </div>
+        </div>
 
-            <thead>
-                <tr>
-                    <td>Nùmero convenio</td>
-                    <td>Convenio</td>
-                    <td>Resumen</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="convenio in vm.convenios">
-                    <td>{{ convenio.numeroConvenio }}</td>
-                    <td>{{ convenio.convenio }}</td>
-                    <td>{{ convenio.resumen }}</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="panel-footer">
+            <div class="row">
+            </div>
+        </div>
     </div>
 </div>

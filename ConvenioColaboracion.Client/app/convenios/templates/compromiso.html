@@ -1,0 +1,109 @@
+﻿<form id="compromisoForm"
+      name="compromisoForm"
+      role="form"
+      novalidate>
+    <div class="modal-header">
+        <h3 class="modal-title">Agregar compromiso</h3>
+    </div>
+    <!--Tomado controlador de menu convenio para cargar el calendario, revisar si se puede crear un controlador que active el calendario-->
+    <div class="modal-body" ng-controller="MenuConvenioCtrl as vm">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group"
+                     ng-class="{'has-error': compromisoForm.institucion.$invalid &&
+                                             compromisoForm.institucion.$dirty}">
+                    <label class="control-label"
+                           for="institucion">
+                        Institución
+                        <span class="text-danger">*</span>
+                    </label>
+                    <select name="institucion"
+                            id="institucion"
+                            class="form-control"
+                            ng-model="entidad.parte"
+                            ng-options="parte.parte for parte in partesCompromiso track by parte.parteId"
+                            required></select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group"
+                     ng-class="{'has-error': compromisoForm.compromiso.$invalid &&
+                                             compromisoForm.compromiso.$dirty}">
+                    <label class="control-label"
+                           for="compromiso">
+                        Compromiso
+                        <span class="text-danger">*</span>
+                    </label>
+                    <textarea name="compromiso"
+                              id="compromiso"
+                              class="form-control"
+                              placeholder="Compromiso"
+                              ng-model="entidad.compromiso"
+                              required></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group datepicker-group">
+                    <label class="control-label"
+                           for="fechaEstimada">
+                        Fecha estimada de cumplimiento
+                    </label>
+                    <input class="form-control calendarioGobMx"
+                           name="fechaEstimada"
+                           id="fechaEstimada"
+                           type="text"
+                           ng-model="entidad.fechaCompromiso">
+                    <span class="glyphicon glyphicon-calendar"
+                          aria-hidden="true">
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label"
+                           for="areaVinculante">
+                        Area responsable
+                        <span class="text-danger">*</span>
+                    </label>
+                    <div name="areaVinculante"
+                         id="areaVinculante"
+                         isteven-multi-select
+                         input-model="areas"
+                         output-model="entidad.areas"
+                         button-label="area"
+                         item-label="area"
+                         tick-property="selected"
+                         translation="localLang"
+                         required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label"
+                           for="ponderacion">
+                        Ponderación (%)
+                    </label>
+                    <input type="number"
+                           name="ponderacion"
+                           id="ponderacion"
+                           class="form-control"
+                           ng-model="entidad.ponderacion"
+                           min="0" max="100">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
+        <button class="btn btn-primary" type="button" ng-click="ok(compromisoForm.$valid)">{{entidad.btnSave}}</button>
+    </div>
+</form>

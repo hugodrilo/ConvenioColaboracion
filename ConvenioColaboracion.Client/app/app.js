@@ -12,7 +12,11 @@
     "use strict";
 
     var app = angular.module("convenioColaboracion", ["common.services",
-                                                        "ui.router"]);
+                                                        "ui.router",
+                                                        "ui.bootstrap",
+                                                        "isteven-multi-select"]);
+
+    // The application configuration section
     app.config(["$stateProvider",
                 "$urlRouterProvider",
 
@@ -36,6 +40,12 @@
                         // Convenio view
                         .state("convenio", {
                             url: "/convenios",
+                            templateUrl: "app/convenios/views/convenio.html",
+                            controller: "ConvenioCtrl as vm"
+                        })
+                        // Convenio Edit view
+                        .state("convenioEdit", {
+                            url: "/convenios/:id",
                             templateUrl: "app/convenios/views/convenio.html",
                             controller: "ConvenioCtrl as vm"
                         })
@@ -80,34 +90,41 @@
                             url: "/estadistica",
                             templateUrl: "app/estadisticas/views/estadisticaView.html",
                             controller: "EstadisticaCtrl as vm"
-                        })
-
-                    ////// TODO: Pendiente pensar la edicion de un convenio
-                    ////// Convenio Edit view
-                    ////.state("convenio", {
-                    ////    url: "/convenios/edit/:convenioId",
-                    ////    templateUrl: "app/convenios/views/convenioEditView.html",
-                    ////    controller: "ConvenioCtrl as vm"
-                    ////})
-                    ;
+                        });
                 }]);
 
-    //app.directive('datepicker', function () {
-    //    return {
-    //        restrict: 'A',
-    //        require: 'ngModel',
-    //        link: function (scope, element, attrs, ngModelCtrl) {
-    //            $(function () {
-    //                element.datepicker({
-    //                    dateFormat: 'dd/mm/yy',
-    //                    onSelect: function (date) {
-    //                        scope.$apply(function () {
-    //                            ngModelCtrl.$setViewValue(date);
-    //                        });
-    //                    }
-    //                });
-    //            });
-    //        }
-    //    }
-    //});
+    // The application run seccion. Allows to dismiss all modal window.
+    app.run([
+       "$rootScope", "$uibModalStack",
+       function ($rootScope, $uibModalStack) {
+           $rootScope.$on("$stateChangeStart", function () {
+               var top = $uibModalStack.getTop();
+               if (top) {
+                   $uibModalStack.dismiss(top.key);
+               }
+           });
+       }
+    ]);
+
+    // Input file directive to upload a single file using FileReader.
+    app.directive("fileread", [function () {
+        return {
+            scope: {
+                fileread: "=",
+                filename: "="
+            },
+            link: function (scope, element, attributes) {
+                element.bind("change", function (changeEvent) {
+                    var reader = new FileReader();
+                    reader.onload = function (loadEvent) {
+                        scope.$apply(function () {
+                            scope.fileread = loadEvent.target.result;
+                            scope.filename = changeEvent.target.files[0].name;
+                        });
+                    }
+                    reader.readAsDataURL(changeEvent.target.files[0]);
+                });
+            }
+        }
+    }]);
 })();

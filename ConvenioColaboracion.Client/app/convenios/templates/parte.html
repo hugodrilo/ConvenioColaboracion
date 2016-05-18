@@ -1,0 +1,129 @@
+﻿<form id="parteForm"
+      name="parteForm"
+      role="form"
+      novalidate>
+    <div class="modal-header">
+        <h3 class="modal-title">Agregar partes</h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group"
+                     ng-class="{'has-error': parteForm.entidadDependencia.$invalid &&
+                                             parteForm.entidadDependencia.$dirty}">
+                    <label class="control-label"
+                           for="entidadDependencia">
+                        Entidad o dependencia
+                        <span class="text-danger">*</span>
+                    </label>
+                    <div name="entidadDependencia"
+                         id="entidadDependencia"
+                         isteven-multi-select
+                         input-model="partes"
+                         output-model="entidad.parte"
+                         button-label="parte"
+                         item-label="parte"
+                         tick-property="selected"
+                         translation="localLang"
+                         selection-mode="single"
+                         required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group"
+                     ng-class="{'has-error': parteForm.representanteLegal.$invalid &&
+                                             parteForm.representanteLegal.$dirty}">
+                    <label class="control-label"
+                           for="representanteLegal">
+                        Representante legal
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input type="text"
+                           name="representanteLegal"
+                           id="representanteLegal"
+                           class="form-control"
+                           placeholder="Representante legal"
+                           ng-model="entidad.representante"
+                           required />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group"
+                     ng-class="{'has-error': parteForm.cargo.$invalid &&
+                                             parteForm.cargo.$dirty}">
+                    <label class="control-label"
+                           for="cargo">
+                        Cargo
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input type="text"
+                           name="cargo"
+                           id="cargo"
+                           class="form-control"
+                           placeholder="Cargo"
+                           ng-model="entidad.cargo"
+                           required />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label"
+                           for="telefono">
+                        Teléfono
+                    </label>
+                    <input type="text"
+                           name="telefono"
+                           id="telefono"
+                           class="form-control"
+                           placeholder="Teléfono"
+                           ng-model="entidad.telefono" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group"
+                     ng-class="{'has-error': parteForm.correoElectronico.$invalid &&
+                                             parteForm.correoElectronico.$dirty}">
+                    <label class="control-label"
+                           for="correoElectronico">
+                        Correo electrónico
+                    </label>
+                    <input type="email"
+                           name="correoElectronico"
+                           id="correoElectronico"
+                           class="form-control"
+                           placeholder="Correo electrónico"
+                           ng-model="entidad.correoElectronico" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label"
+                           for="domicilio">
+                        Domicilio
+                    </label>
+                    <input type="text"
+                           name="domicilio"
+                           id="domicilio"
+                           class="form-control"
+                           placeholder="Domicilio"
+                           ng-model="entidad.domicilio" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
+        <button class="btn btn-primary" type="button" ng-click="ok(parteForm.$valid)">{{entidad.btnSave}}</button>
+    </div>
+</form>

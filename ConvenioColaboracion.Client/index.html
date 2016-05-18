@@ -1,21 +1,25 @@
-﻿<!DOCTYPE html>
+﻿<!--index.html-->
+<!DOCTYPE html>
 <html>
 <head>
     <title>Convenios de colaboración</title>
     <meta charset="utf-8" />
 
     <!--Library scripts-->
-    <script src="Scripts/jquery-2.2.0.min.js"></script>
+    <script src="Scripts/jquery-2.2.3.min.js"></script>
     <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-resource.min.js"></script>
     <script src="Scripts/angular-ui-router.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-resource.js"></script>
-    
+    <script src="Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="Scripts/toastr.min.js"></script>
+    <script src="Scripts/isteven-multi-select.js"></script>
 
     <!--Application script-->
     <script src="app/app.js"></script>
 
     <!--Services-->
     <script src="common/services/common.services.js"></script>
+
     <!--Resources-->
     <script src="common/resources/convenioResource.js"></script>
 
@@ -35,6 +39,8 @@
     <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
 
     <!--Local style sheets-->
+    <link href="Content/toastr.css" rel="stylesheet" />
+    <link href="Content/isteven-multi-select.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
 </head>
 <body ng-app="convenioColaboracion">
