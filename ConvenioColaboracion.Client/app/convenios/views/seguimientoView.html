@@ -11,6 +11,40 @@
     </ol>
 </div>
 
-<div>
-    Seguimiento..
+<div id="seguimiento">
+    <form id="seguimientoForm"
+          name="seguimientoForm"
+          role="form"
+          novalidate>
+        <div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Seguimiento de convenio
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label class="control-label"
+                                       for="numeroConvenio">
+                                    Número de convenio
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <span name="numeroConvenio"
+                                      id="numeroConvenio"
+                                      class="form-control"
+                                      ng-model="vm.numeroConvenio">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>

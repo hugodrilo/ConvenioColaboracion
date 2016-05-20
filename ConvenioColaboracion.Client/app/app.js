@@ -49,6 +49,12 @@
                             templateUrl: "app/convenios/views/convenio.html",
                             controller: "ConvenioCtrl as vm"
                         })
+                        // Busqueda view
+                        .state("busqueda", {
+                            url: "/busqueda",
+                            templateUrl: "app/convenios/views/busquedaView.html",
+                            controller: "BusquedaCtrl as vm"
+                        })
                         // Seguimiento view
                         .state("seguimiento", {
                             url: "/seguimiento",

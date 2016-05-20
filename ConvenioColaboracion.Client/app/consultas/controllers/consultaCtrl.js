@@ -37,7 +37,7 @@
             }
         });
 
-        // Set the page number
+        // Set the page number.
         $scope.setPage = function (pageNo) {
             $scope.currentPage = pageNo;
         };
@@ -60,8 +60,5 @@
                 $location.path("/convenios/" + id);
             }
         }
-
-        // The gob.mx calendar
-        $(".calendarioGobMx").datepicker();
     };
 })();

@@ -14,7 +14,8 @@
         .factory("subMateriaResource", ["$resource", "appSettings", subMateriaResource])
         .factory("areaResource", ["$resource", "appSettings", areaResource])
         .factory("tipoAreaResource", ["$resource", "appSettings", tipoAreaResource])
-        .factory("parteResource", ["$resource", "appSettings", parteResource]);
+        .factory("parteResource", ["$resource", "appSettings", parteResource])
+        .factory("busquedaResource", ["$resource", "appSettings", busquedaResource]);
 
     // convenio resource
     function convenioResource($resource, appSettings) {
@@ -58,5 +59,10 @@
     // parte resource
     function parteResource($resource, appSettings) {
         return $resource(appSettings.serverPath + "/api/parte/");
+    };
+
+    // busqueda resource
+    function busquedaResource($resource, appSettings) {
+        return $resource(appSettings.serverPath + "/api/busqueda/:searchText", { searchText: "@searchText" });
     };
 }());

@@ -7,13 +7,13 @@
 
     angular
         .module("convenioColaboracion")
-        .controller("SeguimientoCtrl",
-        SeguimientoCtrl);
+        .controller("SeguimientoCtrl", ["$scope", SeguimientoCtrl]);
 
-    function SeguimientoCtrl() {
+    function SeguimientoCtrl($scope) {
         var vm = this;
 
-        $(".calendarioGobMx").datepicker();
-    };
+        // Get the general convenio info
 
+
+    };
 })();
