@@ -1,4 +1,4 @@
-﻿/* busquedaCtrl.js 
+﻿/* busquedaConvenioCtrl.js 
  * Created by arquitectonet2
  */
 
@@ -7,19 +7,19 @@
 
     angular
         .module("convenioColaboracion")
-        .controller("BusquedaCtrl", [
+        .controller("BusquedaConvenioCtrl", [
             "$scope",
             "$location",
             "convenioEditResource",
             "busquedaResource",
-            BusquedaCtrl
+            BusquedaConvenioCtrl
         ]);
 
-    function BusquedaCtrl(
+    function BusquedaConvenioCtrl(
         $scope,
         $location,
         convenioEditResource,
-        busquedaEditResource) {
+        busquedaResource) {
         var vm = this;
 
         // Expected result of convenios
@@ -28,7 +28,7 @@
         // Search the expected text.
         vm.buscar = function (searchText) {
             if (searchText !== undefined && searchText !== null) {
-                var convenios = busquedaEditResource.query({ searchText: searchText });
+                var convenios = busquedaResource.query({ searchText: searchText });
 
                 convenios.$promise.then(function (convenios) {
                     if (convenios !== undefined && convenios != null) {
@@ -60,7 +60,7 @@
         $scope.setItemsPerPage = function (num) {
             $scope.itemsPerPage = num;
             $scope.currentPage = 1; //reset to first page
-        }
+        };
 
         // Get specific convenio by id
         vm.getConvenioById = function (id) {
@@ -69,6 +69,5 @@
                 $location.path("/convenios/" + id);
             }
         }
-
     };
 })();

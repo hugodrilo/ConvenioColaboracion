@@ -37,7 +37,18 @@
                             templateUrl: "app/convenios/views/menuConvenioView.html",
                             controller: "MenuConvenioCtrl as vm"
                         })
-                        // Convenio view
+                         // Busqueda convenio view
+                        .state("busquedaConvenio", {
+                            url: "/busquedaConvenio",
+                            templateUrl: "app/convenios/views/busquedaConvenioView.html"
+                        })
+                        // Resultados de la Busqueda Seguimiento
+                        .state("busquedaConvenio.tablaConvenio", {
+                            url: "/tablaConvenio",
+                            templateUrl: "app/convenios/templates/tablaConvenio.html",
+                            controller: "BusquedaConvenioCtrl as vm"
+                        })
+                       // Convenio view
                         .state("convenio", {
                             url: "/convenios",
                             templateUrl: "app/convenios/views/convenio.html",
@@ -49,15 +60,20 @@
                             templateUrl: "app/convenios/views/convenio.html",
                             controller: "ConvenioCtrl as vm"
                         })
-                        // Busqueda view
-                        .state("busqueda", {
-                            url: "/busqueda",
-                            templateUrl: "app/convenios/views/busquedaView.html",
-                            controller: "BusquedaCtrl as vm"
+                        // Busqueda Seguimiento view
+                        .state("convenioSeguimiento", {
+                            url: "/convenioSeguimiento",
+                            templateUrl: "app/convenios/views/busquedaSeguimientoView.html"
+                        })
+                        // Resultados de la Busqueda Seguimiento
+                        .state("convenioSeguimiento.tablaConvenio", {
+                            url: "/tablaConvenio",
+                            templateUrl: "app/convenios/templates/tablaConvenio.html",
+                            controller: "ConsultaSeguimientoCtrl as vm"
                         })
                         // Seguimiento view
                         .state("seguimiento", {
-                            url: "/seguimiento",
+                            url: "/seguimiento/:id",
                             templateUrl: "app/convenios/views/seguimientoView.html",
                             controller: "SeguimientoCtrl as vm"
                         })
@@ -101,15 +117,17 @@
 
     // The application run seccion. Allows to dismiss all modal window.
     app.run([
-       "$rootScope", "$uibModalStack",
-       function ($rootScope, $uibModalStack) {
-           $rootScope.$on("$stateChangeStart", function () {
-               var top = $uibModalStack.getTop();
-               if (top) {
-                   $uibModalStack.dismiss(top.key);
-               }
-           });
-       }
+        "$rootScope", "$uibModalStack",
+        function ($rootScope, $uibModalStack) {
+            if ($rootScope !== undefined && $rootScope !== null) {
+                $rootScope.$on("$stateChangeStart", function () {
+                    var top = $uibModalStack.getTop();
+                    if (top) {
+                        $uibModalStack.dismiss(top.key);
+                    }
+                });
+            }
+        }
     ]);
 
     // Input file directive to upload a single file using FileReader.
@@ -119,18 +137,19 @@
                 fileread: "=",
                 filename: "="
             },
-            link: function (scope, element, attributes) {
-                element.bind("change", function (changeEvent) {
+            link: function(scope, element, attributes) {
+                element.bind("change", function(changeEvent) {
                     var reader = new FileReader();
-                    reader.onload = function (loadEvent) {
-                        scope.$apply(function () {
+                    reader.onload = function(loadEvent) {
+                        scope.$apply(function() {
                             scope.fileread = loadEvent.target.result;
                             scope.filename = changeEvent.target.files[0].name;
                         });
-                    }
+                    };
+
                     reader.readAsDataURL(changeEvent.target.files[0]);
                 });
             }
-        }
+        };
     }]);
 })();
