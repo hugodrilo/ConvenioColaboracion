@@ -1,3 +1,4 @@
+﻿<!--seguimientoCompromisoView.html-->
 <div>
     <ol class="breadcrumb">
         <li>
@@ -6,19 +7,21 @@
         <li>
             <a ui-sref="menuConvenio" class="active">Menú convenio</a>
         </li>
-        <li class="active">Seguimiento</li>
+        <li>
+            <a ui-sref="seguimiento" class="active">Seguimiento</a>
+        </li>
+        <li class="active">Actividad</li>
     </ol>
 </div>
-
-<div id="seguimiento">
-    <form id="seguimientoForm"
-          name="seguimientoForm"
+<div id="seguimientoCompromiso">
+    <form id="seguimientoCompromisoForm"
+          name="seguimientoCompromisoForm"
           role="form"
           novalidate>
         <div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Seguimiento de convenio
+                    Agregar actividades
                 </div>
                 <div class="panel-body">
                     <div class="row">
@@ -50,63 +53,31 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-10">
-                            <div class="form-group">
-                                <label class="control-label"
-                                       for="resumen">
-                                    Resumen:
-                                </label>
-                                <span name="resumen"
-                                      id="resumen"
-                                      ng-bind="vm.convenio.resumen">
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-10">
-                            <div class="form-group">
-                                <label class="control-label"
-                                       for="partes">
-                                    Partes:
-                                </label>
-                                <div id="partes" name="partes" ng-repeat="parte in vm.convenio.partesCompromiso track by parte.parteId">
-                                    {{parte.parte}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
                         <label class="control-label">
-                            Compromisos:
+                            Actividades:
                         </label>
                         <table class="table table-bordered table-responsive">
                             <thead>
                                 <tr>
-                                    <td>Número</td>
-                                    <td>Institución responsable</td>
                                     <td>Compromiso</td>
-                                    <td>Fecha estimada</td>
-                                    <td>Área vinculante</td>
-                                    <td>Actividades</td>
+                                    <td>Fecha</td>
+                                    <td>Actividad</td>
+                                    <td>% Acumulado</td>
+                                    <td>Evidencia documental</td>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr ng-repeat="compromiso in vm.convenio.compromisos">
-                                    <!--<td>{{$index + 1}}</td>-->
-                                    <td>{{compromiso.consecutivo}}</td>
-                                    <td>{{compromiso.parte.parte}}</td>
-                                    <td>{{compromiso.compromiso}}</td>
-                                    <td>{{compromiso.fechaCompromiso}}</td>
-                                    <td> <span ng-repeat="area in compromiso.areas"> {{area.area}}</span></td>
-                                    <td>
-                                        <a href="" ng-click="vm.getCompromisoById(compromiso.compromisoId)">
-                                            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
+                            <tbody></tbody>
+                            <tfoot>
+                            </tfoot>
                         </table>
+                        <div class="col-md-offset-1">
+                            <button id="addArea"
+                                    name="addArea"
+                                    class="btn btn-success pull-right"
+                                    ng-click="vm.toggleModalActividad()">
+                                Agregar
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <div class="panel-footer">

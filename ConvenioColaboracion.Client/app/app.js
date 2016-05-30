@@ -77,6 +77,12 @@
                             templateUrl: "app/convenios/views/seguimientoView.html",
                             controller: "SeguimientoCtrl as vm"
                         })
+                        // Seguimiento  compromiso view
+                        .state("seguimientoCompromiso", {
+                            url: "/seguimiento/compromiso/:id",
+                            templateUrl: "app/convenios/views/seguimientoCompromisoView.html",
+                            controller: "SeguimientoCompromisoCtrl as vm"
+                        })
                         // Alertas view
                         .state("alertas", {
                             url: "/alertas",
@@ -137,11 +143,11 @@
                 fileread: "=",
                 filename: "="
             },
-            link: function(scope, element, attributes) {
-                element.bind("change", function(changeEvent) {
+            link: function (scope, element, attributes) {
+                element.bind("change", function (changeEvent) {
                     var reader = new FileReader();
-                    reader.onload = function(loadEvent) {
-                        scope.$apply(function() {
+                    reader.onload = function (loadEvent) {
+                        scope.$apply(function () {
                             scope.fileread = loadEvent.target.result;
                             scope.filename = changeEvent.target.files[0].name;
                         });

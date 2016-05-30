@@ -346,8 +346,6 @@
            $scope.tipoAreas = vm.tipoAreas;
            $scope.partesCompromiso = vm.convenio.partesCompromiso;
 
-           console.log("Convenio controlador");
-
            //Agregado calendario con estilo de gobmx
            $(".calendarioGobMx").datepicker();
 

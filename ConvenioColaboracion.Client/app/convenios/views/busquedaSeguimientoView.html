@@ -30,7 +30,9 @@
                                        id="searchText"
                                        class="form-control"
                                        placeholder="Ingrese las palabras clave para la búsqueda."
-                                       ng-model="vm.searchText"/>
+                                       ng-model="vm.searchText"
+                                       ng-keyup="$event.keyCode == 13 && vm.buscar(vm.searchText)"
+                                       ui-sref="convenioSeguimiento.tablaConvenio" />
 
                             </div>
                             <span tabindex="0"
@@ -41,7 +43,7 @@
                             </span>
                         </div>
                     </div>
-                    <br/>
+                    <br />
                     <div ui-view>
                     </div>
                 </div>

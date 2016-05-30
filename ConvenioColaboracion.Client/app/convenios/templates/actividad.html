@@ -1,0 +1,93 @@
+﻿<form id="actividadForm"
+      name="actividadForm"
+      role="form">
+    <div class="modal-header">
+        <h3 class="modal-title">Actividad</h3>
+    </div>
+    <div class="modal-body" ng-controller="MenuConvenioCtrl as vm">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group datepicker-group">
+                    <label class="control-label"
+                           for="fechaActividad">
+                        Fecha de actividad
+                    </label>
+                    <input class="form-control calendarioGobMx"
+                           name="fechaActividad"
+                           id="fechaActividad"
+                           type="text"
+                           ng-model="entidad.fechaActividad"
+                           required>
+                    <span class="glyphicon glyphicon-calendar"
+                          aria-hidden="true">
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group"
+                     ng-class="{'has-error': actividadForm.actividad.$invalid &&
+                                             actividadForm.actividad.$dirty}">
+                    <label class="control-label"
+                           for="actividad">
+                        Actividad
+                        <span class="text-danger">*</span>
+                    </label>
+                    <textarea name="actividad"
+                              id="actividad"
+                              class="form-control"
+                              placeholder="Actividad"
+                              ng-model="entidad.actividad"
+                              required></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label class="control-label"
+                           for="porcentaje">
+                        Porcentaje (%)
+                    </label>
+                    <input type="number"
+                           name="porcentaje"
+                           id="porcentaje"
+                           class="form-control"
+                           ng-model="entidad.porcentaje"
+                           min="0"
+                           max="100">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label"
+                           for="rutaDocumento">
+                        Evidencia documental
+                    </label>
+                    <input name="rutaDocumento"
+                           id="rutaDocumento"
+                           placeholder="Ruta del documento"
+                           type="file"
+                           fileread="vm.actividad.documento"
+                           filename="vm.actividad.nombreDocumento" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <a href=""
+                       target="_self"
+                       ng-click="vm.downloadFile(vm.actividad.actividadId)">{{ vm.actividad.nombreDocumento}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
+        <button class="btn btn-primary" type="button" ng-click="ok()">Agregar</button>
+    </div>
+</form>
