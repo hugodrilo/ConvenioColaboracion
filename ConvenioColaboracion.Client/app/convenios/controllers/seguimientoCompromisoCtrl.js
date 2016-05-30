@@ -28,12 +28,7 @@
         // Initialize the object model for CONVENIO.
         vm.convenio = {};
 
-        // TODO: Insert the actividad here???
-        // Check if we can insert here
-
-        // Implement toggle modal actividad here
-
-        // Display the toggle modal window for AREA.
+        // Display the toggle modal window for ACTIVIDAD.
         vm.toggleModalActividad = function () {
             $scope.entidad = {};
 
@@ -53,8 +48,11 @@
             // Get modal window results.
             modalInstance.result.then(function (data) {
                 if (data !== undefined) {
+                    // TODO: Insert the actividad here???
+                    // Check if we can insert here
                 }
             }, function () {
+                // Error
             });
         };
 
