@@ -16,6 +16,7 @@
             "convenioEditResource",
             "compromisoResource",
             "actividadResource",
+            "appSettings",
             SeguimientoCompromisoCtrl
         ]);
 
@@ -26,7 +27,8 @@
         $stateParams,
         convenioEditResource,
         compromisoResource,
-        actividadResource) {
+        actividadResource,
+        appSettings) {
         var vm = this;
 
         // Initialize the object model for CONVENIO.
@@ -92,6 +94,14 @@
                 // Error
             });
         };
+
+        // Download the file
+        vm.downloadFile = function (actividadId) {
+            if (actividadId !== undefined && actividadId !== null) {
+                var downloadPath = appSettings.serverPath + "/api/file/getactividad/" + actividadId;
+                window.open(downloadPath, "_self", "");
+            }
+        }
 
         vm.getCompromiso();
 

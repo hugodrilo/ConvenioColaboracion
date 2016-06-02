@@ -308,7 +308,7 @@
         // Download the file
         vm.downloadFile = function (convenioId) {
             if (convenioId !== undefined && convenioId !== null) {
-                var downloadPath = appSettings.serverPath + "/api/file/" + convenioId;
+                var downloadPath = appSettings.serverPath + "/api/file/getconvenio/" + convenioId;
                 window.open(downloadPath, "_self", "");
             }
         }
