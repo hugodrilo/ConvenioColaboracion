@@ -7,10 +7,14 @@
     <div class="modal-body" ng-controller="MenuConvenioCtrl as vm">
         <div class="row">
             <div class="col-md-6">
-                <div class="form-group datepicker-group">
+                <div class="form-group datepicker-group"
+                     ng-class="{'has-error': actividadForm.fechaActividad.$invalid &&
+                                             actividadForm.fechaActividad.$dirty}">
+
                     <label class="control-label"
                            for="fechaActividad">
                         Fecha de actividad
+                        <span class="text-danger">*</span>
                     </label>
                     <input class="form-control calendarioGobMx"
                            name="fechaActividad"
@@ -47,14 +51,14 @@
             <div class="col-md-5">
                 <div class="form-group">
                     <label class="control-label"
-                           for="porcentaje">
-                        Porcentaje (%)
+                           for="porcentajeAvance">
+                        Avance (%)
                     </label>
                     <input type="number"
-                           name="porcentaje"
-                           id="porcentaje"
+                           name="porcentajeAvance"
+                           id="porcentajeAvance"
                            class="form-control"
-                           ng-model="entidad.porcentaje"
+                           ng-model="entidad.PorcentajeAvance"
                            min="0"
                            max="100">
                 </div>
@@ -71,8 +75,8 @@
                            id="rutaDocumento"
                            placeholder="Ruta del documento"
                            type="file"
-                           fileread="vm.actividad.documento"
-                           filename="vm.actividad.nombreDocumento" />
+                           fileread="entidad.documento"
+                           filename="entidad.nombreDocumento" />
                 </div>
             </div>
         </div>
@@ -81,13 +85,14 @@
                 <div class="form-group">
                     <a href=""
                        target="_self"
-                       ng-click="vm.downloadFile(vm.actividad.actividadId)">{{ vm.actividad.nombreDocumento}}</a>
+                       ng-click="vm.downloadFile(entidad.actividadId)">{{entidad.nombreDocumento}}</a>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal-footer">
         <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
-        <button class="btn btn-primary" type="button" ng-click="ok()">Agregar</button>
+        <button class="btn btn-primary" type="button" ng-click="ok(actividadForm.$valid)">{{entidad.btnSave}}</button>
+        <!-- <button class="btn btn-primary" type="button" ng-click="ok(compromisoForm.$valid)">{{entidad.btnSave}}</button> -->
     </div>
 </form>

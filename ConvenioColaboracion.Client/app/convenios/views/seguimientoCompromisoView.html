@@ -53,20 +53,46 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <label class="control-label"
+                                       for="compromiso">
+                                    Compromiso:
+                                </label>
+                                <span name="compromiso"
+                                      id="compromiso"
+                                      ng-bind="vm.compromiso.compromiso">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <label class="control-label">
                             Actividades:
                         </label>
                         <table class="table table-bordered table-responsive">
                             <thead>
                                 <tr>
-                                    <td>Compromiso</td>
+                                    <td>Número</td>
                                     <td>Fecha</td>
                                     <td>Actividad</td>
                                     <td>% Acumulado</td>
                                     <td>Evidencia documental</td>
                                 </tr>
                             </thead>
-                            <tbody></tbody>
+                            <tbody>
+                                <tr ng-repeat="actividad in vm.actividades">
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{actividad.fechaActividad}}</td>
+                                    <td>{{actividad.actividad}}</td>
+                                    <td>{{actividad.porcentajeAvance}}</td>
+                                    <td>
+                                        <a href=""
+                                           target="_self"
+                                           ng-click="vm.downloadFile(vm.actividad.actividadId)">{{ actividad.nombreDocumento}}</a>
+                                    </td>
+                                </tr>
+                            </tbody>
                             <tfoot>
                             </tfoot>
                         </table>
@@ -74,7 +100,7 @@
                             <button id="addArea"
                                     name="addArea"
                                     class="btn btn-success pull-right"
-                                    ng-click="vm.toggleModalActividad()">
+                                    ng-click="vm.toggleModalActividad(undefined)">
                                 Agregar
                             </button>
                         </div>

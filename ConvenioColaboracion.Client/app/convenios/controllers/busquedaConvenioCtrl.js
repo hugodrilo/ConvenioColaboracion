@@ -31,7 +31,7 @@
                 var convenios = busquedaResource.query({ searchText: searchText });
 
                 convenios.$promise.then(function (convenios) {
-                    if (convenios !== undefined && convenios != null) {
+                    if (convenios !== undefined && convenios !== null) {
                         $scope.data = convenios;
                         $scope.viewBy = 5;
                         $scope.totalItems = $scope.data.length;
@@ -68,6 +68,6 @@
                 $scope.convenioId = id;
                 $location.path("/convenios/" + id);
             }
-        }
-    };
+        };
+    }
 })();
