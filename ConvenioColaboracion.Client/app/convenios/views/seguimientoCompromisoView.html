@@ -76,8 +76,10 @@
                                     <td>Número</td>
                                     <td>Fecha</td>
                                     <td>Actividad</td>
-                                    <td>% Acumulado</td>
+                                    <td>Avance Acumulado (%)</td>
                                     <td>Evidencia documental</td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -90,6 +92,16 @@
                                         <a href=""
                                            target="_self"
                                            ng-click="vm.downloadFile(actividad.actividadId)">{{ actividad.nombreDocumento}}</a>
+                                    </td>
+                                    <td>
+                                        <a href="" ng-click="vm.toggleModalActividad(actividad)">
+                                            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="" ng-click="vm.delete(actividad)">
+                                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                        </a>
                                     </td>
                                 </tr>
                             </tbody>

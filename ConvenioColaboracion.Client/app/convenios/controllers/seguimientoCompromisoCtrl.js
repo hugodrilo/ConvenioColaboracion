@@ -80,15 +80,26 @@
                 if (data !== undefined && data !== null) {
                     data.compromisoId = vm.compromisoId;
 
-                    // Send the ACTIVIDAD information to the API
-                    new actividadResource(data).$save().then(
-                        function (result) {
-                            if (result !== undefined && result !== null) {
-                                // Load all the Actividades for this compromisoId
-                                vm.getActividades();
-                                toastr.success("Actividad guardada correctamente.", "Exito.");
-                            }
-                        });
+                    /// update
+                    if (data.actividadId > 0 && $scope.editEntity !== null) {
+                        // Send the CONVENIO information to the API
+                        new actividadResource.put(data).$promise.then(
+                            function () {
+                                toastr.success("Actividad actualizada correctamente.", "Exito.");
+                            });
+
+                    } else {
+                        // Send the ACTIVIDAD information to the API
+                        new actividadResource(data).$save().then(
+                            function (result) {
+                                if (result !== undefined && result !== null) {
+                                    toastr.success("Actividad guardada correctamente.", "Exito.");
+                                }
+                            });
+                    }
+
+                    // Load all the Actividades for this compromisoId
+                    vm.getActividades();
                 }
             }, function () {
                 // Error
@@ -101,7 +112,44 @@
                 var downloadPath = appSettings.serverPath + "/api/file/getactividad/" + actividadId;
                 window.open(downloadPath, "_self", "");
             }
-        }
+        };
+
+        // TODO: Pendiente implementar vm.deleteItemFromArray(vm.actividades, actividad)
+        // Deletes an item from the specified array
+        vm.delete = function (actividad) {
+            $scope.entidad = {};
+
+            // Open the modal window.
+            var modalInstance = $uibModal.open({
+                animation: $scope.animationsEnabled,
+                templateUrl: "app/convenios/templates/dialog.html",
+                controller: "ModalCtrl",
+                backdrop: "static",
+                resolve: {
+                    entidad: function () {
+                        return $scope.entidad;
+                    },
+                    editEntity: undefined
+                }
+            });
+
+            // Get modal window results.
+            modalInstance.result.then(function (result) {
+                if (result) {
+
+                    //// delete the actividad from the database and then reload all the actividades.
+                    new actividadResource().$delete({ id: actividad.actividadId }).$promise.then(
+                        function () {
+                            // Load all the Actividades for this compromisoId
+                            vm.getActividades();
+                            toastr.success("Actividad eliminada correctamente.", "Exito.");
+                        });
+                }
+            },
+        // Dismiss the window and clean resources.
+            function () {
+            });
+        };
 
         vm.getCompromiso();
 

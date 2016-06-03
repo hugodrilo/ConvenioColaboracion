@@ -34,7 +34,7 @@
         return $resource(appSettings.serverPath + "/api/convenio/:id",
         { id: "@id" },
         {
-            'update': { method: 'PUT' }
+            "update": { method: "PUT" }
         });
     }
 
@@ -86,15 +86,15 @@
                 isArray: true
             },
             save: {
-                url: appSettings.serverPath + "/api/actividad/post/", //full URL + custom action
+                url: appSettings.serverPath + "/api/actividad/post/",
                 method: "POST"
             },
             put: {
-                url: appSettings.serverPath + "/api/actividad/put/", //full URL + custom action
+                url: appSettings.serverPath + "/api/actividad/put/",
                 method: "PUT"
             },
             delete: {
-                url: appSettings.serverPath + "/api/actividad/delete/", //full URL + custom action
+                url: appSettings.serverPath + "/api/actividad/delete/",
                 method: "DELETE"
             }
         });

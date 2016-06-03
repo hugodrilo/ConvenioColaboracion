@@ -48,17 +48,17 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-5">
+            <div class="col-md-6">
                 <div class="form-group">
                     <label class="control-label"
                            for="porcentajeAvance">
-                        Avance (%)
+                        Avance Acumulado (%)
                     </label>
                     <input type="number"
                            name="porcentajeAvance"
                            id="porcentajeAvance"
                            class="form-control"
-                           ng-model="entidad.PorcentajeAvance"
+                           ng-model="entidad.porcentajeAvance"
                            min="0"
                            max="100">
                 </div>
@@ -83,9 +83,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <a href=""
-                       target="_self"
-                       ng-click="vm.downloadFile(entidad.actividadId)">{{entidad.nombreDocumento}}</a>
+                    {{entidad.nombreDocumento}}
                 </div>
             </div>
         </div>
@@ -93,6 +91,5 @@
     <div class="modal-footer">
         <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
         <button class="btn btn-primary" type="button" ng-click="ok(actividadForm.$valid)">{{entidad.btnSave}}</button>
-        <!-- <button class="btn btn-primary" type="button" ng-click="ok(compromisoForm.$valid)">{{entidad.btnSave}}</button> -->
     </div>
 </form>

@@ -27,6 +27,12 @@
         $scope.editEntity = editEntity;
         var backup = {};
 
+        // Boton de aceptar para la ventana modal.
+        $scope.aceptar = function () {
+            $scope.entidad = true;
+            $uibModalInstance.close($scope.entidad);
+        };
+
         // Boton de Ok para la ventana modal.
         $scope.ok = function (isValid) {
             if (isValid) {
