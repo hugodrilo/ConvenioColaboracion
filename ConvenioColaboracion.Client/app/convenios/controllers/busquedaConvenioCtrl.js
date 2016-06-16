@@ -7,11 +7,13 @@
 
     angular
         .module("convenioColaboracion")
-        .controller("BusquedaConvenioCtrl", [
+        .controller("BusquedaConvenioCtrl",
+        [
             "$scope",
             "$location",
             "convenioEditResource",
             "busquedaResource",
+            "blockUI",
             BusquedaConvenioCtrl
         ]);
 
@@ -19,7 +21,8 @@
         $scope,
         $location,
         convenioEditResource,
-        busquedaResource) {
+        busquedaResource,
+        blockUI) {
         var vm = this;
 
         // Expected result of convenios
@@ -28,6 +31,10 @@
         // Search the expected text.
         vm.buscar = function (searchText) {
             if (searchText !== undefined && searchText !== null) {
+
+                // Block the user interface
+                blockUI.start();
+
                 var convenios = busquedaResource.query({ searchText: searchText });
 
                 convenios.$promise.then(function (convenios) {
@@ -38,8 +45,9 @@
                         $scope.currentPage = 1;
                         $scope.itemsPerPage = $scope.viewBy;
                         $scope.maxSize = 3; //Number of pager buttons to show
-
                     }
+                    // Unblock the user interface
+                    blockUI.stop();
                 });
             } else {
                 alert("Favor de ingresar el texto a buscar.");
