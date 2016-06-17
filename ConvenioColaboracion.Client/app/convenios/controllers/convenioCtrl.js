@@ -20,6 +20,7 @@
                      "subMateriaResource",
                      "areaResource",
                      "tipoAreaResource",
+                     "estatusResource",
                      "parteResource",
                      "appSettings",
                      ConvenioCtrl]);
@@ -36,6 +37,7 @@
                           subMateriaResource,
                           areaResource,
                           tipoAreaResource,
+                          estatusResource,
                           parteResource,
                           appSettings) {
         var vm = this;
@@ -54,6 +56,9 @@
 
         vm.tipoAreas = [];
         vm.tipoAreas = tipoAreaResource.query();
+
+        vm.estatus = [];
+        vm.estatus = estatusResource.query();
 
         vm.partes = [];
         vm.partes = parteResource.query();

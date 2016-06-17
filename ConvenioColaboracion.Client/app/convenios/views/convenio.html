@@ -336,6 +336,21 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <label class="control-label"
+                                       for="estatus">
+                                    Grado de cumplimiento
+                                </label>
+                                <select name="estatus"
+                                        id="estatus"
+                                        class="form-control"
+                                        ng-model="vm.convenio.estatus"
+                                        ng-options="estatus.descripcion for estatus in vm.estatus track by estatus.estatus"></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="control-label"

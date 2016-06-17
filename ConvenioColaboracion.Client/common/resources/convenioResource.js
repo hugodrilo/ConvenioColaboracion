@@ -14,6 +14,7 @@
         .factory("subMateriaResource", ["$resource", "appSettings", subMateriaResource])
         .factory("areaResource", ["$resource", "appSettings", areaResource])
         .factory("tipoAreaResource", ["$resource", "appSettings", tipoAreaResource])
+        .factory("estatusResource", ["$resource", "appSettings", estatusResource])
         .factory("parteResource", ["$resource", "appSettings", parteResource])
         .factory("busquedaResource", ["$resource", "appSettings", busquedaResource])
         .factory("compromisoResource", ["$resource", "appSettings", compromisoResource])
@@ -56,6 +57,11 @@
     // tipoArea resource
     function tipoAreaResource($resource, appSettings) {
         return $resource(appSettings.serverPath + "/api/tipoarea/");
+    }
+
+    // estatus resource
+    function estatusResource($resource, appSettings) {
+        return $resource(appSettings.serverPath + "/api/estatus/");
     }
 
     // parte resource
