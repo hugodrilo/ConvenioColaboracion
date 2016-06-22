@@ -115,6 +115,7 @@
                 if (result) {
                     if (array !== undefined && array !== null) {
                         array.splice(array.indexOf(item), 1);
+                        vm.ponderacionTotal = vm.calculaPorcentajeTotal();
                     }
                 }
             },
@@ -248,8 +249,12 @@
 
             // Get modal window results.
             modalInstance.result.then(function (data) {
-                if (data !== undefined) {
+                if (data !== undefined && data !== null) {
+                    if (data.ponderacion === undefined || data.ponderacion === null) {
+                        data.ponderacion = 0;
+                    }
                     vm.convenio.compromisos.push(data);
+                    vm.ponderacionTotal = vm.calculaPorcentajeTotal();
                 }
             },
             // Dismiss the window and clean resources.
@@ -316,7 +321,7 @@
                 var downloadPath = appSettings.serverPath + "/api/file/getconvenio/" + convenioId;
                 window.open(downloadPath, "_self", "");
             }
-        }
+        };
 
         /*Get all the information to edit the convenio*/
         if ($stateParams.id !== undefined && $stateParams.id > 0) {
@@ -336,7 +341,7 @@
                 }
             });
         }
-    };
+    }
 
     // The Modal Instance controller
     angular
@@ -422,6 +427,6 @@
                reset: "Deshacer",
                search: "Buscar...",
                nothingSelected: "Ninguno seleccionado"
-           }
+           };
        });
 })();
