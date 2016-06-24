@@ -85,6 +85,9 @@
                         // Send the CONVENIO information to the API
                         new actividadResource.put(data).$promise.then(
                             function () {
+                                // Load all the Actividades for this compromisoId
+                                vm.getActividades();
+
                                 toastr.success("Actividad actualizada correctamente.", "Exito.");
                             });
 
@@ -93,6 +96,9 @@
                         new actividadResource(data).$save().then(
                             function (result) {
                                 if (result !== undefined && result !== null) {
+                                    // Load all the Actividades for this compromisoId
+                                    vm.getActividades();
+
                                     toastr.success("Actividad guardada correctamente.", "Exito.");
                                 }
                             });
@@ -137,8 +143,8 @@
             modalInstance.result.then(function (result) {
                 if (result) {
 
-                    //// delete the actividad from the database and then reload all the actividades.
-                    new actividadResource().$delete({ id: actividad.actividadId }).$promise.then(
+                    // delete the actividad from the database and then reload all the actividades.
+                    new actividadResource().$delete({ id: actividad.actividadId }).then(
                         function () {
                             // Load all the Actividades for this compromisoId
                             vm.getActividades();
@@ -149,6 +155,11 @@
         // Dismiss the window and clean resources.
             function () {
             });
+        };
+
+        // Evento para regresar a la pagina anterior
+        vm.goBack = function () {
+            $window.history.back();
         };
 
         vm.getCompromiso();

@@ -35,7 +35,12 @@
                 $scope.compromisoId = id;
                 $location.path("seguimiento/compromiso/" + id);
             }
-        }
+        };
+
+        // Evento para regresar a la pagina anterior
+        vm.goBack = function () {
+            $window.history.back();
+        };
 
         // Get the general convenio info
         if ($stateParams.id !== undefined && $stateParams.id > 0) {
@@ -48,5 +53,5 @@
                 }
             });
         }
-    };
+    }
 })();

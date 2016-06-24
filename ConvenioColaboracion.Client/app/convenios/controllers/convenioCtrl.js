@@ -247,6 +247,8 @@
                 }
             });
 
+            //// TODO: vm.compromisosPonderados checar como crear los datos automaticamente  100 % / Numero de compromisos
+
             // Get modal window results.
             modalInstance.result.then(function (data) {
                 if (data !== undefined && data !== null) {

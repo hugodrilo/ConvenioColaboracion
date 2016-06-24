@@ -66,7 +66,5 @@
                 $location.path("/seguimiento/" + id);
             }
         };
-
-
     }
 })();
