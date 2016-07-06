@@ -1,0 +1,66 @@
+﻿<!--informeGradoView.html-->
+<div>
+    <ol class="breadcrumb">
+        <li>
+            <a ui-sref="home"><i class="icon icon-home"></i></a>
+        </li>
+        <li>
+            <a ui-sref="estadistica">Estadísticas</a>
+        </li>
+        <li class="active">Por grado cumplimiento</li>
+    </ol>
+</div>
+
+<div id="informeGradoView">
+    <form id="informeGradoForm"
+          name="informeGradoForm"
+          role="form"
+          novalidate>
+        <div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Informe por grado de cumplimiento
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered table-responsive">
+                        <thead class="thead-default">
+                            <tr>
+                                <td>Grado de cumplimiento</td>
+                                <td>Convenios</td>
+                            </tr>
+                        </thead>
+                        <tbody ng-init="total = {}">
+                            <tr ng-repeat="informe in vm.informe">
+                                <td>
+                                    <a href="" ng-click="vm.tablaMateria(informe.administracionId)">
+                                        {{informe.estatus}}
+                                    </a>
+                                </td>
+                                <td ng-init="total.numeroConvenios = total.numeroConvenios + informe.numeroConvenio">
+                                    <a href="" ng-click="vm.tablaConvenios(informe.administracionId)">
+                                        {{informe.numeroConvenio}}
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>Total</td>
+                                <td>
+                                    <a href="" ng-click="vm.getTodosConvenios()">
+                                        {{total.numeroConvenios}}
+                                    </a>
+
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

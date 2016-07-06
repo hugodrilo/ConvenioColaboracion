@@ -277,14 +277,14 @@
                                     <td></td>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody ng-init="total = {}">
                                 <tr ng-repeat="compromisoModal in vm.convenio.compromisos">
                                     <td>{{$index + 1}}</td>
                                     <td>{{compromisoModal.parte.parte}}</td>
                                     <td>{{compromisoModal.compromiso}}</td>
                                     <td>{{compromisoModal.fechaCompromiso}}</td>
                                     <td> <span ng-repeat="area in compromisoModal.areas"> {{area.area}}</span></td>
-                                    <td>{{compromisoModal.ponderacion}}</td>
+                                    <td ng-init="total.ponderacion = total.ponderacion + compromisoModal.ponderacion">{{compromisoModal.ponderacion}}</td>
                                     <td>
                                         <a href="" ng-click="vm.toggleModalCompromiso(compromisoModal)">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
@@ -304,11 +304,10 @@
                                     <td></td>
                                     <td></td>
                                     <td>Total</td>
-                                    <td>{{vm.ponderacionTotal}} %</td>
+                                    <td>{{total.ponderacion}} %</td>
                                     <td></td>
                                     <td></td>
                                 </tr>
-
                             </tfoot>
                         </table>
                         <div class="col-md-offset-1">

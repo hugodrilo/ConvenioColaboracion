@@ -18,7 +18,8 @@
         .factory("parteResource", ["$resource", "appSettings", parteResource])
         .factory("busquedaResource", ["$resource", "appSettings", busquedaResource])
         .factory("compromisoResource", ["$resource", "appSettings", compromisoResource])
-        .factory("actividadResource", ["$resource", "appSettings", actividadResource]);
+        .factory("actividadResource", ["$resource", "appSettings", actividadResource])
+        .factory("informePeriodoResource", ["$resource", "appSettings", informePeriodoResource]);
 
     // convenio resource
     function convenioResource($resource, appSettings) {
@@ -102,6 +103,43 @@
             delete: {
                 url: appSettings.serverPath + "/api/actividad/delete/",
                 method: "DELETE"
+            }
+        });
+    }
+
+    // informe periodo resource   api/estadistica/{action}/{id}
+    function informePeriodoResource($resource, appSettings) {
+        return $resource(appSettings.serverPath + "/api/estadistica/", {}, {
+            query: {
+                method: "GET",
+                isArray: true
+            },
+            getInformePeriodo: {
+                url: appSettings.serverPath + "/api/estadistica/GetInformePeriodo/",
+                method: "GET",
+                isArray: true
+            },
+            getInformeMateria: {
+                url: appSettings.serverPath + "/api/estadistica/GetInformeMateria/:id",
+                params: { id: "@id" },
+                method: "GET",
+                isArray: true
+            },
+            getInformeArea: {
+                url: appSettings.serverPath + "/api/estadistica/GetInformeArea/",
+                method: "GET",
+                isArray: true
+            },
+            getInformeGrado: {
+                url: appSettings.serverPath + "/api/estadistica/GetInformeGrado/",
+                method: "GET",
+                isArray: true
+            },
+            getSexenio: {
+                url: appSettings.serverPath + "/api/estadistica/GetSexenio/:id",
+                params: { id: "@id" },
+                method: "GET",
+                isArray: false
             }
         });
     }

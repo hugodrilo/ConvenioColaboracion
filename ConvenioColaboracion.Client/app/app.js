@@ -123,10 +123,40 @@
                     url: "/estadistica",
                     templateUrl: "app/estadisticas/views/estadisticaView.html",
                     controller: "EstadisticaCtrl as vm"
+                })
+                // Estadisticas informe periodo
+                .state("informePeriodo", {
+                    url: "/estadistica/informePeriodo",
+                    templateUrl: "app/estadisticas/views/informePeriodoView.html",
+                    controller: "InformePeriodoCtrl as vm"
+                })
+                // Estadisticas informe materia
+                .state("informeMateria", {
+                    url: "/estadistica/informeMateria",
+                    templateUrl: "app/estadisticas/views/informeMateriaView.html",
+                    controller: "InformeMateriaCtrl as vm"
+                })
+                // Estadisticas informe administracion materia
+                .state("admonMateria", {
+                    url: "/estadistica/materia/administracion/:id",
+                    templateUrl: "app/estadisticas/views/admonMateriaView.html",
+                    controller: "AdmonMateriaCtrl as vm"
+                })
+                // Estadisticas informe area
+                .state("informeArea", {
+                    url: "/estadistica/informeArea",
+                    templateUrl: "app/estadisticas/views/informeAreaView.html",
+                    controller: "InformeAreaCtrl as vm"
+                })
+                // Estadisticas informe grado
+                .state("informeGrado", {
+                    url: "/estadistica/informeGrado",
+                    templateUrl: "app/estadisticas/views/informeGradoView.html",
+                    controller: "InformeGradoCtrl as vm"
                 });
 
             // Change the default overlay message
-            blockUIConfig.message = "Espere";
+            blockUIConfig.message = "Cargando información...";
         }
     ]);
 
