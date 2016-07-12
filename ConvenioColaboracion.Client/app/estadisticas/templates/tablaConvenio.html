@@ -1,0 +1,22 @@
+﻿<div id="tablaConvenio" name="tablaConvenio">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Número convenio</td>
+                    <td>Convenio</td>
+                    <td>Resumen</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+                    <td><a href="" ng-click="vm.getConvenioById(row.convenioId)">{{ row.numeroConvenio }}</a></td>
+                    <td>{{ row.convenio }}</td>
+                    <td>{{ row.resumen }}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+    </div>
+</div>

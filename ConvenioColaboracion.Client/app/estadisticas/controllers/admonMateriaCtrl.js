@@ -48,14 +48,20 @@
         };
 
         // Get todos los convenios
-        vm.getConveniosByAdminId = function (administracionId) {
-            // redirecionar y obtener todos los convenios
-            // Redireccionar a todos los convenios de la presente administracion id
-            $location.path("/consulta");
+        vm.getConveniosByAdminId = function (admonId, matId) {
+            // Redireccionar a los convenios de la presente administracion y materia
+            if (admonId > 0 && matId > 0) {
+                // TODO: Programar este comportamiento
+                ////$location.path("/consulta");    
+
+                $location.path("/convenio/" + admonId + "/" + matId);
+            }
         };
 
+        // Get the informe
         vm.getInforme();
 
+        // Get the administracion info
         vm.getAdministracion(vm.administracionId);
     };
 })();

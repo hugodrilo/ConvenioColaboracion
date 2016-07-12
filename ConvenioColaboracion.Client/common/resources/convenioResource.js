@@ -140,6 +140,15 @@
                 params: { id: "@id" },
                 method: "GET",
                 isArray: false
+            },
+            getConvenioAdmon: {
+                url: appSettings.serverPath + "/api/estadistica/GetSexenio/:admonId/:matId",
+                params: {
+                    admonId: "@admonId",
+                    matId: "@matId"
+                },
+                method: "GET",
+                isArray: true
             }
         });
     }
