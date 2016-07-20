@@ -132,8 +132,14 @@
                 })
                 // Estadisticas informe materia
                 .state("informeMateria", {
-                    url: "/estadistica/informeMateria",
+                    url: "/estadistica/informeMateria/:id",
                     templateUrl: "app/estadisticas/views/informeMateriaView.html",
+                    controller: "InformeMateriaCtrl as vm"
+                })
+                // Estadisticas informe materia con resultados de convenios
+                .state("informeMateria.tablaConvenio", {
+                    url: "/estadistica/informe/materia/:id/tablaConvenio",
+                    templateUrl: "app/convenios/templates/tablaConvenio.html",
                     controller: "InformeMateriaCtrl as vm"
                 })
                 // Estadisticas informe administracion materia
@@ -142,16 +148,40 @@
                     templateUrl: "app/estadisticas/views/admonMateriaView.html",
                     controller: "AdmonMateriaCtrl as vm"
                 })
+                // Estadisticas informe administracion materia con resultados de convenios
+                .state("admonMateria.tablaConvenio", {
+                    url: "/estadistica/materia/administracion/:id/tablaConvenio",
+                    templateUrl: "app/convenios/templates/tablaConvenio.html",
+                    controller: "AdmonMateriaCtrl as vm"
+                })
                 // Estadisticas informe area
                 .state("informeArea", {
                     url: "/estadistica/informeArea",
                     templateUrl: "app/estadisticas/views/informeAreaView.html",
                     controller: "InformeAreaCtrl as vm"
                 })
+                // Estadisticas informe area con resultados de convenios
+                .state("informeArea.tablaConvenio", {
+                    url: "/estadistica/informe/area/:id/tablaConvenio",
+                    templateUrl: "app/convenios/templates/tablaConvenio.html",
+                    controller: "InformeAreaCtrl as vm"
+                })
+                // Estadisticas ficha del convenio
+                .state("fichaConvenio", {
+                    url: "/estadistica/fichaConvenio/:id",
+                    templateUrl: "app/convenios/views/fichaConvenioView.html",
+                    controller: "FichaConvenioCtrl as vm"
+                })
                 // Estadisticas informe grado
                 .state("informeGrado", {
                     url: "/estadistica/informeGrado",
                     templateUrl: "app/estadisticas/views/informeGradoView.html",
+                    controller: "InformeGradoCtrl as vm"
+                })
+                // Estadisticas informe grado con resultados de convenios
+                .state("informeGrado.tablaConvenio", {
+                    url: "/estadistica/informe/grado/:id/tablaConvenio",
+                    templateUrl: "app/convenios/templates/tablaConvenio.html",
                     controller: "InformeGradoCtrl as vm"
                 });
 

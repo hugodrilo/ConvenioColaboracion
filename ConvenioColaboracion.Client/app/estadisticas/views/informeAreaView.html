@@ -32,12 +32,16 @@
                         <tbody ng-init="total = {}">
                             <tr ng-repeat="informe in vm.informe">
                                 <td>
-                                    <a href="" ng-click="vm.tablaMateria(informe.administracionId)">
+                                    <a href=""
+                                       ng-click="vm.getConveniosByAreaId(0, 0, informe)"
+                                       ui-sref="informeArea.tablaConvenio">
                                         {{informe.area}}
                                     </a>
                                 </td>
                                 <td ng-init="total.numeroConvenios = total.numeroConvenios + informe.numeroConvenio">
-                                    <a href="" ng-click="vm.tablaConvenios(informe.administracionId)">
+                                    <a href=""
+                                       ng-click="vm.getConveniosByAreaId(0, 0, informe)"
+                                       ui-sref="informeArea.tablaConvenio">
                                         {{informe.numeroConvenio}}
                                     </a>
                                 </td>
@@ -55,6 +59,9 @@
                             </tr>-->
                         </tfoot>
                     </table>
+                    <h4 align="center">{{vm.nombreMateria}}</h4>
+                    <div ui-view>
+                    </div>
                 </div>
                 <div class="panel-footer">
                     <div class="row">

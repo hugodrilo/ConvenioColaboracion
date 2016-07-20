@@ -120,7 +120,6 @@
             }
         };
 
-        // TODO: Pendiente implementar vm.deleteItemFromArray(vm.actividades, actividad)
         // Deletes an item from the specified array
         vm.delete = function (actividad) {
             $scope.entidad = {};

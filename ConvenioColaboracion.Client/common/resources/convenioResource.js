@@ -142,10 +142,12 @@
                 isArray: false
             },
             getConvenioAdmon: {
-                url: appSettings.serverPath + "/api/estadistica/GetSexenio/:admonId/:matId",
+                url: appSettings.serverPath + "/api/estadistica/GetConvenios/:admonId/:matId/:areaId/:estatusId",
                 params: {
                     admonId: "@admonId",
-                    matId: "@matId"
+                    matId: "@matId",
+                    areaId: "@areaId",
+                    estatusId: "@estatusId"
                 },
                 method: "GET",
                 isArray: true

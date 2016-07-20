@@ -43,13 +43,13 @@
             }
         };
 
-        // Get the actividades
-        vm.tablaConvenios = function (informe) {
-            // TODO: programar este metodo
-            if (informe !== undefined && informe !== null) {
+        ////// Get the actividades
+        ////vm.tablaConvenios = function (informe) {
+        ////    // TODO: programar este metodo
+        ////    if (informe !== undefined && informe !== null) {
 
-            }
-        };
+        ////    }
+        ////};
 
         // Get todos los convenios
         vm.getTodosConvenios = function () {
@@ -58,5 +58,5 @@
         };
 
         vm.getInforme();
-    };
+    }
 })();

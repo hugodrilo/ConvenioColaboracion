@@ -1,0 +1,212 @@
+﻿<!--fichaConvenioView.html-->
+<div>
+    <ol class="breadcrumb">
+        <li>
+            <a ui-sref="home"><i class="icon icon-home"></i></a>
+        </li>
+        <li class="active">Ficha de convenio</li>
+    </ol>
+</div>
+<div class="col-md-10 col-md-offset-1">
+    <div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Datos generales de convenio
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-5">
+                        <label class="control-label"
+                               for="numeroConvenio">
+                            Número de convenio:
+                        </label>
+                        <span name="numeroConvenio"
+                              id="numeroConvenio"
+                              ng-bind="vm.convenio.numeroConvenio">
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <label class="control-label"
+                               for="convenio">
+                            Convenio:
+                        </label>
+                        <span name="convenio"
+                              id="convenio"
+                              ng-bind="vm.convenio.convenio">
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <label class="control-label">
+                            &nbsp;&nbsp; Vigencia del Convenio:
+                        </label>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="control-label"
+                               for="numeroConvenio">
+                            Fecha de suscripción:
+                        </label>
+                        <span name="fechaSuscripcion"
+                              id="fechaSuscripcion"
+                              ng-bind="vm.convenio.fechaSuscripcion">
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10">
+                        <label class="control-label"
+                               for="numeroConvenio">
+                            Resumen:
+                        </label>
+                        <span name="resumen"
+                              id="resumen"
+                              ng-bind="vm.convenio.resumen">
+                        </span>
+                    </div>
+                </div>
+                <!--<div class="row">
+                    <div class="col-md-10">
+                        <label class="control-label"
+                               for="materia">
+                            Materia:
+                        </label>
+                        <span name="materia"
+                              id="materia"
+                              ng-bind="vm.convenio.materia">
+                        </span>
+                    </div>
+                </div>-->
+                <div class="row">
+                    <label class="control-label">
+                        Área(s) vinculante(s):
+                    </label>
+                    <table class="table table-bordered table-responsive">
+                        <thead class="thead-default">
+                            <tr>
+                                <td>Área</td>
+                                <td>Tipo de área</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="areaModal in vm.convenio.areas">
+                                <td>{{areaModal.area.area}}</td>
+                                <td>{{areaModal.tipoArea.tipoArea}}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
+
+                </div>
+                <div class="row">
+                    <label class="control-label">
+                        Partes firmantes:
+                    </label>
+                    <table class="table table-bordered table-responsive">
+                        <thead class="thead-default">
+                            <tr>
+                                <td>Entidad o dependencia</td>
+                                <td>Representante legal </td>
+                                <td>Cargo</td>
+                                <td>Teléfono </td>
+                                <td>Correo electrónico</td>
+                                <td>Domicilio</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="parteModal in vm.convenio.partes">
+                                <td>{{parteModal.parte.parte}}</td>
+                                <td>{{parteModal.representante}}</td>
+                                <td>{{parteModal.cargo}}</td>
+                                <td>{{parteModal.telefono}}</td>
+                                <td>{{parteModal.correoElectronico}}</td>
+                                <td>{{parteModal.domicilio}}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
+
+                </div>
+                <div class="row">
+                    <label class="control-label">
+                        Compromisos:
+                    </label>
+                    <table class="table table-bordered table-responsive">
+                        <thead>
+                            <tr>
+                                <td>Número</td>
+                                <td>Institución responsable</td>
+                                <td>Compromiso</td>
+                                <td>Fecha estimada</td>
+                                <td>Área vinculante</td>
+                                <td>Ponderación</td>
+                            </tr>
+                        </thead>
+                        <tbody ng-init="total = {}">
+                            <tr ng-repeat="compromisoModal in vm.convenio.compromisos">
+                                <td>{{$index + 1}}</td>
+                                <td>{{compromisoModal.parte.parte}}</td>
+                                <td>{{compromisoModal.compromiso}}</td>
+                                <td>{{compromisoModal.fechaCompromiso}}</td>
+                                <td> <span ng-repeat="area in compromisoModal.areas"> {{area.area}}</span></td>
+                                <td ng-init="total.ponderacion = total.ponderacion + compromisoModal.ponderacion">{{compromisoModal.ponderacion}}</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>Total</td>
+                                <td>{{total.ponderacion}} %</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+                <!--<div class="row">
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <label class="control-label"
+                                   for="estatus">
+                                Grado de cumplimiento
+                            </label>
+                            <select name="estatus"
+                                    id="estatus"
+                                    class="form-control"
+                                    ng-model="vm.convenio.estatus"
+                                    ng-options="estatus.descripcion for estatus in vm.estatus track by estatus.estatus"></select>
+                        </div>
+                    </div>
+                </div>-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <a href=""
+                               target="_self"
+                               ng-click="vm.downloadFile(vm.convenio.convenioId)">{{ vm.convenio.nombreDocumento}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="row">
+                    <div class="col-md-2 pull-right">
+                        <span tabindex="0"
+                              class="btn btn-primary pull-right"
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              ng-click="vm.goBack()">
+                            Regresar
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
