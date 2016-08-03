@@ -183,6 +183,18 @@
                     url: "/estadistica/informe/grado/:id/tablaConvenio",
                     templateUrl: "app/convenios/templates/tablaConvenio.html",
                     controller: "InformeGradoCtrl as vm"
+                })
+                // Resultados
+                .state("resultados", {
+                    url: "/estadistica/resultados/:admonId/:matId/:areaId/:estatusId/:nombre",
+                    templateUrl: "app/estadisticas/views/resultadosView.html",
+                    controller: "ResultadosCtrl as vm"
+                })
+                // Resultados de convenios incluendo la tabla de convenios
+                .state("resultados.tablaConvenio", {
+                    url: "/estadistica/resultados/:admonId/:matId/:areaId/:estatusId/:nombre/tablaConvenio",
+                    templateUrl: "app/convenios/templates/tablaConvenio.html",
+                    controller: "ResultadosCtrl as vm"
                 });
 
             // Change the default overlay message

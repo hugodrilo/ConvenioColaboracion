@@ -26,24 +26,24 @@
                         <thead class="thead-default">
                             <tr>
                                 <td>Área</td>
-                                <td>Convenios</td>
+                                <td>RI</td>
+                                <td>RO</td>
                             </tr>
                         </thead>
                         <tbody ng-init="total = {}">
                             <tr ng-repeat="informe in vm.informe">
                                 <td>
                                     <a href=""
-                                       ng-click="vm.getConveniosByAreaId(0, 0, informe)"
-                                       ui-sref="informeArea.tablaConvenio">
+                                       ng-click="vm.getConveniosByAreaId(0, 0, informe.areaId, 0, informe.area)"
+                                       ui-sref="resultados.tablaConvenio">
                                         {{informe.area}}
                                     </a>
                                 </td>
-                                <td ng-init="total.numeroConvenios = total.numeroConvenios + informe.numeroConvenio">
-                                    <a href=""
-                                       ng-click="vm.getConveniosByAreaId(0, 0, informe)"
-                                       ui-sref="informeArea.tablaConvenio">
-                                        {{informe.numeroConvenio}}
-                                    </a>
+                                <td>
+                                    {{informe.responsableInstitucional}}
+                                </td>
+                                <td>
+                                    {{informe.responsableOperativo}}
                                 </td>
                             </tr>
                         </tbody>
@@ -65,6 +65,15 @@
                 </div>
                 <div class="panel-footer">
                     <div class="row">
+                        <div class="col-md-2 pull-right">
+                            <span tabindex="0"
+                                  class="btn btn-primary pull-right"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  ng-click="vm.goBack()">
+                                Regresar
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>

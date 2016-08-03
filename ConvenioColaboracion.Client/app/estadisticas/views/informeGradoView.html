@@ -33,15 +33,15 @@
                             <tr ng-repeat="informe in vm.informe">
                                 <td>
                                     <a href=""
-                                       ng-click="vm.getConveniosByGradoId(0, 0, 0,informe)"
-                                       ui-sref="informeGrado.tablaConvenio">
+                                       ng-click="vm.getConveniosByGradoId(0, 0, 0,informe.estatusId, informe.estatus)"
+                                       ui-sref="resultados.tablaConvenio">
                                         {{informe.estatus}}
                                     </a>
                                 </td>
                                 <td ng-init="total.numeroConvenios = total.numeroConvenios + informe.numeroConvenio">
                                     <a href=""
-                                       ng-click="vm.getConveniosByGradoId(0, 0, 0,informe)"
-                                       ui-sref="informeGrado.tablaConvenio">
+                                       ng-click="vm.getConveniosByGradoId(0, 0, 0,informe.estatusId, informe.estatus)"
+                                       ui-sref="resultados.tablaConvenio">
                                         {{informe.numeroConvenio}}
                                     </a>
                                 </td>
@@ -65,6 +65,15 @@
                 </div>
                 <div class="panel-footer">
                     <div class="row">
+                        <div class="col-md-2 pull-right">
+                            <span tabindex="0"
+                                  class="btn btn-primary pull-right"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  ng-click="vm.goBack()">
+                                Regresar
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>

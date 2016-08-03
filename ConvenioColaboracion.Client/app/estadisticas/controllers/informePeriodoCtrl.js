@@ -43,18 +43,15 @@
             }
         };
 
-        ////// Get the actividades
-        ////vm.tablaConvenios = function (informe) {
-        ////    // TODO: programar este metodo
-        ////    if (informe !== undefined && informe !== null) {
-
-        ////    }
-        ////};
-
         // Get todos los convenios
         vm.getTodosConvenios = function () {
             // redirecionar y obtener todos los convenios
             $location.path("/consulta");
+        };
+
+        // Evento para regresar a la pagina anterior
+        vm.goBack = function () {
+            $window.history.back();
         };
 
         vm.getInforme();

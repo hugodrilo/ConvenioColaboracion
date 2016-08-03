@@ -34,22 +34,13 @@
         };
 
         // Get all the convenios by admin and materiaId 
-        vm.getConveniosByMateriaId = function (admonId, matId, materia) {
-            // Redireccionar a los convenios de la presente administracion y materia
+        vm.getConveniosByMateriaId = function (admonId, matId, areaId, estatus, nombre) {
             if (matId > 0) {
-                // If matId = 0 we get all the convenios by adminId
-                // Get all the convenios
-                informePeriodoResource.getConvenioAdmon({ admonId: admonId, matId: matId }).$promise.then(function (convenios) {
-                    if (convenios !== undefined && convenios !== null) {
-                        $scope.data = convenios;
-                        $scope.viewBy = 5;
-                        $scope.totalItems = $scope.data.length;
-                        $scope.currentPage = 1;
-                        $scope.itemsPerPage = $scope.viewBy;
-                        $scope.maxSize = 3; //Number of pager buttons to show
-                        vm.nombreMateria = materia;
-                    }
-                });
+                // Redireccionar a los convenios de la presente administracion y materia
+                areaId = 0;
+                estatus = 0;
+                var dest = "/estadistica/resultados/" + admonId + "/" + matId + "/" + areaId + "/" + estatus + "/" + nombre;
+                $location.path(dest);
             }
         };
 
@@ -81,6 +72,11 @@
         vm.getTodosConvenios = function () {
             // redirecionar y obtener todos los convenios
             $location.path("/consulta");
+        };
+
+        // Evento para regresar a la pagina anterior
+        vm.goBack = function () {
+            $window.history.back();
         };
 
         vm.getInforme();
