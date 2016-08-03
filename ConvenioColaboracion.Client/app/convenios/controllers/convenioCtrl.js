@@ -20,6 +20,7 @@
                      "subMateriaResource",
                      "areaResource",
                      "tipoAreaResource",
+                     "estatusResource",
                      "parteResource",
                      "appSettings",
                      ConvenioCtrl]);
@@ -36,6 +37,7 @@
                           subMateriaResource,
                           areaResource,
                           tipoAreaResource,
+                          estatusResource,
                           parteResource,
                           appSettings) {
         var vm = this;
@@ -54,6 +56,9 @@
 
         vm.tipoAreas = [];
         vm.tipoAreas = tipoAreaResource.query();
+
+        vm.estatus = [];
+        vm.estatus = estatusResource.query();
 
         vm.partes = [];
         vm.partes = parteResource.query();
@@ -110,6 +115,7 @@
                 if (result) {
                     if (array !== undefined && array !== null) {
                         array.splice(array.indexOf(item), 1);
+                        vm.ponderacionTotal = vm.calculaPorcentajeTotal();
                     }
                 }
             },
@@ -241,10 +247,16 @@
                 }
             });
 
+            //// TODO: vm.compromisosPonderados checar como crear los datos automaticamente  100 % / Numero de compromisos
+
             // Get modal window results.
             modalInstance.result.then(function (data) {
-                if (data !== undefined) {
+                if (data !== undefined && data !== null) {
+                    if (data.ponderacion === undefined || data.ponderacion === null) {
+                        data.ponderacion = 0;
+                    }
                     vm.convenio.compromisos.push(data);
+                    vm.ponderacionTotal = vm.calculaPorcentajeTotal();
                 }
             },
             // Dismiss the window and clean resources.
@@ -308,10 +320,10 @@
         // Download the file
         vm.downloadFile = function (convenioId) {
             if (convenioId !== undefined && convenioId !== null) {
-                var downloadPath = appSettings.serverPath + "/api/file/" + convenioId;
+                var downloadPath = appSettings.serverPath + "/api/file/getconvenio/" + convenioId;
                 window.open(downloadPath, "_self", "");
             }
-        }
+        };
 
         /*Get all the information to edit the convenio*/
         if ($stateParams.id !== undefined && $stateParams.id > 0) {
@@ -331,7 +343,7 @@
                 }
             });
         }
-    };
+    }
 
     // The Modal Instance controller
     angular
@@ -345,8 +357,6 @@
            $scope.partes = vm.partes;
            $scope.tipoAreas = vm.tipoAreas;
            $scope.partesCompromiso = vm.convenio.partesCompromiso;
-
-           console.log("Convenio controlador");
 
            //Agregado calendario con estilo de gobmx
            $(".calendarioGobMx").datepicker();
@@ -419,6 +429,6 @@
                reset: "Deshacer",
                search: "Buscar...",
                nothingSelected: "Ninguno seleccionado"
-           }
+           };
        });
 })();

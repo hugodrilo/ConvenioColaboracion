@@ -1,0 +1,56 @@
+﻿<!--busquedaConvenioView.html-->
+<div>
+    <ol class="breadcrumb">
+        <li>
+            <a ui-sref="home"><i class="icon icon-home"></i></a>
+        </li>
+        <li>
+            <a ui-sref="menuConvenio" class="active">Menú convenio</a>
+        </li>
+        <li class="active">Modificación convenio</li>
+    </ol>
+</div>
+
+<div id="busquedaConvenio" ng-controller="BusquedaConvenioCtrl as vm">
+    <form id="busquedaConvenioForm"
+          name="busquedaConvenioForm"
+          role="form"
+          novalidate>
+        <div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Buscar convenio(s)
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text"
+                                       name="searchText"
+                                       id="searchText"
+                                       class="form-control"
+                                       placeholder="Ingrese las palabras clave para la búsqueda."
+                                       ng-keyup="$event.keyCode == 13 && vm.buscar(vm.searchText)"
+                                       ng-model="vm.searchText" />
+
+                            </div>
+                            <span tabindex="0"
+                                  class="btn btn-default pull-right"
+                                  ng-click="vm.buscar(vm.searchText)"
+                                  ui-sref="busquedaConvenio.tablaConvenio">
+                                Buscar
+                            </span>
+                        </div>
+                    </div>
+                    <br />
+                    <div ui-view>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

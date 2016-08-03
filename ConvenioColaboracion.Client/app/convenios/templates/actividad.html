@@ -1,0 +1,95 @@
+﻿<form id="actividadForm"
+      name="actividadForm"
+      role="form">
+    <div class="modal-header">
+        <h3 class="modal-title">Actividad</h3>
+    </div>
+    <div class="modal-body" ng-controller="MenuConvenioCtrl as vm">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group datepicker-group"
+                     ng-class="{'has-error': actividadForm.fechaActividad.$invalid &&
+                                             actividadForm.fechaActividad.$dirty}">
+
+                    <label class="control-label"
+                           for="fechaActividad">
+                        Fecha de actividad
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input class="form-control calendarioGobMx"
+                           name="fechaActividad"
+                           id="fechaActividad"
+                           type="text"
+                           ng-model="entidad.fechaActividad"
+                           required>
+                    <span class="glyphicon glyphicon-calendar"
+                          aria-hidden="true">
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group"
+                     ng-class="{'has-error': actividadForm.actividad.$invalid &&
+                                             actividadForm.actividad.$dirty}">
+                    <label class="control-label"
+                           for="actividad">
+                        Actividad
+                        <span class="text-danger">*</span>
+                    </label>
+                    <textarea name="actividad"
+                              id="actividad"
+                              class="form-control"
+                              placeholder="Actividad"
+                              ng-model="entidad.actividad"
+                              required></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label"
+                           for="porcentajeAvance">
+                        Avance Acumulado (%)
+                    </label>
+                    <input type="number"
+                           name="porcentajeAvance"
+                           id="porcentajeAvance"
+                           class="form-control"
+                           ng-model="entidad.porcentajeAvance"
+                           min="0"
+                           max="100">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="control-label"
+                           for="rutaDocumento">
+                        Evidencia documental
+                    </label>
+                    <input name="rutaDocumento"
+                           id="rutaDocumento"
+                           placeholder="Ruta del documento"
+                           type="file"
+                           fileread="entidad.documento"
+                           filename="entidad.nombreDocumento" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{entidad.nombreDocumento}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
+        <button class="btn btn-primary" type="button" ng-click="ok(actividadForm.$valid)">{{entidad.btnSave}}</button>
+    </div>
+</form>

@@ -238,6 +238,29 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-4">
+                            <div class="well">
+                                <div class="form-group">
+                                    <label class="control-label"
+                                           for="ponderacionAutomatica"
+                                           ng-hide="true">
+                                        Ponderación automatica:
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="form-group">
+                                <input name="ponderacionAutomatica"
+                                       id="ponderacionAutomatica"
+                                       class="form-control input-sm no-border"
+                                       type="checkbox"
+                                       ng-model="vm.compromisosPonderados"
+                                       ng-hide="true">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <label class="control-label">
                             Compromisos:
                         </label>
@@ -254,14 +277,14 @@
                                     <td></td>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody ng-init="total = {}">
                                 <tr ng-repeat="compromisoModal in vm.convenio.compromisos">
                                     <td>{{$index + 1}}</td>
                                     <td>{{compromisoModal.parte.parte}}</td>
                                     <td>{{compromisoModal.compromiso}}</td>
                                     <td>{{compromisoModal.fechaCompromiso}}</td>
                                     <td> <span ng-repeat="area in compromisoModal.areas"> {{area.area}}</span></td>
-                                    <td>{{compromisoModal.ponderacion}}</td>
+                                    <td ng-init="total.ponderacion = total.ponderacion + compromisoModal.ponderacion">{{compromisoModal.ponderacion}}</td>
                                     <td>
                                         <a href="" ng-click="vm.toggleModalCompromiso(compromisoModal)">
                                             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
@@ -281,11 +304,10 @@
                                     <td></td>
                                     <td></td>
                                     <td>Total</td>
-                                    <td>{{vm.ponderacionTotal}} %</td>
+                                    <td>{{total.ponderacion}} %</td>
                                     <td></td>
                                     <td></td>
                                 </tr>
-
                             </tfoot>
                         </table>
                         <div class="col-md-offset-1">
@@ -309,6 +331,21 @@
                                           class="form-control"
                                           placeholder="Comentarios"
                                           ng-model="vm.convenio.comentarios"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="form-group">
+                                <label class="control-label"
+                                       for="estatus">
+                                    Grado de cumplimiento
+                                </label>
+                                <select name="estatus"
+                                        id="estatus"
+                                        class="form-control"
+                                        ng-model="vm.convenio.estatus"
+                                        ng-options="estatus.descripcion for estatus in vm.estatus track by estatus.estatus"></select>
                             </div>
                         </div>
                     </div>
@@ -340,7 +377,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="panel-footer">
                     <div class="row">

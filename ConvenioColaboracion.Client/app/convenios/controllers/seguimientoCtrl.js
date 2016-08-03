@@ -8,12 +8,50 @@
     angular
         .module("convenioColaboracion")
         .controller("SeguimientoCtrl",
-        SeguimientoCtrl);
+        [
+            "$scope",
+            "$stateParams",
+            "$window",
+            "$location",
+            "$state",
+            "convenioEditResource",
+            SeguimientoCtrl
+        ]);
 
-    function SeguimientoCtrl() {
+    function SeguimientoCtrl(
+        $scope,
+        $stateParams,
+        $window,
+        $location,
+        $state,
+        convenioEditResource) {
         var vm = this;
 
-        $(".calendarioGobMx").datepicker();
-    };
+        // Initialize the object model for CONVENIO.
+        vm.convenio = {};
 
+        vm.getCompromisoById = function (id) {
+            if (id !== undefined) {
+                $scope.compromisoId = id;
+                $location.path("seguimiento/compromiso/" + id);
+            }
+        };
+
+        // Evento para regresar a la pagina anterior
+        vm.goBack = function () {
+            $window.history.back();
+        };
+
+        // Get the general convenio info
+        if ($stateParams.id !== undefined && $stateParams.id > 0) {
+            var getConvenio = convenioEditResource.get({ id: $stateParams.id });
+
+            getConvenio.$promise.then(function (convenio) {
+                if (convenio !== undefined && convenio !== null) {
+                    // Asign the result values to the convenio
+                    vm.convenio = convenio;
+                }
+            });
+        }
+    }
 })();

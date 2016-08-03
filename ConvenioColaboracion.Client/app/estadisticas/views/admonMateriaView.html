@@ -1,0 +1,77 @@
+﻿<!--admonMateriaView.html-->
+<div>
+    <ol class="breadcrumb">
+        <li>
+            <a ui-sref="home"><i class="icon icon-home"></i></a>
+        </li>
+        <li>
+            <a ui-sref="estadistica">Estadísticas</a>
+        </li>
+        <li>
+            <a ui-sref="informePeriodo">Por periodo</a>
+        </li>
+
+        <li class="active">{{vm.sexenio.sexenio}}</li>
+    </ol>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        {{vm.sexenio.sexenio}}
+    </div>
+    <div class="panel-body">
+        <div id="tablaInformeMateria" name="tablaInformeMateria">
+            <table class="table table-bordered table-responsive">
+                <thead class="thead-default">
+                    <tr>
+                        <td>Materia de los Instrumentos de Colaboración</td>
+                        <td>Instrumentos de Colaboración</td>
+                    </tr>
+                </thead>
+                <tbody ng-init="total = {}">
+                    <tr ng-repeat="informe in vm.informe">
+                        <td>
+                            <a href=""
+                               ng-click="vm.getConveniosByAdminId(vm.administracionId, informe.materiaId, 0, 0 , informe.materia)"
+                               ui-sref="resultados.tablaConvenio">
+                                {{informe.materia}}
+                            </a>
+                        </td>
+                        <td ng-init="total.numeroConvenios = total.numeroConvenios + informe.numeroConvenio">
+                            <a href=""
+                               ng-click="vm.getConveniosByAdminId(vm.administracionId, informe.materiaId, 0, 0 , informe.materia)"
+                               ui-sref="resultados.tablaConvenio">
+                                {{informe.numeroConvenio}}
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Total</td>
+                        <td>
+                            <a href=""
+                               ng-click="vm.getTodosConvenios()">
+                                {{total.numeroConvenios}}
+                            </a>
+
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-md-2 pull-right">
+                <span tabindex="0"
+                      class="btn btn-primary pull-right"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      ng-click="vm.goBack()">
+                    Regresar
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

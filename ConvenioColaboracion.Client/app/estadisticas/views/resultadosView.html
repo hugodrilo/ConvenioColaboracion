@@ -1,0 +1,45 @@
+﻿<!--resultadosView.html-->
+<div>
+    <ol class="breadcrumb">
+        <li>
+            <a ui-sref="home"><i class="icon icon-home"></i></a>
+        </li>
+        <li>
+            <a ui-sref="estadistica">Estadísticas</a>
+        </li>
+        <li class="active">{{vm.nombreMateria}}</li>
+
+    </ol>
+</div>
+
+<div id="resultadosView">
+    <form id="resultadosForm"
+          name="resultadosForm"
+          role="form"
+          novalidate>
+        <div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Convenios (Resultados)
+                </div>
+                <div class="panel-body">
+                    <div ui-view>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-2 pull-right">
+                            <span tabindex="0"
+                                  class="btn btn-primary pull-right"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  ng-click="vm.goBack()">
+                                Regresar
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
