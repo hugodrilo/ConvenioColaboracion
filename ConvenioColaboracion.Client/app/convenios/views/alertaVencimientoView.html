@@ -1,0 +1,89 @@
+﻿<!--alertaVencimientoView.html-->
+<div>
+    <ol class="breadcrumb">
+        <li>
+            <a ui-sref="home"><i class="icon icon-home"></i></a>
+        </li>
+        <li>
+            <a ui-sref="menuConvenio" class="active">Menú convenio</a>
+        </li>
+        <li>
+            <a ui-sref="alertas" class="active">alertas</a>
+        </li>
+
+        <li class="active">Convenios proximos a vencer</li>
+    </ol>
+</div>
+
+<div id="alertaVencimiento">
+    <form id="alertaVencimientoForm"
+          name="alertaVencimientoForm"
+          role="form"
+          novalidate>
+        <div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Convenios proximos a vencer
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <td>Número convenio</td>
+                                <td>Convenio</td>
+                                <td>Resumen</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+                                <td><a href="" ng-click="vm.getConvenioById(row.convenioId)">{{ row.numeroConvenio }}</a></td>
+                                <td>{{ row.convenio }}</td>
+                                <td>{{ row.resumen }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div id="paginationSection" name="paginationSection">
+                        Ver <select name="mySelect"
+                                    id="mySelect"
+                                    ng-model="viewBy"
+                                    ng-change="setItemsPerPage(viewBy)">
+                            <option selected="selected">5</option>
+                            <option>10</option>
+                            <option>20</option>
+                            <option>30</option>
+                            <option>40</option>
+                            <option>50</option>
+                        </select> elementos por página.
+
+                        <uib-pagination boundary-links="true"
+                                        ng-model="currentPage"
+                                        ng-change="pageChanged()"
+                                        class="pagination-md"
+                                        total-items="totalItems"
+                                        items-per-page="itemsPerPage"
+                                        previous-text="&lsaquo;"
+                                        next-text="&rsaquo;"
+                                        first-text="&laquo;"
+                                        last-text="&raquo;">
+                        </uib-pagination>
+                        <br />
+                        <pre>Página seleccionada: {{currentPage}}</pre>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-2 pull-right">
+                            <span tabindex="0"
+                                  class="btn btn-primary pull-right"
+                                  data-toggle="tooltip"
+                                  data-placement="top"
+                                  ng-click="vm.goBack()">
+                                Regresar
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

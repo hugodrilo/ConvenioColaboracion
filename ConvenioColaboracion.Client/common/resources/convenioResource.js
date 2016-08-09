@@ -19,7 +19,8 @@
         .factory("busquedaResource", ["$resource", "appSettings", busquedaResource])
         .factory("compromisoResource", ["$resource", "appSettings", compromisoResource])
         .factory("actividadResource", ["$resource", "appSettings", actividadResource])
-        .factory("informePeriodoResource", ["$resource", "appSettings", informePeriodoResource]);
+        .factory("informePeriodoResource", ["$resource", "appSettings", informePeriodoResource])
+        .factory("alertaResource", ["$resource", "appSettings", alertaResource]);
 
     // convenio resource
     function convenioResource($resource, appSettings) {
@@ -149,6 +150,26 @@
                     areaId: "@areaId",
                     estatusId: "@estatusId"
                 },
+                method: "GET",
+                isArray: true
+            }
+        });
+    }
+
+    // alerta resource
+    function alertaResource($resource, appSettings) {
+        return $resource(appSettings.serverPath + "/api/alerta/", {}, {
+            query: {
+                method: "GET",
+                isArray: true
+            },
+            getInactividad: {
+                url: appSettings.serverPath + "/api/alerta/GetInactividad/",
+                method: "GET",
+                isArray: true
+            },
+            getVencimiento: {
+                url: appSettings.serverPath + "/api/alerta/GetVencimiento/",
                 method: "GET",
                 isArray: true
             }
