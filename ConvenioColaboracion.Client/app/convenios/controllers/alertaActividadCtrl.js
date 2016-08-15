@@ -27,10 +27,12 @@
         $stateParams,
         alertaResource) {
         var vm = this;
+        $scope.onlyNumbers = /^\d+$/;
+        vm.meses = 1;
 
         // Get all the convenios 
-        vm.getConvenios = function () {
-            var getAlertas = alertaResource.getInactividad().$promise.then(function (convenios) {
+        vm.getConvenios = function (meses) {
+            var getAlertas = alertaResource.getInactividad({ id: meses }).$promise.then(function (convenios) {
                 if (convenios !== undefined && convenios !== null) {
                     $scope.data = convenios;
                     $scope.viewBy = 5;
@@ -71,6 +73,7 @@
             $window.history.back();
         };
 
-        vm.getConvenios();
+        // Call the get convenios method with default value
+        vm.getConvenios(vm.meses);
     }
 })();

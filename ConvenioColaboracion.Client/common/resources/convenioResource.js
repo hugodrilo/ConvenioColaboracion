@@ -164,12 +164,18 @@
                 isArray: true
             },
             getInactividad: {
-                url: appSettings.serverPath + "/api/alerta/GetInactividad/",
+                url: appSettings.serverPath + "/api/alerta/GetInactividad/:id",
+                params: {
+                    id: "@id"
+                },
                 method: "GET",
                 isArray: true
             },
             getVencimiento: {
-                url: appSettings.serverPath + "/api/alerta/GetVencimiento/",
+                url: appSettings.serverPath + "/api/alerta/GetVencimiento/:id",
+                params: {
+                    id: "@id"
+                },
                 method: "GET",
                 isArray: true
             }

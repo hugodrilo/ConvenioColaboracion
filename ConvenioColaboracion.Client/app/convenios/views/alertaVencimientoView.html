@@ -23,51 +23,70 @@
         <div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Convenios proximos a vencer
+                    <div class="row">
+                        Convenios proximos a vencer en los siguientes
+                        <input type="number"
+                               name="meses"
+                               id="meses"
+                               ng-model="vm.meses"
+                               min="0"
+                               max="100"
+                               ng-pattern="onlyNumbers">
+                        meses.
+                        <span tabindex="0"
+                              class="btn btn-primary"
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              ng-click="vm.getConvenios (vm.meses)">
+                            Consultar
+                        </span>
+                    </div>
                 </div>
                 <div class="panel-body">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <td>Número convenio</td>
-                                <td>Convenio</td>
-                                <td>Resumen</td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
-                                <td><a href="" ng-click="vm.getConvenioById(row.convenioId)">{{ row.numeroConvenio }}</a></td>
-                                <td>{{ row.convenio }}</td>
-                                <td>{{ row.resumen }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div id="paginationSection" name="paginationSection">
-                        Ver <select name="mySelect"
-                                    id="mySelect"
-                                    ng-model="viewBy"
-                                    ng-change="setItemsPerPage(viewBy)">
-                            <option selected="selected">5</option>
-                            <option>10</option>
-                            <option>20</option>
-                            <option>30</option>
-                            <option>40</option>
-                            <option>50</option>
-                        </select> elementos por página.
+                    <div class="row">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <td>Número convenio</td>
+                                    <td>Convenio</td>
+                                    <td>Resumen</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
+                                    <td><a href="" ng-click="vm.getConvenioById(row.convenioId)">{{ row.numeroConvenio }}</a></td>
+                                    <td>{{ row.convenio }}</td>
+                                    <td>{{ row.resumen }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div id="paginationSection" name="paginationSection">
+                            Ver <select name="mySelect"
+                                        id="mySelect"
+                                        ng-model="viewBy"
+                                        ng-change="setItemsPerPage(viewBy)">
+                                <option selected="selected">5</option>
+                                <option>10</option>
+                                <option>20</option>
+                                <option>30</option>
+                                <option>40</option>
+                                <option>50</option>
+                            </select> elementos por página.
 
-                        <uib-pagination boundary-links="true"
-                                        ng-model="currentPage"
-                                        ng-change="pageChanged()"
-                                        class="pagination-md"
-                                        total-items="totalItems"
-                                        items-per-page="itemsPerPage"
-                                        previous-text="&lsaquo;"
-                                        next-text="&rsaquo;"
-                                        first-text="&laquo;"
-                                        last-text="&raquo;">
-                        </uib-pagination>
-                        <br />
-                        <pre>Página seleccionada: {{currentPage}}</pre>
+                            <uib-pagination boundary-links="true"
+                                            ng-model="currentPage"
+                                            ng-change="pageChanged()"
+                                            class="pagination-md"
+                                            total-items="totalItems"
+                                            items-per-page="itemsPerPage"
+                                            previous-text="&lsaquo;"
+                                            next-text="&rsaquo;"
+                                            first-text="&laquo;"
+                                            last-text="&raquo;">
+                            </uib-pagination>
+                            <br />
+                            <pre>Página seleccionada: {{currentPage}}</pre>
+                        </div>
                     </div>
                 </div>
                 <div class="panel-footer">

@@ -23,7 +23,24 @@
         <div>
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Sin Actividad
+                    <div class="row">
+                        Sin Actividad en los ultimos
+                        <input type="number"
+                               name="meses"
+                               id="meses"
+                               ng-model="vm.meses"
+                               min="0"
+                               max="100"
+                               ng-pattern="onlyNumbers">
+                        meses.
+                        <span tabindex="0"
+                              class="btn btn-primary"
+                              data-toggle="tooltip"
+                              data-placement="top"
+                              ng-click="vm.getConvenios (vm.meses)">
+                            Consultar
+                        </span>
+                    </div>
                 </div>
                 <div class="panel-body">
                     <div class="row">

@@ -96,13 +96,13 @@
                 })
                 // Alerta Sin Actividad view
                 .state("alertaSinActividad", {
-                    url: "/alertas/sinActividad",
+                    url: "/alertas/sinActividad/:id",
                     templateUrl: "app/convenios/views/alertaActividadView.html",
                     controller: "AlertaActividadCtrl as vm"
                 })
                 // Alertas Vencimiento view
                 .state("alertaVencimiento", {
-                    url: "/alertas/vencimiento",
+                    url: "/alertas/vencimiento/:id",
                     templateUrl: "app/convenios/views/alertaVencimientoView.html",
                     controller: "AlertaVencimientoCtrl as vm"
                 })
