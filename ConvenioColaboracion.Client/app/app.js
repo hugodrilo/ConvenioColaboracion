@@ -82,17 +82,29 @@
                     templateUrl: "app/convenios/views/seguimientoView.html",
                     controller: "SeguimientoCtrl as vm"
                 })
-                // Seguimiento  compromiso view
+                // Seguimiento compromiso view
                 .state("seguimientoCompromiso", {
                     url: "/seguimiento/compromiso/:id",
                     templateUrl: "app/convenios/views/seguimientoCompromisoView.html",
                     controller: "SeguimientoCompromisoCtrl as vm"
                 })
-                // Alertas view
+                // Menu Alertas view
                 .state("alertas", {
-                    url: "/alertas",
+                    url: "/menuAlertas",
                     templateUrl: "app/convenios/views/alertasView.html",
                     controller: "AlertasCtrl as vm"
+                })
+                // Alerta Sin Actividad view
+                .state("alertaSinActividad", {
+                    url: "/alertas/sinActividad/:id",
+                    templateUrl: "app/convenios/views/alertaActividadView.html",
+                    controller: "AlertaActividadCtrl as vm"
+                })
+                // Alertas Vencimiento view
+                .state("alertaVencimiento", {
+                    url: "/alertas/vencimiento/:id",
+                    templateUrl: "app/convenios/views/alertaVencimientoView.html",
+                    controller: "AlertaVencimientoCtrl as vm"
                 })
                 // Consulta view
                 .state("consulta", {

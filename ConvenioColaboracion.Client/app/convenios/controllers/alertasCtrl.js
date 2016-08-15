@@ -13,7 +13,5 @@
     function AlertasCtrl() {
         var vm = this;
 
-        $(".calendarioGobMx").datepicker();
-    };
-
+    }
 })();
