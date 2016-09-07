@@ -1,4 +1,10 @@
 ﻿<!--menuCatalogoView.html-->
+<div ng-controller="WinAuthCtrl as vm" class="pull-right" ng-show="{{ user.id }}">
+    <h6>
+        Bienvenido {{ user.displayName}}
+    </h6>
+</div>
+
 <div>
     <ol class="breadcrumb">
         <li>
@@ -13,31 +19,6 @@
         Administración de catálogos
     </h2>
     <hr class="red">
-    <nav class="navbar navbar-fixed-top navbar-inverse">
-        <div class="navbar-header">
-            <a href="/" class="navbar-brand">
-                <span class="brand-title">
-                    ...
-                </span>
-            </a>
-            <a class="btn navbar-btn navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <div class="pull-right navbar-logo">
-                <ul class="nav navbar-nav pull-right">
-                    <li>
-                        <a href="\">
-                            Bienvenido, {{ vm.user.displayName }}
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
     <a class="liga" ui-sref="catalogoAreas">Áreas responsables</a>
     <p> Administración de las área vinculatorias de los compromisos de Convenios de colaboración</p>
     <br />

@@ -20,7 +20,8 @@
         .factory("compromisoResource", ["$resource", "appSettings", compromisoResource])
         .factory("actividadResource", ["$resource", "appSettings", actividadResource])
         .factory("informePeriodoResource", ["$resource", "appSettings", informePeriodoResource])
-        .factory("alertaResource", ["$resource", "appSettings", alertaResource]);
+        .factory("alertaResource", ["$resource", "appSettings", alertaResource])
+        .factory("userResource", ["$resource", "appSettings", userResource]);
 
     // convenio resource
     function convenioResource($resource, appSettings) {
@@ -181,4 +182,10 @@
             }
         });
     }
+
+    // user resource
+    function userResource($resource, appSettings) {
+        return $resource(appSettings.serverPath + "/api/users");
+    }
+
 }());
