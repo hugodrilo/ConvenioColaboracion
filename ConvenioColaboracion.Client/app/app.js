@@ -25,188 +25,230 @@
         "$stateProvider",
         "$urlRouterProvider",
         "blockUIConfig",
-        function ($stateProvider, $urlRouterProvider, blockUIConfig) {
+        "$httpProvider",
+        function (
+            $stateProvider,
+            $urlRouterProvider,
+            blockUIConfig,
+            $httpProvider) {
             // Default view
             $urlRouterProvider.otherwise("/");
 
             // Define the states
             $stateProvider
                 // Home view (main view)
-                .state("home", {
+                .state("home",
+                {
                     url: "/",
                     templateUrl: "app/welcomeView.html"
                 })
                 // Menú de convenio view
-                .state("menuConvenio", {
+                .state("menuConvenio",
+                {
                     url: "/menuConvenio",
                     templateUrl: "app/convenios/views/menuConvenioView.html",
                     controller: "MenuConvenioCtrl as vm"
                 })
                 // Busqueda convenio view
-                .state("busquedaConvenio", {
+                .state("busquedaConvenio",
+                {
                     url: "/busquedaConvenio",
                     templateUrl: "app/convenios/views/busquedaConvenioView.html"
                 })
                 // Resultados de la Busqueda Seguimiento
-                .state("busquedaConvenio.tablaConvenio", {
+                .state("busquedaConvenio.tablaConvenio",
+                {
                     url: "/tablaConvenio",
                     templateUrl: "app/convenios/templates/tablaConvenio.html",
                     controller: "BusquedaConvenioCtrl as vm"
                 })
                 // Convenio view
-                .state("convenio", {
+                .state("convenio",
+                {
                     url: "/convenios",
                     templateUrl: "app/convenios/views/convenio.html",
                     controller: "ConvenioCtrl as vm"
                 })
                 // Convenio Edit view
-                .state("convenioEdit", {
+                .state("convenioEdit",
+                {
                     url: "/convenios/:id",
                     templateUrl: "app/convenios/views/convenio.html",
                     controller: "ConvenioCtrl as vm"
                 })
                 // Busqueda Seguimiento view
-                .state("convenioSeguimiento", {
+                .state("convenioSeguimiento",
+                {
                     url: "/convenioSeguimiento",
                     templateUrl: "app/convenios/views/busquedaSeguimientoView.html"
                 })
                 // Resultados de la Busqueda Seguimiento
-                .state("convenioSeguimiento.tablaConvenio", {
+                .state("convenioSeguimiento.tablaConvenio",
+                {
                     url: "/tablaConvenio",
                     templateUrl: "app/convenios/templates/tablaConvenio.html",
                     controller: "ConsultaSeguimientoCtrl as vm"
                 })
                 // Seguimiento view
-                .state("seguimiento", {
+                .state("seguimiento",
+                {
                     url: "/seguimiento/:id",
                     templateUrl: "app/convenios/views/seguimientoView.html",
                     controller: "SeguimientoCtrl as vm"
                 })
                 // Seguimiento compromiso view
-                .state("seguimientoCompromiso", {
+                .state("seguimientoCompromiso",
+                {
                     url: "/seguimiento/compromiso/:id",
                     templateUrl: "app/convenios/views/seguimientoCompromisoView.html",
                     controller: "SeguimientoCompromisoCtrl as vm"
                 })
                 // Menu Alertas view
-                .state("alertas", {
+                .state("alertas",
+                {
                     url: "/menuAlertas",
                     templateUrl: "app/convenios/views/alertasView.html",
                     controller: "AlertasCtrl as vm"
                 })
                 // Alerta Sin Actividad view
-                .state("alertaSinActividad", {
+                .state("alertaSinActividad",
+                {
                     url: "/alertas/sinActividad/:id",
                     templateUrl: "app/convenios/views/alertaActividadView.html",
                     controller: "AlertaActividadCtrl as vm"
                 })
                 // Alertas Vencimiento view
-                .state("alertaVencimiento", {
+                .state("alertaVencimiento",
+                {
                     url: "/alertas/vencimiento/:id",
                     templateUrl: "app/convenios/views/alertaVencimientoView.html",
                     controller: "AlertaVencimientoCtrl as vm"
                 })
                 // Consulta view
-                .state("consulta", {
+                .state("consulta",
+                {
                     url: "/consulta",
                     templateUrl: "app/consultas/views/consultaView.html",
                     controller: "ConsultaCtrl as vm"
                 })
                 // Menú catalogo view
-                .state("menuCatalogo", {
+                .state("menuCatalogo",
+                {
                     url: "/menuCatalogo",
                     templateUrl: "app/catalogos/views/menuCatalogoView.html",
                     controller: "MenuCatalogoCtrl as vm"
                 })
                 // Catalogo areas view
-                .state("catalogoAreas", {
+                .state("catalogoAreas",
+                {
                     url: "/catalogoAreas",
                     templateUrl: "app/catalogos/views/areasView.html",
                     controller: "AreasCtrl as vm"
                 })
                 // Catalogo partes view
-                .state("catalogoPartes", {
+                .state("catalogoPartes",
+                {
                     url: "/catalogoPartes",
                     templateUrl: "app/catalogos/views/partesView.html",
                     controller: "PartesCtrl as vm"
                 })
                 // Estadistica view
-                .state("estadistica", {
+                .state("estadistica",
+                {
                     url: "/estadistica",
                     templateUrl: "app/estadisticas/views/estadisticaView.html",
                     controller: "EstadisticaCtrl as vm"
                 })
                 // Estadisticas informe periodo
-                .state("informePeriodo", {
+                .state("informePeriodo",
+                {
                     url: "/estadistica/informePeriodo",
                     templateUrl: "app/estadisticas/views/informePeriodoView.html",
                     controller: "InformePeriodoCtrl as vm"
                 })
                 // Estadisticas informe materia
-                .state("informeMateria", {
+                .state("informeMateria",
+                {
                     url: "/estadistica/informeMateria/:id",
                     templateUrl: "app/estadisticas/views/informeMateriaView.html",
                     controller: "InformeMateriaCtrl as vm"
                 })
                 // Estadisticas informe materia con resultados de convenios
-                .state("informeMateria.tablaConvenio", {
+                .state("informeMateria.tablaConvenio",
+                {
                     url: "/estadistica/informe/materia/:id/tablaConvenio",
                     templateUrl: "app/convenios/templates/tablaConvenio.html",
                     controller: "InformeMateriaCtrl as vm"
                 })
                 // Estadisticas informe administracion materia
-                .state("admonMateria", {
+                .state("admonMateria",
+                {
                     url: "/estadistica/materia/administracion/:id",
                     templateUrl: "app/estadisticas/views/admonMateriaView.html",
                     controller: "AdmonMateriaCtrl as vm"
                 })
                 // Estadisticas informe administracion materia con resultados de convenios
-                .state("admonMateria.tablaConvenio", {
+                .state("admonMateria.tablaConvenio",
+                {
                     url: "/estadistica/materia/administracion/:id/tablaConvenio",
                     templateUrl: "app/convenios/templates/tablaConvenio.html",
                     controller: "AdmonMateriaCtrl as vm"
                 })
                 // Estadisticas informe area
-                .state("informeArea", {
+                .state("informeArea",
+                {
                     url: "/estadistica/informeArea",
                     templateUrl: "app/estadisticas/views/informeAreaView.html",
                     controller: "InformeAreaCtrl as vm"
                 })
                 // Estadisticas informe area con resultados de convenios
-                .state("informeArea.tablaConvenio", {
+                .state("informeArea.tablaConvenio",
+                {
                     url: "/estadistica/informe/area/:id/tablaConvenio",
                     templateUrl: "app/convenios/templates/tablaConvenio.html",
                     controller: "InformeAreaCtrl as vm"
                 })
                 // Estadisticas ficha del convenio
-                .state("fichaConvenio", {
+                .state("fichaConvenio",
+                {
                     url: "/estadistica/fichaConvenio/:id",
                     templateUrl: "app/convenios/views/fichaConvenioView.html",
                     controller: "FichaConvenioCtrl as vm"
                 })
                 // Estadisticas informe grado
-                .state("informeGrado", {
+                .state("informeGrado",
+                {
                     url: "/estadistica/informeGrado",
                     templateUrl: "app/estadisticas/views/informeGradoView.html",
                     controller: "InformeGradoCtrl as vm"
                 })
                 // Estadisticas informe grado con resultados de convenios
-                .state("informeGrado.tablaConvenio", {
+                .state("informeGrado.tablaConvenio",
+                {
                     url: "/estadistica/informe/grado/:id/tablaConvenio",
                     templateUrl: "app/convenios/templates/tablaConvenio.html",
                     controller: "InformeGradoCtrl as vm"
                 })
                 // Resultados
-                .state("resultados", {
+                .state("resultados",
+                {
                     url: "/estadistica/resultados/:admonId/:matId/:areaId/:estatusId/:nombre",
                     templateUrl: "app/estadisticas/views/resultadosView.html",
                     controller: "ResultadosCtrl as vm"
                 })
                 // Resultados de convenios incluendo la tabla de convenios
-                .state("resultados.tablaConvenio", {
+                .state("resultados.tablaConvenio",
+                {
                     url: "/estadistica/resultados/:admonId/:matId/:areaId/:estatusId/:nombre/tablaConvenio",
                     templateUrl: "app/convenios/templates/tablaConvenio.html",
                     controller: "ResultadosCtrl as vm"
+                })
+                // Login state
+                .state("login",
+                {
+                    url: "/login",
+                    templateUrl: "app/login/views/login.html",
+                    controller: "LoginCtrl as vm"
                 });
 
             // Change the default overlay message
@@ -219,18 +261,20 @@
         "$rootScope", "$uibModalStack",
         function ($rootScope, $uibModalStack) {
             if ($rootScope !== undefined && $rootScope !== null) {
-                $rootScope.$on("$stateChangeStart", function () {
-                    var top = $uibModalStack.getTop();
-                    if (top) {
-                        $uibModalStack.dismiss(top.key);
-                    }
-                });
+                $rootScope.$on("$stateChangeStart",
+                    function () {
+                        var top = $uibModalStack.getTop();
+                        if (top) {
+                            $uibModalStack.dismiss(top.key);
+                        }
+                    });
             }
         }
     ]);
 
     // Input file directive to upload a single file using FileReader.
-    app.directive("fileread", [
+    app.directive("fileread",
+    [
         function () {
             return {
                 scope: {
@@ -238,17 +282,18 @@
                     filename: "="
                 },
                 link: function (scope, element, attributes) {
-                    element.bind("change", function (changeEvent) {
-                        var reader = new FileReader();
-                        reader.onload = function (loadEvent) {
-                            scope.$apply(function () {
-                                scope.fileread = loadEvent.target.result;
-                                scope.filename = changeEvent.target.files[0].name;
-                            });
-                        };
+                    element.bind("change",
+                        function (changeEvent) {
+                            var reader = new FileReader();
+                            reader.onload = function (loadEvent) {
+                                scope.$apply(function () {
+                                    scope.fileread = loadEvent.target.result;
+                                    scope.filename = changeEvent.target.files[0].name;
+                                });
+                            };
 
-                        reader.readAsDataURL(changeEvent.target.files[0]);
-                    });
+                            reader.readAsDataURL(changeEvent.target.files[0]);
+                        });
                 }
             };
         }

@@ -47,6 +47,10 @@
     <script src="app/estadisticas/controllers/informeGradoCtrl.js"></script>
     <script src="app/convenios/controllers/fichaConvenioCtrl.js"></script>
     <script src="app/estadisticas/controllers/resultadosCtrl.js"></script>
+    <script src="app/mainController.js"></script>
+
+    <!--OIDC token manager-->
+    <script src="Scripts/oidc-token-manager/oidc-token-manager.js"></script>
 
     <!--GOB.MX-->
     <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
@@ -57,7 +61,17 @@
     <link href="Content/angular-block-ui.css" rel="stylesheet" />
     <link href="css/app.css" rel="stylesheet" />
 </head>
-<body ng-app="convenioColaboracion">
+<body ng-app="convenioColaboracion"
+      ng-controller="MainController as vm">
+
+    <div class="pull-right">
+        <a href=""
+           ng-if="!vm.mgr.expired"
+           ng-bind-template="Salir ({{vm.mgr.profile.given_name}} {{vm.mgr.profile.family_name}})"
+           ng-click="vm.logOutOfIdSrv()"></a>
+
+    </div>
+
     <main class="page">
         <div class="container body-content top-buffer">
             <div class="panel panel-default">
