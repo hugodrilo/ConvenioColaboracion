@@ -31,13 +31,35 @@ function WinAuthCtrl(
 
         getUser.$promise.then(function (results) {
             if (results !== undefined && results !== null) {
+                // Asignar perfiles de usuario
+                if (results.profiles !== undefined && results.profiles !== null) {
+                    // Check if the element already exist in the collection
+                    angular.forEach(results.profiles,
+                        function (perfil) {
+                            /** 1	ADMINISTRACION
+                                2	SEGUIMIENTO - AREA VINCULANTE
+                                3	CONSULTA*/
+                            if (perfil.profileId === 1) {
+                                results.isAdmin = true;
+                            } else if (perfil.profileId === 2) {
+                                results.isSeguimiento = true;
+                            } else {
+                                results.isConsulta = true;
+                            }
+                        });
+                } else {
+                    $scope.user.isConsulta = true;
+                }
+
                 var result = results;
 
                 $scope.user = {
                     id: result.userId,
                     displayName: result.nombre,
                     usuario: result.usuario,
-                    isAdmin: result.IsAdmin
+                    isAdmin: result.isAdmin !== undefined ? result.isAdmin : false,
+                    isSeguimiento: result.isSeguimiento !== undefined ? result.isSeguimiento : false,
+                    isConsulta: result.isConsulta !== undefined ? result.isConsulta : false
                 };
 
                 addUserToStorage();
