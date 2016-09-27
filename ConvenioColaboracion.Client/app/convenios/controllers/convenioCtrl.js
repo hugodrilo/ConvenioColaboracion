@@ -9,37 +9,39 @@
     angular
         .module("convenioColaboracion")
         .controller("ConvenioCtrl",
-                    ["$scope",
-                     "$uibModal",
-                     "$window",
-                     "$stateParams",
-                     "convenioResource",
-                     "convenioEditResource",
-                     "convenioUpdateResource",
-                     "materiaResource",
-                     "subMateriaResource",
-                     "areaResource",
-                     "tipoAreaResource",
-                     "estatusResource",
-                     "parteResource",
-                     "appSettings",
-                     ConvenioCtrl]);
+        [
+            "$scope",
+            "$uibModal",
+            "$window",
+            "$stateParams",
+            "convenioResource",
+            "convenioEditResource",
+            "convenioUpdateResource",
+            "materiaResource",
+            "subMateriaResource",
+            "areaResource",
+            "tipoAreaResource",
+            "estatusResource",
+            "parteResource",
+            "appSettings",
+            ConvenioCtrl
+        ]);
 
     // The Convenio controller function.
     function ConvenioCtrl($scope,
-                          $uibModal,
-                          $window,
-                          $stateParams,
-                          convenioResource,
-                          convenioEditResource,
-                          convenioUpdateResource,
-                          materiaResource,
-                          subMateriaResource,
-                          areaResource,
-                          tipoAreaResource,
-                          estatusResource,
-                          parteResource,
-                          appSettings) {
+        $uibModal,
+        $window,
+        $stateParams,
+        convenioResource,
+        convenioEditResource,
+        convenioUpdateResource,
+        materiaResource,
+        subMateriaResource,
+        areaResource,
+        tipoAreaResource,
+        estatusResource,
+        parteResource,
+        appSettings) {
         var vm = this;
 
         // Show the Guardar button.
@@ -81,11 +83,12 @@
         // Changed value in the materia dropdown list
         vm.changedValueMateria = function (materia) {
             if (materia !== undefined && materia !== null) {
-                subMateriaResource.query({ id: materia.materiaId }).$promise.then(function (subMaterias) {
-                    if (subMaterias !== undefined && subMaterias !== null) {
-                        vm.subMaterias = subMaterias;
-                    }
-                });
+                subMateriaResource.query({ id: materia.materiaId })
+                    .$promise.then(function (subMaterias) {
+                        if (subMaterias !== undefined && subMaterias !== null) {
+                            vm.subMaterias = subMaterias;
+                        }
+                    });
             }
         };
 
@@ -119,9 +122,9 @@
                     }
                 }
             },
-            // Dismiss the window and clean resources.
-            function () {
-            });
+                // Dismiss the window and clean resources.
+                function () {
+                });
         };
 
         // Display the toggle modal window for AREA.
@@ -151,12 +154,16 @@
                         var areaExists = false;
 
                         // Check if the element already exist in the collection
-                        angular.forEach(vm.convenio.areas, function (area) {
-                            if (area.areaId === data.area.areaId && area.tipoAreaId === data.tipoArea.tipoAreaId) {
-                                areaExists = true;
-                                alert("El área y tipo de área ya existen.");
-                            }
-                        });
+                        angular.forEach(vm.convenio.areas,
+                            function (area) {
+                                if (area
+                                    .areaId ===
+                                    data.area.areaId &&
+                                    area.tipoAreaId === data.tipoArea.tipoAreaId) {
+                                    areaExists = true;
+                                    alert("El área y tipo de área ya existen.");
+                                }
+                            });
 
                         // If the area does not exists in the array we add the element
                         if (!areaExists) {
@@ -170,8 +177,9 @@
                         vm.convenio.areas.push(data);
                     }
                 }
-            }, function () {
-            });
+            },
+                function () {
+                });
         };
 
         // Display the toggle modal window for PARTE.
@@ -204,12 +212,13 @@
                         var parteExists = false;
 
                         // Check if the element already exist in the collection
-                        angular.forEach(vm.convenio.partes, function (parte) {
-                            if (parte.parteId === data.parte.parteId) {
-                                parteExists = true;
-                                alert("La parte indicada ya existe.");
-                            }
-                        });
+                        angular.forEach(vm.convenio.partes,
+                            function (parte) {
+                                if (parte.parteId === data.parte.parteId) {
+                                    parteExists = true;
+                                    alert("La parte indicada ya existe.");
+                                }
+                            });
 
                         // If the element does not exists in the array we add the element
                         if (!parteExists) {
@@ -223,8 +232,9 @@
                         vm.convenio.partesCompromiso.push(data.parte);
                     }
                 }
-            }, function () {
-            });
+            },
+                function () {
+                });
         };
 
         // Display de toggle modal window for COMPROMISO.
@@ -259,26 +269,28 @@
                     vm.ponderacionTotal = vm.calculaPorcentajeTotal();
                 }
             },
-            // Dismiss the window and clean resources.
-            function (result) {
-                if (result.editEntity !== undefined) {
-                    // Set the selected flag to false when we dismiss the modal window.
-                    angular.forEach(vm.areas, function (area) {
-                        area.selected = false;
-                    });
-                }
-            });
+                // Dismiss the window and clean resources.
+                function (result) {
+                    if (result.editEntity !== undefined) {
+                        // Set the selected flag to false when we dismiss the modal window.
+                        angular.forEach(vm.areas,
+                            function (area) {
+                                area.selected = false;
+                            });
+                    }
+                });
         };
 
         // Cancel the operation and returns to the previous menu.
         vm.calculaPorcentajeTotal = function () {
             var sum = 0;
 
-            angular.forEach(vm.convenio.compromisos, function (compromiso) {
-                if (compromiso !== undefined && compromiso !== null) {
-                    sum += compromiso.ponderacion;
-                }
-            });
+            angular.forEach(vm.convenio.compromisos,
+                function (compromiso) {
+                    if (compromiso !== undefined && compromiso !== null) {
+                        sum += compromiso.ponderacion;
+                    }
+                });
 
             return sum;
         };
@@ -287,11 +299,12 @@
         vm.submit = function (isValid) {
             if (isValid) {
                 // Send the CONVENIO information to the API
-                new convenioResource(vm.convenio).$save().then(
-                    function () {
-                        toastr.success("Convenio guardado correctamente.", "Exito.");
-                        $window.location.href = "#consulta";
-                    });
+                new convenioResource(vm.convenio).$save()
+                    .then(
+                        function () {
+                            toastr.success("Convenio guardado correctamente.", "Exito.");
+                            $window.location.href = "#consulta";
+                        });
             } else {
                 toastr.error("Favor de ingresar los valores requeridos.", "Error");
             }
@@ -347,88 +360,102 @@
 
     // The Modal Instance controller
     angular
-       .module("convenioColaboracion")
-       .controller("ModalInstanceCtrl", function ($scope, $uibModalInstance, entidad, editEntity, vm) {
-           $scope.entidad = entidad;
-           $scope.entidad.btnSave = "Agregar";
-           $scope.editEntity = editEntity;
-           var backup = {};
-           $scope.areas = vm.areas;
-           $scope.partes = vm.partes;
-           $scope.tipoAreas = vm.tipoAreas;
-           $scope.partesCompromiso = vm.convenio.partesCompromiso;
+        .module("convenioColaboracion")
+        .controller("ModalInstanceCtrl",
+            function ($scope, $uibModalInstance, entidad, editEntity, vm) {
+                $scope.entidad = entidad;
+                $scope.entidad.btnSave = "Agregar";
+                $scope.editEntity = editEntity;
+                var backup = {};
+                $scope.areas = vm.areas;
+                $scope.partes = vm.partes;
+                $scope.tipoAreas = vm.tipoAreas;
+                $scope.partesCompromiso = vm.convenio.partesCompromiso;
 
-           //Agregado calendario con estilo de gobmx
-           $(".calendarioGobMx").datepicker();
+                //Agregado calendario con estilo de gobmx
+                $(".calendarioGobMx").datepicker();
 
-           // Boton de aceptar para la ventana modal.
-           $scope.aceptar = function () {
-               $scope.entidad = true;
-               $uibModalInstance.close($scope.entidad);
-           };
+                // Boton de aceptar para la ventana modal.
+                $scope.aceptar = function () {
+                    $scope.entidad = true;
+                    $uibModalInstance.close($scope.entidad);
+                };
 
-           // Boton de aceptar para la ventana modal.
-           $scope.ok = function (isValid) {
-               if (isValid) {
-                   $uibModalInstance.close($scope.entidad);
-               }
-               else {
-                   toastr.error("Favor de ingresar los campos obligatorios", "Error");
-               }
-           };
+                // Boton de aceptar para la ventana modal.
+                $scope.ok = function (isValid) {
+                    if (isValid) {
+                        $uibModalInstance.close($scope.entidad);
+                    } else {
+                        toastr.error("Favor de ingresar los campos obligatorios", "Error");
+                    }
+                };
 
-           // Cancel function to dismiss the modal window and undo the changes to the original model.
-           $scope.cancel = function () {
-               angular.copy(backup, $scope.entidad);
-               $uibModalInstance.dismiss("cancelar");
-           };
+                // Cancel function to dismiss the modal window and undo the changes to the original model.
+                $scope.cancel = function () {
+                    angular.copy(backup, $scope.entidad);
+                    $uibModalInstance.dismiss("cancelar");
+                };
 
-           // Assign the Edit model entity
-           if ($scope.editEntity !== undefined && $scope.editEntity !== null) {
-               if ($scope.editEntity.areas !== undefined && $scope.editEntity.areas !== null) {
-                   angular.forEach($scope.areas, function (area) {
-                       angular.forEach($scope.editEntity.areas, function (areaSeleccionada) {
-                           if (area.areaId === areaSeleccionada.areaId) {
-                               area.selected = true;
-                           }
-                       });
-                   });
-               }
+                // Assign the Edit model entity
+                if ($scope.editEntity !== undefined && $scope.editEntity !== null) {
+                    if ($scope.editEntity.areas !== undefined && $scope.editEntity.areas !== null) {
+                        angular.forEach($scope.areas,
+                            function (area) {
+                                angular.forEach($scope.editEntity.areas,
+                                    function (areaSeleccionada) {
+                                        if (area.areaId === areaSeleccionada.areaId) {
+                                            area.selected = true;
+                                        }
+                                    });
+                            });
+                    }
 
-               if ($scope.editEntity.parte !== undefined && $scope.editEntity.parte !== null) {
-                   $scope.editEntity.parte[0] = $scope.editEntity.parte;
+                    if ($scope.editEntity.parte !== undefined && $scope.editEntity.parte !== null) {
+                        $scope.editEntity.parte[0] = $scope.editEntity.parte;
 
-                   angular.forEach($scope.partes, function (parte) {
+                        angular.forEach($scope.partes,
+                            function (parte) {
 
-                       if (parte.parteId === $scope.editEntity.parte[0].parteId) {
-                           parte.selected = true;
-                       }
-                   });
-               }
+                                if (parte.parteId === $scope.editEntity.parte[0].parteId) {
+                                    parte.selected = true;
+                                }
+                            });
+                    }
 
-               /// Backup the original object
-               backup = angular.copy($scope.editEntity);
+                    /// Backup the original object
+                    backup = angular.copy($scope.editEntity);
 
-               // Set the entity values to edit.
-               $scope.entidad = $scope.editEntity;
+                    // Set the entity values to edit.
+                    $scope.entidad = $scope.editEntity;
 
-               $scope.entidad.btnSave = "Actualizar";
-           } else {
-               if ($scope.areas !== undefined && $scope.areas !== null) {
-                   // Set the selected flag to false is not edit mode.
-                   angular.forEach($scope.areas, function (area) {
-                       area.selected = false;
-                   });
-               }
-           }
+                    $scope.entidad.btnSave = "Actualizar";
+                } else {
+                    if ($scope.areas !== undefined && $scope.areas !== null) {
+                        // Set the selected flag to false is not edit mode.
+                        angular.forEach($scope.areas,
+                            function (area) {
+                                area.selected = false;
+                            });
+                    }
+                }
 
-           // Set the dropdown language options
-           $scope.localLang = {
-               selectAll: "Seleccionar todos",
-               selectNone: "Ninguno",
-               reset: "Deshacer",
-               search: "Buscar...",
-               nothingSelected: "Ninguno seleccionado"
-           };
-       });
+                // Validates the areas multiselect in the compromiso modal
+                $scope.$watch(function (scope) { return $scope.entidad.areas },
+                    function (newValue, oldValue) {
+                        if (newValue.length <= 0) {
+                            $(".resultDataSelect").find(".multiSelectButton").addClass("ng-invalid");
+                        } else {
+                            $(".resultDataSelect").find(".multiSelectButton").removeClass("ng-invalid");
+                        }
+                    });
+
+                // Set the dropdown language options
+                $scope.localLang = {
+                    selectAll: "Seleccionar todos",
+                    selectNone: "Ninguno",
+                    reset: "Deshacer",
+                    search: "Buscar...",
+                    nothingSelected: "Ninguno seleccionado"
+                };
+            });
 })();

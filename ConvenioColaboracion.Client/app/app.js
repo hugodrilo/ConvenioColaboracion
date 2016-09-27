@@ -25,9 +25,16 @@
         "$stateProvider",
         "$urlRouterProvider",
         "blockUIConfig",
-        function ($stateProvider, $urlRouterProvider, blockUIConfig) {
+         "$httpProvider",
+        function ($stateProvider,
+            $urlRouterProvider,
+            blockUIConfig,
+            $httpProvider) {
             // Default view
             $urlRouterProvider.otherwise("/");
+
+            // Set the default credentials. Based  on https://gist.github.com/mlynch/be92735ce4c547bd45f6
+            $httpProvider.defaults.withCredentials = true;
 
             // Define the states
             $stateProvider

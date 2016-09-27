@@ -71,19 +71,20 @@
                         Area responsable
                         <span class="text-danger">*</span>
                     </label>
-                    <div name="areaVinculante"
-                         id="areaVinculante"
+                    <div id="areaVinculante"
+                         name="areaVinculante"
                          isteven-multi-select
                          input-model="areas"
                          output-model="entidad.areas"
                          button-label="area"
                          item-label="area"
                          tick-property="selected"
-                         translation="localLang"
-                         required>
+                         translation="localLang">
                     </div>
                 </div>
             </div>
+            <input name="areaVinculanteText" type="text" ng-model="entidad.areas" style="display:none" required />
+            <!--<div ng-show="!compromisoForm.$error.required" class="validation-error">Area responsable requerida</div>-->
         </div>
         <div class="row">
             <div class="col-md-5">

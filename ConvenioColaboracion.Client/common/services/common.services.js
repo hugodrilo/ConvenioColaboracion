@@ -12,5 +12,6 @@
         {
             ////serverPath: "http://172.16.249.109:84" //// Dev server
             serverPath: "http://localhost:60197"  //// Victor Localhost
+            //// TODO: Agregar aca el servidor de produccion
         });
 }());

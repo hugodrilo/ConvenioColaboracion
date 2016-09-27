@@ -57,7 +57,7 @@
         vm.getConvenioById = function (id) {
             if (id !== undefined) {
                 $scope.convenioId = id;
-                $location.path("/convenios/" + id);
+                $location.path("/estadistica/fichaConvenio/" + id);
             }
         }
     };
