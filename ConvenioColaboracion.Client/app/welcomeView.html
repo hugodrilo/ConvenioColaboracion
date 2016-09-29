@@ -1,27 +1,34 @@
 ﻿<!--welcomeView.html-->
-<div ng-controller="WinAuthCtrl as vm" class="pull-right">
-    <h6>
-        {{ user.displayName}}
-    </h6>
-</div>
-
-<div id="home">
-    <h2>
-        Convenios de Colaboración
-    </h2>
-    <hr class="red">
-    <br />
-    <a class="liga" ui-sref="menuConvenio">Administración y seguimiento de convenios</a>
-    <p> Registro de los datos relevantes de los Convenios de colaboración, compromisos y seguimiento</p>
-    <br />
-    <a class="liga" ui-sref="consulta">Consulta de Convenios de colaboración</a>
-    <p>Listado de cada uno de los Convenios existentes </p>
-    <br />
-    <a class="liga" ui-sref="estadistica">Estadísticas</a>
-    <p>  Estadísticas generales y avance de Convenios de colaboración</p>
-    <br />
-    <a class="liga" ui-sref="menuCatalogo">Catálogos</a>
-    <p>Administración de catálogos.</p>
-    <br />
-
+<div ng-controller="WinAuthCtrl as vm">
+    <div class="pull-right">
+        <h6>
+            {{ user.displayName}}
+        </h6>
+    </div>
+    <div id="home">
+        <h2>
+            Convenios de Colaboración
+        </h2>
+        <hr class="red">
+        <br />
+        <div ng-hide="{{user.isConsulta}}">
+            <a class="liga" ui-sref="menuConvenio">Administración y seguimiento de convenios</a>
+            <p> Registro de los datos relevantes de los Convenios de colaboración, compromisos y seguimiento</p>
+        </div>
+        <br />
+        <div>
+            <a class="liga" ui-sref="consulta">Consulta de Convenios de colaboración</a>
+            <p>Listado de cada uno de los Convenios existentes </p>
+        </div>
+        <br />
+        <div>
+            <a class="liga" ui-sref="estadistica">Estadísticas</a>
+            <p>  Estadísticas generales y avance de Convenios de colaboración</p>
+        </div>
+        <!-- TODO: Encender esta opcion cuando se requiera administracion de catalogos -->
+        <!--<br />
+        <a class="liga" ui-sref="menuCatalogo">Catálogos</a>
+        <p>Administración de catálogos.</p>
+        <br />-->
+    </div>
 </div>

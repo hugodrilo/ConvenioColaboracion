@@ -69,6 +69,9 @@ function WinAuthCtrl(
         return $q.when($scope.user);
     }
 
+    //// TODO: check the logut and clean resources 
+    //// http://stackoverflow.com/questions/34263661/how-to-clear-local-storage-after-logout-using-angularjs
+
     function addUserToStorage() {
         $window.sessionStorage["user"] = JSON.stringify($scope.user);
     }
