@@ -8,11 +8,17 @@
     angular
         .module("convenioColaboracion")
         .controller("MenuCatalogoCtrl",
-        MenuCatalogoCtrl);
+        [
+            "$scope",
 
-    function MenuCatalogoCtrl() {
+            MenuCatalogoCtrl
+        ]);
+
+    function MenuCatalogoCtrl($scope
+        ) {
         var vm = this;
 
         $(".calendarioGobMx").datepicker();
-    };
+
+    }
 })();

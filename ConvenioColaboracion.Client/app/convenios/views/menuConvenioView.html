@@ -7,22 +7,40 @@
         <li class="active">Menú</li>
     </ol>
 </div>
-
-<div id="menuConvenioView">
-    <h2>
-        Administración y seguimiento de Instrumentos de Colaboración
-    </h2>
-    <hr class="red">
-    <a class="liga" ui-sref="convenio">Nuevo Instrumento de Colaboración</a>
-    <p>Registro de un nuevo documento o Instrumento de Colaboración (Datos Generales y Compromisos)</p>
-    <br />
-    <a class="liga" ui-sref="busquedaConvenio">Modificación de Convenio de Colaboración</a>
-    <p>Modificación de los datos generales de Instrumentos de Colaboración y sus compromisos</p>
-    <br />
-    <a class="liga" ui-sref="convenioSeguimiento">Reporte de avances</a>
-    <p>Seguimiento a los pendientes de los Instrumentos de Colaboración</p>
-    <br />
-    <a class="liga" ui-sref="alertas">Alertas</a>
-    <p>Alertas derivadas de la gestión y cumplimiento de los Instrumentos de Colaboración.</p>
-    <br />
+<div ng-controller="WinAuthCtrl as vm">
+    <div id="menuConvenioView">
+        <div class="pull-right">
+            <h6>
+                {{ user.displayName}}
+            </h6>
+        </div>
+        <br />
+        <div>
+            <h2>
+                Administración y seguimiento de Instrumentos de Colaboración
+            </h2>
+        </div>
+        <hr class="red">
+        <div ng-show="{{user.isAdmin}}">
+            <a class="liga" ui-sref="convenio">Nuevo Instrumento de Colaboración</a>
+            <p>Registro de un nuevo documento o Instrumento de Colaboración (Datos Generales y Compromisos)</p>
+        </div>
+        <br />
+        <div ng-show="{{user.isAdmin}}">
+            <a class="liga" ui-sref="busquedaConvenio">Modificación de Convenio de Colaboración</a>
+            <p>Modificación de los datos generales de Instrumentos de Colaboración y sus compromisos</p>
+        </div>
+        <br />
+        <div ng-show="{{user.isSeguimiento}}">
+            <a class="liga" ui-sref="convenioSeguimiento">Reporte de avances</a>
+            <p>Seguimiento a los pendientes de los Instrumentos de Colaboración</p>
+        </div>
+        <br />
+        <div>
+            <a class="liga"
+               ui-sref="alertas">Alertas</a>
+            <p>Alertas derivadas de la gestión y cumplimiento de los Instrumentos de Colaboración.</p>
+        </div>
+        <br />
+    </div>
 </div>
