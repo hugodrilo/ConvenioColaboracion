@@ -64,6 +64,15 @@ function WinAuthCtrl(
 
                 addUserToStorage();
             }
+        }).catch(function (error) {
+            $scope.user = {
+                id: 0,
+                displayName: "",
+                usuario: "",
+                isAdmin: false,
+                isSeguimiento: false,
+                isConsulta: true
+            };
         });
 
         return $q.when($scope.user);
