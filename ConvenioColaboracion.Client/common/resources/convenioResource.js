@@ -74,7 +74,12 @@
 
     // busqueda resource
     function busquedaResource($resource, appSettings) {
-        return $resource(appSettings.serverPath + "/api/busqueda/:searchText", { searchText: "@searchText" });
+        return $resource(appSettings.serverPath + "/api/busqueda/:searchText/:userId/:operacionId",
+        {
+            searchText: "@searchText",
+            userId: "@userId",
+            operacionId: "@operacionId"
+        });
     }
 
     // compromiso resource

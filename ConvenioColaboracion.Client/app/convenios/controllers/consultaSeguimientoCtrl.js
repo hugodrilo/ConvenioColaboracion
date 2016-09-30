@@ -24,9 +24,14 @@
         vm.convenios = [];
 
         // Search the expected text.
-        vm.buscar = function (searchText) {
+        vm.buscar = function (searchText, userId, operacionId) {
             if (searchText !== undefined && searchText !== null) {
-                var convenios = busquedaResource.query({ searchText: searchText });
+                var convenios = busquedaResource.query(
+                {
+                    searchText: searchText,
+                    userId: userId,
+                    operacionId: operacionId
+                });
 
                 convenios.$promise.then(function (convenios) {
                     if (convenios !== undefined && convenios !== null) {
